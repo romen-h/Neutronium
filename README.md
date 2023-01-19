@@ -5,6 +5,12 @@ Neutronium is a collection of merge libraries for modding the game Oxygen Not In
 - Audio  
 A library for adding custom sound and music to the game.
 
+- Diseases  
+A library for adding diseases with support for custom disease textures.
+
+- Dupes  
+A library for adding custom duplicant personalities with extra symbol overrides.
+
 - Elements  
 A library for adding new elements in a way that deals with save compatibility, and conflict resolution if two mods add the same or similar elements.
 
