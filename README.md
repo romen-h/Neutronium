@@ -10,12 +10,6 @@ Allows custom sounds to be loaded from file and played.
 
 ## Planned Libraries
 
-### Audio
-- Adding sounds from WAV, MP3, OGG
-- Support for positional or global sound
-- Play one-shots, sync sounds to animations, looping building noises
-- Adding new background music tracks
-
 ### Diseases
 - Adding new disease (germ) types
 - Custom shader for disease overlay to support unique disease textures. (thanks Aki!)
