@@ -1,6 +1,13 @@
 # Neutronium
 Neutronium is a collection of merge libraries for modding the game Oxygen Not Included.
 
+## Libraries
+
+### [Audio](./Audio)
+Allows custom sounds to be loaded from file and played.
+- Supports positional audio relative to the game camera.
+- WIP
+
 ## Planned Libraries
 
 ### Audio
