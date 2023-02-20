@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31515.178
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zones", "Zones\Zones.csproj", "{646886D6-EFC3-4ADD-B604-829FEFA8DA13}"
 EndProject
@@ -16,7 +16,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{BC5294
 		Common\Registry.cs = Common\Registry.cs
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Audio", "Audio\Audio.csproj", "{877F8719-3126-43EF-A1B2-544194D906E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Audio", "Audio\Audio.csproj", "{877F8719-3126-43EF-A1B2-544194D906E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostProcessing", "PostProcessing\PostProcessing.csproj", "{37F41A80-FF88-4BD2-908A-08D607F7EEE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,10 @@ Global
 		{877F8719-3126-43EF-A1B2-544194D906E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{877F8719-3126-43EF-A1B2-544194D906E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{877F8719-3126-43EF-A1B2-544194D906E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37F41A80-FF88-4BD2-908A-08D607F7EEE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37F41A80-FF88-4BD2-908A-08D607F7EEE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37F41A80-FF88-4BD2-908A-08D607F7EEE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37F41A80-FF88-4BD2-908A-08D607F7EEE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

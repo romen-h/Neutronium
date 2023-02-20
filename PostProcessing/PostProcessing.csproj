@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Neutronium.PostProcessing</AssemblyName>
+    <RootNamespace>Neutronium.PostProcessing</RootNamespace>
+    <UseRegistry>True</UseRegistry>
+  </PropertyGroup>
+
+</Project>

@@ -1,11 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <AssemblyName>Neutronium.Audio</AssemblyName>
-    <TargetFramework>net471</TargetFramework>
-    <RootNamespace>Neutronium.Audio</RootNamespace>
-  </PropertyGroup>
-
   <ItemGroup>
     <Reference Include="FMODUnity">
       <HintPath>$(GameLibsFolder)/FMODUnity.dll</HintPath>
