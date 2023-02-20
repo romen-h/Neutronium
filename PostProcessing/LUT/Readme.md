@@ -20,8 +20,8 @@ public class MyMod : UserMod2
 		lutAPI.RegisterLUT(
 			"MyMod.Night",	// A unique string for your LUT, if you collide with another mod it will throw an exception
 			LUTSlot.Night,	// The slot that the LUT applies to (day or night)
-			100,			// A priority integer, highest priority value wins conflict resolution
-			nightLUT		// The texture for the LUT
+			100,		// A priority integer, highest priority value wins conflict resolution
+			nightLUT	// The texture for the LUT
 		);
 	}
 }
