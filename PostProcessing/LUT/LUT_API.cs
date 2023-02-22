@@ -55,14 +55,14 @@ namespace Neutronium.PostProcessing.LUT
             }
 
             if (_debugLogging) Debug.Log("LUT_API: Inserting LUT entry in registry...");
-            System.Tuple<LUTSlot, int, Texture2D> entry = new System.Tuple<LUTSlot, int, Texture2D>(slot, priority, texture);
+            System.Tuple<int, int, Texture2D> entry = new System.Tuple<int, int, Texture2D>((int)slot, priority, texture);
             registry.Add(id, entry);
 
             Debug.Log($"LUT_API: Registered LUT with id={id}");
             return true;
         }
 
-        public bool UnregisterLUT(string id, LUTSlot slot)
+        public bool UnregisterLUT(string id)
         {
             if (_debugLogging) Debug.Log("LUT_API::UnregisterLUT");
             if (string.IsNullOrEmpty(id)) throw new ArgumentNullException(nameof(id));
@@ -72,8 +72,7 @@ namespace Neutronium.PostProcessing.LUT
 
             if (registry.ContainsKey(id))
             {
-                registry.Remove(id);
-                return true;
+                return registry.Remove(id);
             }
 
             return false;
@@ -91,10 +90,10 @@ namespace Neutronium.PostProcessing.LUT
 			var registry = NeutroniumRegistry_PostProc_LUT.Get();
 
             if (_debugLogging) Debug.Log($"LUT_API: Searching for highest priority LUT for slot={slot}");
-            System.Tuple<LUTSlot, int, Texture2D> bestLUT = null;
+            System.Tuple<int, int, Texture2D> bestLUT = null;
             foreach (var lut in registry.Values)
             {
-                if (lut.Item1 == slot || lut.Item1 == LUTSlot.All)
+                if (lut.Item1 == (int)slot || lut.Item1 == (int)LUTSlot.All)
                 {
                     if (bestLUT == null || lut.Item2 > bestLUT.Item2)
                     {
@@ -107,7 +106,7 @@ namespace Neutronium.PostProcessing.LUT
             {
                 if (bestLUT == null)
                 {
-                    Debug.Log($"LUT_APU: Did not find LUT for slot={slot}");
+                    Debug.Log($"LUT_API: Did not find LUT for slot={slot}");
                 }
                 else
                 {

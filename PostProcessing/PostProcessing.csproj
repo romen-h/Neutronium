@@ -16,7 +16,7 @@
     <Revision>1</Revision>
     <Build>0</Build>
     <VersionPrefix>$(MajorVersion).$(MinorVersion).$(Revision)</VersionPrefix>
-    <VersionSuffix>alpha9</VersionSuffix>
+    <VersionSuffix>alpha10</VersionSuffix>
     <AssemblyVersion>$(MajorVersion).$(MinorVersion).$(Revision).$(Build)</AssemblyVersion>
   </PropertyGroup>
 

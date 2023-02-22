@@ -25,3 +25,8 @@ public class MyMod : UserMod2
 		);
 	}
 }
+
+## Planned Features
+
+- Apply LUT on demand
+- Control over day/night/other lerping between LUTs

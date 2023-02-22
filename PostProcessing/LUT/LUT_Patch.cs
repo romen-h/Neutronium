@@ -132,14 +132,14 @@ namespace Neutronium.PostProcessing.LUT
 		// Apply actual patch
 		private void Apply()
 		{
+			Debug.Log("LUT_Patch::Apply");
 			if (_applied) return;
 
-			Debug.Log("LUT_Patch: Applying patch...");
 			try
 			{
 				MethodInfo method = typeof(CameraController).GetMethod("OnPrefabInit", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly);
 				if (method == null) throw new Exception("Failed to find patch target method.");
-				HarmonyMethod prefix = new HarmonyMethod(typeof(LUT_Patch).GetMethod("CameraController_OnPrefabInit_Prefix", BindingFlags.Static | BindingFlags.NonPublic));
+				HarmonyMethod prefix = new HarmonyMethod(typeof(LUT_Patch).GetMethod("CameraController_OnPrefabInit_Prefix", BindingFlags.Static | BindingFlags.NonPublic), Priority.Last + 1);
 				if (prefix == null) throw new Exception("Failed to find patch method.");
 				_harmony.Patch(method, prefix);
 				Debug.Log("LUT_Patch: Applied.");

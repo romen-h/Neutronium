@@ -15,6 +15,7 @@ namespace Neutronium.Common
 			var instance = Global.Instance.gameObject.GetComponent(registryType.Name) as IDictionary<string, T>;
 			if (instance == null)
 			{
+				Debug.Log($"NeutroniumRegistry: Creating new {registryType.Name} registry.");
 				instance = Global.Instance.gameObject.AddComponent(registryType) as IDictionary<string, T>;
 			}
 			UnityEngine.Debug.Assert(instance != null, "Could not find registry. Please report this error on the GitHub issues.");

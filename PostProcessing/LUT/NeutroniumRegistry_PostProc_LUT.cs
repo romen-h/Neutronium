@@ -10,8 +10,8 @@ using UnityEngine;
 
 namespace Neutronium.PostProcessing.LUT
 {
-    internal sealed class NeutroniumRegistry_PostProc_LUT : NeutroniumRegistry<System.Tuple<LUTSlot, int, Texture2D>>
+    internal sealed class NeutroniumRegistry_PostProc_LUT : NeutroniumRegistry<System.Tuple<int, int, Texture2D>>
     {
-        internal static IDictionary<string, System.Tuple<LUTSlot, int, Texture2D>> Get() => AddOrGet(typeof(NeutroniumRegistry_PostProc_LUT));
+        internal static IDictionary<string, System.Tuple<int, int, Texture2D>> Get() => AddOrGet(typeof(NeutroniumRegistry_PostProc_LUT));
     }
 }
