@@ -8,16 +8,11 @@
     <Description>A merge lib for Oxygen Not Included mods. Support for custom post-processing. </Description>
     <PackageProjectUrl></PackageProjectUrl>
     <PackageTags>Oxyegn Not Included; Modding API</PackageTags>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <MajorVersion>0</MajorVersion>
+    <MajorVersion>1</MajorVersion>
     <MinorVersion>0</MinorVersion>
-    <Revision>1</Revision>
+    <Revision>0</Revision>
     <Build>0</Build>
-    <VersionPrefix>$(MajorVersion).$(MinorVersion).$(Revision)</VersionPrefix>
-    <VersionSuffix>alpha9</VersionSuffix>
-    <AssemblyVersion>$(MajorVersion).$(MinorVersion).$(Revision).$(Build)</AssemblyVersion>
+    <Version>$(VersionPrefix)-alpha1</Version>
   </PropertyGroup>
 
 </Project>

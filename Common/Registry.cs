@@ -62,8 +62,8 @@ namespace Neutronium.Common
 		#endregion
 	}
 
-	internal sealed class NeutroniumRegistry_Core_Patches : NeutroniumRegistry<Tuple<Version, object>>
+	internal sealed class NeutroniumRegistry_Core_Patches : NeutroniumRegistry<System.Tuple<System.Version, object>>
 	{
-		internal static IDictionary<string, Tuple<Version, object>> Get() => AddOrGet(typeof(NeutroniumRegistry_Core_Patches));
+		internal static IDictionary<string, System.Tuple<System.Version, object>> Get() => AddOrGet(typeof(NeutroniumRegistry_Core_Patches));
 	}
 }
