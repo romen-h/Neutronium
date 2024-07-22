@@ -32,5 +32,5 @@ API for screen-space effects.
 ### Worlds
 A library for adding entirely custom clusters and asteroids with compatibility for the YAML based worldgen mods
 
-- Zones  
+### Zones  
 A library for adding new biome/zone types. (The background texture for a biome)
