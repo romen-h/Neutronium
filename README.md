@@ -18,7 +18,8 @@ API for screen-space effects.
 - Adding new disease (germ) types
 - Custom shader for disease overlay to support unique disease textures. (thanks Aki!)
 
-### Elements
+~~### Elements~~
+(Moonlet by Aki does everything this module was going to do)
 - Adding new elements through an API to avoid patch bloat
 - Detecting elements added by other mods to enable optional features in your own mod
 - Backup elements so they can exist even after a mod is disabled. (For loading old saves)
@@ -29,8 +30,9 @@ API for screen-space effects.
 - Adding personality traits (good/bad traits)
 - Support for completely custom art
 
-### Worlds
-A library for adding entirely custom clusters and asteroids with compatibility for the YAML based worldgen mods
+~~### Worlds~~
+~~A library for adding entirely custom clusters and asteroids with compatibility for the YAML based worldgen mods~~
+(Moonlet by Aki does everything this module was going to do)
 
 ### Zones  
 A library for adding new biome/zone types. (The background texture for a biome)
