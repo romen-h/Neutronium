@@ -1,9 +1,0 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <ItemGroup>
-    <Reference Include="FMODUnity">
-      <HintPath>$(GameLibsFolder)/FMODUnity.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-</Project>
