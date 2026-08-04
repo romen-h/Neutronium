@@ -1,0 +1,25 @@
+<Project>
+
+	<!-- Include ONI-Libs submodule -->
+	<PropertyGroup>
+		<ONILibsRoot>$(SolutionDir)/gamelibs</ONILibsRoot>
+		<UseTestingLibs>false</UseTestingLibs>
+		<GameFolder>C:\Steam\steamapps\common\OxygenNotIncluded\</GameFolder>
+	</PropertyGroup>
+
+	<Import Project="$(ONILibsRoot)/GameLibs.props"/>
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<LangVersion>latest</LangVersion>
+		<ClearOutputDirectory>true</ClearOutputDirectory>
+		<GenerateDependencyFile>false</GenerateDependencyFile>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+		<Optimize>false</Optimize>
+		<DefineConstants>$(DefineConstants);DEV</DefineConstants>
+	</PropertyGroup>
+
+</Project>

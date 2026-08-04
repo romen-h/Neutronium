@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="Directory.Build.props" />
+    <File Path="NeutroniumVersion.props" />
+  </Folder>
+  <Project Path="NeutroniumCore/NeutroniumCore.csproj" />
+  <Project Path="NeutroniumLoader/NeutroniumLoader.csproj">
+    <BuildDependency Project="NeutroniumCore/NeutroniumCore.csproj" />
+  </Project>
+</Solution>

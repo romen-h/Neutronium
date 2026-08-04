@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "NeutroniumCore": {
+      "commandName": "Project"
+    },
+    "ONI": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Steam\\steamapps\\common\\OxygenNotIncluded\\OxygenNotIncluded.exe",
+      "environmentVariables": {
+        "SteamAppId": "457140"
+      },
+      "debugEngines": "managed,native"
+    }
+  }
+}

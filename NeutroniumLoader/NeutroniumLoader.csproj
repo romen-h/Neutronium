@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<Import Project="$(SolutionDir)/NeutroniumVersion.props" />
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<Configurations>Release;Debug</Configurations>
+		<RootNamespace>Neutronium.Loader</RootNamespace>
+		<IgnoreExtraLibs>true</IgnoreExtraLibs>
+		<IgnoreUnityLibs>true</IgnoreUnityLibs>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="mod.yaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="mod.yaml">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="dist/**">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="0Harmony">
+			<HintPath>$(GameLibsFolder)/0Harmony.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<PackageReference Include="Lib.Harmony.Ref" Version="2.4.2" />
+		<Reference Include="UnityEngine">
+			<HintPath>$(UnityLibsFolder)/UnityEngine.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UnityEngine.CoreModule">
+			<HintPath>$(UnityLibsFolder)/UnityEngine.CoreModule.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+	</ItemGroup>
+
+	<Target Name="CopyNeutroniumCoreLib" AfterTargets="AfterBuild">
+		<ItemGroup>
+			<FilesToCopy Include="$(SolutionDir)/NeutroniumCore/bin/$(Configuration)/netstandard2.1/*.dll" />
+		</ItemGroup>
+		<Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(TargetDir)/dist/core" />
+	</Target>
+
+	<Target Name="CleanupNeutroniumCoreLib" AfterTargets="AfterClean">
+		<ItemGroup>
+			<FilesToDelete Include="$(TargetDir)/dist/core/*.dll" />
+		</ItemGroup>
+		<Delete Files="@(FilesToDelete)" />
+	</Target>
+
+	<Target Name="ConfigureModInfoYaml" AfterTargets="AfterBuild">
+		<PropertyGroup>
+			<Template>$([System.IO.File]::ReadAllText('$(MSBuildProjectDirectory)/mod_info.template.yaml'))</Template>
+			<Content>$(Template.Replace('$MIN_BUILD', '$(GameVersion)').Replace('$VERSION', '$(Version)'))</Content>
+		</PropertyGroup>
+
+		<WriteLinesToFile File="$(TargetDir)/mod_info.yaml" Lines="$(Content)" Overwrite="true" Encoding="UTF-8" />
+	</Target>
+
+</Project>

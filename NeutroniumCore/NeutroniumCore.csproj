@@ -1,0 +1,61 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<Import Project="$(SolutionDir)/NeutroniumVersion.props" />
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<Configurations>Release;Debug</Configurations>
+		<RootNamespace>Neutronium.Core</RootNamespace>
+		<IgnoreGameLibs>true</IgnoreGameLibs>
+		<IgnoreExtraLibs>true</IgnoreExtraLibs>
+		<IgnoreUnityLibs>true</IgnoreUnityLibs>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Reference Include="0Harmony">
+			<HintPath>$(GameLibsFolder)/0Harmony.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<PackageReference Include="Lib.Harmony.Ref" Version="2.4.2" />
+		<PackageReference Include="System.Reflection.MetadataLoadContext" Version="10.0.10" />
+		<Reference Include="UnityEngine">
+			<HintPath>$(UnityLibsFolder)/UnityEngine.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UnityEngine.CoreModule">
+			<HintPath>$(UnityLibsFolder)/UnityEngine.CoreModule.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="Assembly-CSharp">
+			<HintPath>$(GameLibsFolder)/Assembly-CSharp.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="Assembly-CSharp-firstpass">
+			<HintPath>$(GameLibsFolder)/Assembly-CSharp-firstpass.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+	</ItemGroup>
+
+	<Target Name="InstallToGame" AfterTargets="AfterBuild">
+		<ItemGroup>
+			<FilesToCopy Include="$(TargetDir)/NeutroniumCore.dll" />
+			<FilesToCopy Include="$(TargetDir)/NeutroniumCore.pdb" />
+			<FilesToCopy Include="$(TargetDir)/System.Collections.Immutable.dll" />
+			<FilesToCopy Include="$(TargetDir)/System.Reflection.Metadata.dll" />
+			<FilesToCopy Include="$(TargetDir)/System.Reflection.MetadataLoadContext.dll" />
+		</ItemGroup>
+		<Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(GameFolder)" SkipUnchangedFiles="true" />
+	</Target>
+
+	<Target Name="CleanFromGame" AfterTargets="Clean">
+		<ItemGroup>
+			<FilesToRemove Include="$(GameFolder)/NeutroniumCore.dll" />
+			<FilesToRemove Include="$(GameFolder)/NeutroniumCore.pdb" />
+			<FilesToRemove Include="$(GameFolder)/System.Collections.Immutable.dll" />
+			<FilesToRemove Include="$(GameFolder)/System.Reflection.Metadata.dll" />
+			<FilesToRemove Include="$(GameFolder)/System.Reflection.MetadataLoadContext.dll" />
+		</ItemGroup>
+		<Delete Files="@(FilesToRemove)" />
+	</Target>
+
+</Project>

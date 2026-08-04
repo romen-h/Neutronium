@@ -1,0 +1,25 @@
+<Project>
+
+	<PropertyGroup>
+		<!--Use the year and day of the year to make a "patch" version field. This ensures version numbers ascend automatically.-->
+		<Year>$([System.DateTime]::UtcNow.ToString("yy"))</Year>
+		<DayOfYear>$([System.DateTime]::UtcNow.DayOfYear.ToString("D3"))</DayOfYear>
+		<!--Use the hour and minute to make a "build" version field. This ensures rapid development gets automatically ascending versions too.-->
+		<Hour>$([System.DateTime]::UtcNow.ToString("HH"))</Hour>
+		<Minute>$([System.DateTime]::UtcNow.ToString("mm"))</Minute>
+		<BuildDay>$(Year)$(DayOfYear)</BuildDay>
+		<BuildTime>1$(Hour)$(Minute)</BuildTime>
+		<!--API Compatibility is established by the major and minor version numbers.-->
+		<MajorVersion>0</MajorVersion>
+		<MinorVersion>1</MinorVersion>
+		<!--Put it all together-->
+		<VersionPrefix>$(MajorVersion).$(MinorVersion).$(BuildDay).$(BuildTime)</VersionPrefix>
+		<VersionSuffix>alpha</VersionSuffix>
+		<Version>$(VersionPrefix)-$(VersionSuffix)</Version>
+		<AssemblyVersion>$(VersionPrefix)</AssemblyVersion>
+		<FileVersion>$(VersionPrefix)</FileVersion>
+		<InformationalVersion>$(Version) - $(GameVersion)</InformationalVersion>
+		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+	</PropertyGroup>
+
+</Project>

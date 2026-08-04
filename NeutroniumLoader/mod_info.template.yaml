@@ -1,0 +1,4 @@
+supportedContent: ALL
+minimumSupportedBuild: $MIN_BUILD
+version: $VERSION
+APIVersion: 2
