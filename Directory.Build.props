@@ -1,13 +1,8 @@
 <Project>
 
 	<!-- Include ONI-Libs submodule -->
-	<PropertyGroup>
-		<ONILibsRoot>$(SolutionDir)/gamelibs</ONILibsRoot>
-		<UseTestingLibs>false</UseTestingLibs>
-		<GameFolder>C:\Steam\steamapps\common\OxygenNotIncluded\</GameFolder>
-	</PropertyGroup>
-
-	<Import Project="$(ONILibsRoot)/GameLibs.props"/>
+	<Import Project="$(SolutionDir)/GameLibs.props"/>
+	<Import Project="$(SolutionDir)/GameLibs.user.props" Condition="Exists('$(SolutionDir)/GameLibs.user.props')"/>
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>

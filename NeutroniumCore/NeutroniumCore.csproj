@@ -6,9 +6,6 @@
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<Configurations>Release;Debug</Configurations>
 		<RootNamespace>Neutronium.Core</RootNamespace>
-		<IgnoreGameLibs>true</IgnoreGameLibs>
-		<IgnoreExtraLibs>true</IgnoreExtraLibs>
-		<IgnoreUnityLibs>true</IgnoreUnityLibs>
 	</PropertyGroup>
 
 	<ItemGroup>

@@ -1,0 +1,16 @@
+<Project>
+	<PropertyGroup>
+		<!-- Unsafe code is necessary when using publicized references. -->
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<!-- Used by both the libs path below and code/properties in the projects of this solution. -->
+		<GameVersion>740622</GameVersion>
+		<!-- Used by te UnityLibsFolder path below when referencing libs out of the ONI-Libs repo. -->
+		<UnityVersion>6000.3.5f2</UnityVersion>
+		<!-- Used by various build targets in this solution. -->
+		<GameFolder>C:\Steam\steamapps\common\OxygenNotIncluded</GameFolder>
+		<!-- Point this to a folder with publicized Assembly-CSharp.dll and Assembly-CSharp-firstpass.dll. -->
+		<GameLibsFolder>$(SolutionDir)/gamelibs/libs/$(GameVersion)</GameLibsFolder>
+		<!-- Point this to a folder with the Unity Engine libs. -->
+		<UnityLibsFolder>$(SolutionDir)/gamelibs/libs/Unity-$(UnityVersion)</UnityLibsFolder>
+	</PropertyGroup>
+</Project>

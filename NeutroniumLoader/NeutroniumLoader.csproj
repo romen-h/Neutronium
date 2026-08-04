@@ -6,8 +6,6 @@
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<Configurations>Release;Debug</Configurations>
 		<RootNamespace>Neutronium.Loader</RootNamespace>
-		<IgnoreExtraLibs>true</IgnoreExtraLibs>
-		<IgnoreUnityLibs>true</IgnoreUnityLibs>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -35,6 +33,14 @@
 		</Reference>
 		<Reference Include="UnityEngine.CoreModule">
 			<HintPath>$(UnityLibsFolder)/UnityEngine.CoreModule.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="Assembly-CSharp">
+			<HintPath>$(GameLibsFolder)/Assembly-CSharp.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="Assembly-CSharp-firstpass">
+			<HintPath>$(GameLibsFolder)/Assembly-CSharp-firstpass.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
 	</ItemGroup>
