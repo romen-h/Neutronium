@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Neutronium.Core.Meta;
+using Neutronium.Api.Meta;
 
-namespace Neutronium.Core.Plugins.Api
+namespace Neutronium.Api.Plugins
 {
     /// <summary>
     /// Plugins that implement this interface will be given a chance to load assets before plugin patching.
     /// </summary>
-    [StableApi(ApiVersions.Alpha_Milestone2)]
+    [StableApi(ApiVersions.Alpha_Milestone1)]
     public interface IAssetsLoaderPlugin : IPlugin
     {
 		/// <summary>
 		/// Implement the asset loading in this method.
 		/// Exceptions thrown by this method will be caught and raise a warning to the user that they should disable this plugin.
 		/// </summary>
-		[StableApi(ApiVersions.Alpha_Milestone2)]
+		[StableApi(ApiVersions.Alpha_Milestone1)]
         void LoadAssets();
     }
 }

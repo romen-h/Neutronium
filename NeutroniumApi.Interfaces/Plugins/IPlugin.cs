@@ -1,23 +1,21 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using HarmonyLib;
-using Neutronium.Core.Logging.Api;
-using Neutronium.Core.Meta;
-using Neutronium.Core.Registry.Internal;
+using Neutronium.Api.Logging;
+using Neutronium.Api.Meta;
 
-namespace Neutronium.Core.Plugins.Api
+namespace Neutronium.Api.Plugins
 {
 	/// <summary>
 	/// A Neutronium plugin DLL must implement a single class that has this interface on it.
 	/// </summary>
-	[StableApi(ApiVersions.Alpha_Milestone2)]
+	[StableApi(ApiVersions.Alpha_Milestone1)]
 	public interface IPlugin
 	{
 		/// <summary>
 		/// Provides a string to uniquely identify this plugin.
 		/// </summary>
-		[StableApi(ApiVersions.Alpha_Milestone2)]
+		[StableApi(ApiVersions.Alpha_Milestone1)]
 		string UniqueID
 		{ get; }
 
@@ -25,7 +23,7 @@ namespace Neutronium.Core.Plugins.Api
 		/// Declares the minimum game version required to load this plugin.
 		/// If null is provided then this condition will not be checked.
 		/// </summary>
-		[StableApi(ApiVersions.Alpha_Milestone2)]
+		[StableApi(ApiVersions.Alpha_Milestone1)]
 		uint? MinGameVersion
 		{ get; }
 
@@ -33,7 +31,7 @@ namespace Neutronium.Core.Plugins.Api
 		/// Declares the maximum game version required to load this plugin.
 		/// If null is provided then this condition will not be checked.
 		/// </summary>
-		[StableApi(ApiVersions.Alpha_Milestone2)]
+		[StableApi(ApiVersions.Alpha_Milestone1)]
 		uint? MaxGameVersion
 		{ get; }
 
@@ -44,7 +42,7 @@ namespace Neutronium.Core.Plugins.Api
 		/// <remarks>
 		///	Do not apply patches or do any significant processing work from this method.
 		/// </remarks>
-		[StableApi(ApiVersions.Alpha_Milestone2)]
+		[StableApi(ApiVersions.Alpha_Milestone1)]
 		void OnUnityInitialized();
 		
 		/// <summary>
@@ -52,6 +50,6 @@ namespace Neutronium.Core.Plugins.Api
 		/// Logging through this object will push messages to the dedicated Neutronium log file.
 		/// </summary>
 		[StableApi(ApiVersions.Alpha_Milestone1)]
-		void ProvideLogger(ILogger logger);
+		void ProvideLoggerFactory(ILoggerFactory logger);
 	}
 }

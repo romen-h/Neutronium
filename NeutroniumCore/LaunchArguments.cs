@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using HarmonyLib;
+using Neutronium.Api.Logging;
 using Neutronium.Core.Logging.Api;
 
 namespace Neutronium.Core

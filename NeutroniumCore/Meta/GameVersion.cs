@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
+using Neutronium.Api.Logging;
 using Neutronium.Core.Logging.Api;
 
 namespace Neutronium.Core.Meta

@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using HarmonyLib;
-using Neutronium.Core.Plugins.Api;
+using Neutronium.Api.Plugins;
 
-namespace Neutronium.Core.Plugins.Internal
+namespace Neutronium.Core.Plugins
 {
 	internal class PluginWrapper
 	{
@@ -37,7 +37,7 @@ namespace Neutronium.Core.Plugins.Internal
 
 			if (Plugin is IPatcherPlugin patcher)
             {
-				_harmony = new Harmony(ModStaticId);
+				_harmony = new Harmony(Id);
 				_patcher = patcher;
             }
 			
@@ -56,7 +56,7 @@ namespace Neutronium.Core.Plugins.Internal
 		internal void ApplyPatches()
         {
 			if (_harmony == null || _patcher == null) return;
-			_patcher.ApplyPatches(_harmony);
+			_patcher.ApplyPatches(Id);
         }
 		
 		internal void BeforeDbInitialized()

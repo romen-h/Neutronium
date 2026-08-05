@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
-using Neutronium.Core.Logging.Api;
+using Neutronium.Api.Logging;
 
-namespace Neutronium.Core.Logging.Internal
+namespace Neutronium.Core.Logging.Api
 {
 	internal class Logger : ILogger
 	{

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Neutronium.Core.Registry.Interfaces;
+using Neutronium.Api.Registry;
 
-namespace Neutronium.Core.Registry.Internal
+namespace Neutronium.Core.Registry
 {
 	internal class RegistryView : IRegistry
 	{

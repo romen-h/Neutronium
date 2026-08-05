@@ -1,15 +1,28 @@
 using System.Collections.Concurrent;
+using Neutronium.Api.Logging;
 using Neutronium.Core.Meta;
 
 namespace Neutronium.Core.Logging.Api
 {
-	[StableApi(ApiVersions.Alpha_Milestone1)]
-	public static class LoggerFactory
+	internal class LoggerFactory : ILoggerFactory
 	{
-		private static readonly ConcurrentDictionary<string, Logging.Internal.Logger> s_loggers = new ConcurrentDictionary<string, Internal.Logger>();
+		private static readonly ConcurrentDictionary<string, Logger> s_loggers = new ConcurrentDictionary<string, Logger>();
 
-        [StableApi(ApiVersions.Alpha_Milestone1)]
-        public static ILogger GetLogger(string modStaticId, string category = null)
+		private static LoggerFactory s_instance;
+		
+		internal static LoggerFactory Instance
+		{
+			get
+			{
+				if (s_instance == null)
+				{
+					s_instance = new LoggerFactory();
+				}
+				return s_instance;
+			}
+		}
+		
+        public ILogger GetLogger(string modStaticId, string category = null)
         {
             string loggerId;
 			if (category != null)
@@ -22,9 +35,9 @@ namespace Neutronium.Core.Logging.Api
 				loggerId = $"Mod.{modStaticId}";
             }
 
-            if (!s_loggers.TryGetValue(loggerId, out Logging.Internal.Logger logger))
+            if (!s_loggers.TryGetValue(loggerId, out Logger logger))
             {
-                logger = new Logging.Internal.Logger(loggerId);
+                logger = new Logger(loggerId);
                 s_loggers[loggerId] = logger;
             }
 			
@@ -33,9 +46,9 @@ namespace Neutronium.Core.Logging.Api
         
 		internal static ILogger GetInternalLogger(string id)
 		{
-			if (!s_loggers.TryGetValue(id, out Logging.Internal.Logger logger))
+			if (!s_loggers.TryGetValue(id, out Logger logger))
 			{
-				logger = new Logging.Internal.Logger(id);
+				logger = new Logger(id);
 				s_loggers[id] = logger;
 			}
 

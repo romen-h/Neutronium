@@ -11,7 +11,7 @@
 		<BuildTime>1$(Hour)$(Minute)</BuildTime>
 		<!--API Compatibility is established by the major and minor version numbers.-->
 		<MajorVersion>0</MajorVersion>
-		<MinorVersion>1</MinorVersion>
+		<MinorVersion>0</MinorVersion>
 		<!--Put it all together-->
 		<VersionPrefix>$(MajorVersion).$(MinorVersion).$(BuildDay).$(BuildTime)</VersionPrefix>
 		<VersionSuffix>alpha</VersionSuffix>

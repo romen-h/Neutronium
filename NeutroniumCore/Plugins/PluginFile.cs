@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Neutronium.Core.Plugins.Internal
+namespace Neutronium.Core.Plugins
 {
 	internal class PluginFile
 	{

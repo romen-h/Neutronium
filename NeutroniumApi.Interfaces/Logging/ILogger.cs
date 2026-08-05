@@ -1,12 +1,13 @@
 using System;
-using Neutronium.Core.Meta;
+using Neutronium.Api.Meta;
 
-namespace Neutronium.Core.Logging.Api
+namespace Neutronium.Api.Logging
 {
 	/// <summary>
 	/// An interface for writing messages to the Neutronium log.
 	/// </summary>
 	[StableApi(ApiVersions.Alpha_Milestone1)]
+	[WrapInterface]
 	public interface ILogger
 	{
 		/// <summary>

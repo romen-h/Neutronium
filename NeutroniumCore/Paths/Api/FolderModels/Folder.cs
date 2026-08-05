@@ -2,20 +2,17 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Neutronium.Core.Logging.Internal;
+using Neutronium.Core.Logging;
 using Neutronium.Core.Meta;
 
 namespace Neutronium.Core.Paths.Api.FolderModels
 {
-    [StableApi(ApiVersions.Alpha_Milestone1)]
     public class Folder
     {
         protected readonly string _path;
 
-		[StableApi(ApiVersions.Alpha_Milestone1)]
 		public override string ToString() => _path;
 
-		[StableApi(ApiVersions.Alpha_Milestone1)]
 		public static implicit operator string(Folder folder) => folder._path;
         
         internal Folder(string path)

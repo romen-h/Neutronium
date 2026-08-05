@@ -4,3 +4,10 @@
 /NeutroniumCore/obj
 /NeutroniumLoader/bin
 /NeutroniumLoader/obj
+/NeutroniumApi.CodeGen/bin
+/NeutroniumApi.CodeGen/obj
+/NeutroniumApi.Interfaces/obj
+/NeutroniumApi.MergeLib/bin
+/NeutroniumApi.MergeLib/Generated
+/NeutroniumApi.MergeLib/obj
+/NeutroniumApi.Interfaces/bin

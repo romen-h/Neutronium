@@ -3,7 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Neutronium.Core.Registry.Internal
+namespace Neutronium.Core.Registry
 {
 	internal class Registry
 	{

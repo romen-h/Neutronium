@@ -6,13 +6,10 @@ using Neutronium.Core.Meta;
 
 namespace Neutronium.Core.Paths.Api.FolderModels
 {
-    [StableApi(ApiVersions.Alpha_Milestone1)]
     public class RootFolder : Folder
     {
-        [StableApi((ApiVersions.Alpha_Milestone1))]
         public readonly ModsFolder Mods;
 
-		[StableApi(ApiVersions.Alpha_Milestone1)]
 		public readonly string KPlayerPrefs;
         
         internal readonly string MovedFlag;

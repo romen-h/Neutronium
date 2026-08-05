@@ -6,13 +6,13 @@ using System.Reflection;
 using System.Reflection.Emit;
 using FuzzySharp.Edits;
 using HarmonyLib;
+using Neutronium.Api.Logging;
 using Neutronium.Core.Logging.Api;
-using Neutronium.Core.Logging.Internal;
 using Neutronium.Core.Meta;
 using Neutronium.Core.Paths.Api;
-using Neutronium.Core.Plugins.Internal;
+using Neutronium.Core.Plugins;
 
-namespace Neutronium.Core.Patches.Internal
+namespace Neutronium.Core.Patches
 {
 	internal static class CorePatches
 	{

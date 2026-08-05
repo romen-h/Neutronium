@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Neutronium.Core.Meta
+namespace Neutronium.Api.Meta
 {
 	[AttributeUsage(AttributeTargets.All, AllowMultiple = false, Inherited = true)]
 	public class StableApiAttribute : Attribute

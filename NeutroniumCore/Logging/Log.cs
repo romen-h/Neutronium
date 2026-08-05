@@ -9,7 +9,7 @@ using System.Threading;
 using UnityEngine;
 using static KSerialization.DebugLog;
 
-namespace Neutronium.Core.Logging.Internal
+namespace Neutronium.Core.Logging
 {
 	internal static class Log
 	{

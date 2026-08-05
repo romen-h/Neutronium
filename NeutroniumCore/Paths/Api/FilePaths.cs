@@ -4,33 +4,29 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
+using Neutronium.Api.Meta;
 using Neutronium.Core.Logging.Api;
 using Neutronium.Core.Meta;
 using Neutronium.Core.Paths.Api.FolderModels;
 using UnityEngine;
-using ILogger = Neutronium.Core.Logging.Api.ILogger;
+using ILogger = Neutronium.Api.Logging.ILogger;
 
 namespace Neutronium.Core.Paths.Api
 {
-	[StableApi(ApiVersions.Alpha_Milestone1)]
-	public static class FilePaths
+	internal static class FilePaths
 	{
 		private static readonly ILogger s_log = LoggerFactory.GetInternalLogger("Core.FilePaths");
 
-		[StableApi(ApiVersions.Alpha_Milestone1)]
-		public static GameFolder GameFolder
+		internal static GameFolder GameFolder
         { get; private set; }
-		
-		[StableApi(ApiVersions.Alpha_Milestone1)]
-		public static RootFolder DefaultDataFolder
-		{ get; private set; }
-		
-		[StableApi(ApiVersions.Alpha_Milestone1)]
-		public static RootFolder ActiveDataFolder
+
+		internal static RootFolder DefaultDataFolder
 		{ get; private set; }
 
-		[StableApi(ApiVersions.Alpha_Milestone1)]
-		public static string LogFile => Application.consoleLogPath;
+		internal static RootFolder ActiveDataFolder
+		{ get; private set; }
+
+		internal static string LogFile => Application.consoleLogPath;
 
 		internal static void Initialize()
 		{

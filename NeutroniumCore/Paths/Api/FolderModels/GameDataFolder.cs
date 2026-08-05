@@ -6,7 +6,6 @@ using System.Text;
 
 namespace Neutronium.Core.Paths.Api.FolderModels
 {
-	[StableApi(ApiVersions.Alpha_Milestone1)]
 	public class GameDataFolder : Folder
 	{
 		public readonly Folder Managed;

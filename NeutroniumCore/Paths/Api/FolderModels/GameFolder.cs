@@ -7,19 +7,16 @@ using Neutronium.Core.Meta;
 
 namespace Neutronium.Core.Paths.Api.FolderModels
 {
-	[StableApi(ApiVersions.Alpha_Milestone1)]
 	public class GameFolder : Folder
 	{
 		/// <summary>
 		/// The path to the OxygenNotIncluded_Data folder.
 		/// </summary>
-		[StableApi(ApiVersions.Alpha_Milestone1)]
 		public readonly GameDataFolder OxygenNotIncluded_Data;
 
 		/// <summary>
 		/// The path to the game executable file.
 		/// </summary>
-		[StableApi(ApiVersions.Alpha_Milestone1)]
 		public readonly string GameExecutable;
 		
 		internal GameFolder(string path) : base(path)

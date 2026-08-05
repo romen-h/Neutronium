@@ -5,12 +5,13 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using HarmonyLib;
+using Neutronium.Api.Logging;
 using Neutronium.Core.Logging.Api;
 using Neutronium.Core.Meta;
 using Neutronium.Core.Paths.Api;
-using Neutronium.Core.Plugins.Api;
+using Neutronium.Api.Plugins;
 
-namespace Neutronium.Core.Plugins.Internal
+namespace Neutronium.Core.Plugins
 {
 	internal static class PluginManager
 	{
@@ -90,8 +91,7 @@ namespace Neutronium.Core.Plugins.Internal
 				
 				try
 				{
-					ILogger pluginLogger = LoggerFactory.GetLogger(pluginId);
-					plugin.ProvideLogger(pluginLogger);
+					plugin.ProvideLoggerFactory(LoggerFactory.Instance);
 				}
 				catch (Exception ex)
 				{

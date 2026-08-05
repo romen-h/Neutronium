@@ -1,12 +1,12 @@
 using HarmonyLib;
-using Neutronium.Core.Logging.Internal;
-using Neutronium.Core.Patches.Internal;
 using System;
 using System.Reflection;
 using Klei;
-using Neutronium.Core.Meta;
-using Neutronium.Core.Plugins.Internal;
 using Neutronium.Core.Paths.Api;
+using Neutronium.Core.Meta;
+using Neutronium.Core.Logging;
+using Neutronium.Core.Patches;
+using Neutronium.Core.Plugins;
 
 namespace Neutronium.Core
 {
