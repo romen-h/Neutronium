@@ -2,7 +2,7 @@
 
 Neutronium will be a modding API for Oxygen Not Included.
 
-## Features
+## Components
 
 ### Neutronium Loader
 A regular ONI mod loading from UserMod2 that installs [Unity Doorstop](https://github.com/NeighTools/UnityDoorstop) and **Neutronium Core**.
