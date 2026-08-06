@@ -17,7 +17,7 @@ A regular ONI mod loading from UserMod2 that installs [Unity Doorstop](https://g
 - Implementation of the **Neutronium API**
 
 ### Neutronium API
-A library that promises to be forwards compatible so that mods built against it never stop working.
+A library of interfaces and basic types that promises to be forwards compatible so that mods built against it never stop working.
 
 ### Neutronium API MergeLib
 A merge library that mocks the **Neutronium API** and allows mods to have soft dependency on **Neutronium Core**.
