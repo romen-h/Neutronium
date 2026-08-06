@@ -44,8 +44,14 @@ namespace Neutronium.Core.Logging.Api
 			if (!Enabled) return;
 			Log.Submit(_id, LogLevel.WARN, message);
 		}
+		
+		public void Error(string message)
+		{
+			if (!Enabled) return;
+			Log.Submit(_id, LogLevel.ERROR, message, null);
+		}
 
-		public void Error(string message, Exception ex = null)
+		public void Error(string message, Exception ex)
 		{
 			if (!Enabled) return;
 			Log.Submit(_id, LogLevel.ERROR, message, ex);

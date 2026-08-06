@@ -44,9 +44,14 @@ namespace Neutronium.Api.Logging
 
 		/// <summary>
 		/// Logs a message with error status.
-		/// An exception can be provided optionally.
 		/// </summary>
 		[StableApi(ApiVersions.NextReleaseVersion)]
-		void Error(string message, Exception exception = null);
+		void Error(string message);
+		
+		/// <summary>
+		/// Logs a message with error status and exception details.
+		/// </summary>
+		[StableApi(ApiVersions.NextReleaseVersion)]
+		void Error(string message, Exception exception);
 	}
 }

@@ -7,14 +7,7 @@
 		<RootNamespace>Neutronium.MergeLib.Api</RootNamespace>
 		<CoreApiLibrary>$(SolutionDir)/NeutroniumApi.Interfaces/bin/$(Configuration)/netstandard2.0/NeutroniumApi.Interfaces.dll</CoreApiLibrary>
 		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
-		<CompilerGeneratedFilesOutputPath>Generated</CompilerGeneratedFilesOutputPath>
 	</PropertyGroup>
-
-	<ItemGroup>
-	  <Compile Remove="Generated\**" />
-	  <EmbeddedResource Remove="Generated\**" />
-	  <None Include="Generated\**" />
-	</ItemGroup>
 
 	<ItemGroup>
 		<CompilerVisibleProperty Include="CoreApiLibrary" />
@@ -22,10 +15,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\NeutroniumApi.CodeGen\NeutroniumApi.CodeGen.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="False" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Generated\NeutroniumApi.CodeGen\NeutroniumApi.CodeGen.SourceGenerator\" />
 	</ItemGroup>
 
 </Project>

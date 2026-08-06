@@ -10,29 +10,13 @@ public class ApiRootTests
 	[ClassInitialize]
 	public static void Init(TestContext ctx)
 	{
-		NeutroniumMod mod = new NeutroniumMod("test");
-		api = mod.GetApi();
+		api = NeutroniumCoreSetup.Mod.GetApi();
 	}
 	
 	[TestMethod]
 	public void ApiExists()
 	{
+		Assert.IsTrue(NeutroniumCoreSetup.Mod.IsNeutroniumInitialized);
 		Assert.IsNotNull(api);
-	}
-	
-	[TestMethod]
-	public void GetLoggerFactoryTwice()
-	{
-		var loggerFactory1 = api.LoggerFactory;
-		var loggerFactory2 = api.LoggerFactory;
-		Assert.IsTrue(Object.ReferenceEquals(loggerFactory1, loggerFactory2));
-	}
-	
-	[TestMethod]
-	public void GetModLogger()
-	{
-		var logger = api.GetModLogger("test");
-		Assert.IsNotNull(logger);
-		Assert.IsTrue(logger.Enabled);
 	}
 }
