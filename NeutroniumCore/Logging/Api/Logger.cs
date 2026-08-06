@@ -11,6 +11,9 @@ namespace Neutronium.Core.Logging.Api
 		private readonly string _id;
 
 		public string Id => _id;
+		
+		public bool Enabled
+		{ get; set; } = true;
 
 		internal Logger(string id)
 		{
@@ -18,14 +21,34 @@ namespace Neutronium.Core.Logging.Api
 		}
 
 		[Conditional("DEV")]
-		internal void Dev(string message) => Log.Submit(_id, LogLevel.DEV, message);
+		internal void Dev(string message)
+		{
+			if (!Enabled) return;
+			Log.Submit(_id, LogLevel.DEV, message);
+		}
 
-		public void Debug(string message) => Log.Submit(_id, LogLevel.DEBUG, message);
+		public void Debug(string message)
+		{
+			if (!Enabled) return;
+			Log.Submit(_id, LogLevel.DEBUG, message);
+		}
 		
-		public void Info(string message) => Log.Submit(_id, LogLevel.INFO, message);
+		public void Info(string message)
+		{
+			if (!Enabled) return;
+			Log.Submit(_id, LogLevel.INFO, message);
+		}
 
-		public void Warn(string message) => Log.Submit(_id, LogLevel.WARN, message);
+		public void Warn(string message)
+		{
+			if (!Enabled) return;
+			Log.Submit(_id, LogLevel.WARN, message);
+		}
 
-		public void Error(string message, Exception ex = null) => Log.Submit(_id, LogLevel.ERROR, message, ex);
+		public void Error(string message, Exception ex = null)
+		{
+			if (!Enabled) return;
+			Log.Submit(_id, LogLevel.ERROR, message, ex);
+		}
 	}
 }

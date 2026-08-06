@@ -6,6 +6,6 @@ namespace Neutronium.Api.Meta
 {
 	public static class ApiVersions
 	{
-		public const string Alpha_Milestone1 = "0.1";
+		public const string NextReleaseVersion = "0.1";
 	}
 }

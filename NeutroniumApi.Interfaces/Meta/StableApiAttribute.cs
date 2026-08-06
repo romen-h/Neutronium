@@ -11,7 +11,7 @@ namespace Neutronium.Api.Meta
 
 		public readonly bool Deprecated;
 		
-		internal StableApiAttribute(string versionIntroduced, bool deprecated = false)
+		public StableApiAttribute(string versionIntroduced, bool deprecated = false)
 		{
 			VersionIntroduced = Version.Parse(versionIntroduced);
 			Deprecated = deprecated;

@@ -19,28 +19,41 @@ namespace Neutronium.Core.Logging
 
 		private static string s_logFile;
 
+		private static bool s_logInitialized = false;
 		private static bool s_unityLogInitialized = false;
 
-		internal static void Initialize()
+		internal static void Initialize(bool isTest = false)
 		{
-			if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+			if (isTest)
+			{
+				s_logFile = "Neutronium.log";
+				
+			}
+			else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
 			    string localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 			    string appData = Path.GetDirectoryName(localAppData);
 			    string localLowAppData = Path.Combine(appData, "LocalLow");
 			    string gameLogFolder = Path.Combine(localLowAppData, "Klei", "Oxygen Not Included");
 			    Directory.CreateDirectory(gameLogFolder);
-			    s_logFile = Path.Combine(gameLogFolder, "neutronium.log");
+			    s_logFile = Path.Combine(gameLogFolder, "Neutronium.log");
 			    File.WriteAllText(s_logFile, "", Encoding.UTF8);
 			}
 
-			s_writerThread = new Thread(WriterThread)
+			if (s_logFile != null)
 			{
-				IsBackground = true
-			};
-			s_writerThread.Start();
+				File.WriteAllText(s_logFile, "", Encoding.UTF8);
 
-			Info("Core.Logging", "Initialized.");
+				s_writerThread = new Thread(WriterThread)
+				{
+					IsBackground = true
+				};
+				s_writerThread.Start();
+				
+				s_logInitialized = true;
+
+				Info("Core.Logging", "Initialized.");
+			}
 		}
 
 		internal static void OnUnityInitialized()
@@ -61,7 +74,7 @@ namespace Neutronium.Core.Logging
 
 		internal static void Submit(string id, LogLevel level, string message, Exception ex = null)
 		{
-			WriteToNeutroniumLog(id, level, message, ex);
+			if (s_logInitialized) WriteToNeutroniumLog(id, level, message, ex);
 			if (s_unityLogInitialized) WriteToUnityLog(id, level, message, ex);
 		}
 

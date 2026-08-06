@@ -11,3 +11,5 @@
 /NeutroniumApi.MergeLib/Generated
 /NeutroniumApi.MergeLib/obj
 /NeutroniumApi.Interfaces/bin
+/NeutroniumApi.MergeLib.Tests/bin
+/NeutroniumApi.MergeLib.Tests/obj

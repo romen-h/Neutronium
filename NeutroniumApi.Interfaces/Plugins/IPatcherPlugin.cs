@@ -8,7 +8,7 @@ namespace Neutronium.Api.Plugins
 	/// <summary>
 	/// Plugins that implement this interface will be given a chance to apply harmony patches to the game.
 	/// </summary>
-	[StableApi(ApiVersions.Alpha_Milestone1)]
+	[StableApi(ApiVersions.NextReleaseVersion)]
 	public interface IPatcherPlugin : IPlugin
 	{
 		/// <summary>

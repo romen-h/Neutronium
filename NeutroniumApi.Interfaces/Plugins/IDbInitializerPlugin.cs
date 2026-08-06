@@ -5,16 +5,16 @@ using Neutronium.Api.Meta;
 
 namespace Neutronium.Api.Plugins
 {
-	[StableApi(ApiVersions.Alpha_Milestone1)]
+	[StableApi(ApiVersions.NextReleaseVersion)]
 	public interface IDbInitializerPlugin : IPlugin
 	{
-		[StableApi(ApiVersions.Alpha_Milestone1)]
+		[StableApi(ApiVersions.NextReleaseVersion)]
 		void BeforeDbInitialized();
 
-		[StableApi(ApiVersions.Alpha_Milestone1)]
+		[StableApi(ApiVersions.NextReleaseVersion)]
 		void AfterDbInitialized();
 
-		[StableApi(ApiVersions.Alpha_Milestone1)]
+		[StableApi(ApiVersions.NextReleaseVersion)]
 		void AfterDbPostProcess();
 	}
 }

@@ -2,6 +2,7 @@ using HarmonyLib;
 using System;
 using System.Reflection;
 using Klei;
+using Neutronium.Core.Api;
 using Neutronium.Core.Paths.Api;
 using Neutronium.Core.Meta;
 using Neutronium.Core.Logging;
@@ -12,6 +13,9 @@ namespace Neutronium.Core
 {
 	internal static class Main
 	{
+		internal static Version NeutroniumVersion
+		{ get; private set; }
+		
 		[HarmonyPatch(typeof(KProfilerPlugin), nameof(KProfilerPlugin.InitModule))]
 		private static class EntryPatch
 		{
@@ -26,7 +30,8 @@ namespace Neutronium.Core
 		{
 			// Set the version env var so that NeutroniumLoader can verify that the correct core assembly was loaded.
 			Assembly thisAssembly = Assembly.GetExecutingAssembly();
-			string version = thisAssembly.GetName().Version.ToString();
+			NeutroniumVersion = thisAssembly.GetName().Version;
+			string version = NeutroniumVersion.ToString();
 			Environment.SetEnvironmentVariable("NEUTRONIUM_VERSION", version);
 
 			Log.Initialize();
@@ -55,9 +60,25 @@ namespace Neutronium.Core
 			GameVersion.Initialize();
 			FilePaths.Initialize();
 			CorePatches.ApplyPatches();
+			ApiRoot.Initialize();
+			
 			PluginManager.Initialize();
 			
 			Log.Info("Core", "Neutronium.Core Loaded.");
+		}
+		
+		internal static void OnTest()
+		{
+			// Set the version env var so that NeutroniumLoader can verify that the correct core assembly was loaded.
+			Assembly thisAssembly = Assembly.GetExecutingAssembly();
+			NeutroniumVersion = thisAssembly.GetName().Version;
+			string version = NeutroniumVersion.ToString();
+			Environment.SetEnvironmentVariable("NEUTRONIUM_VERSION", version);
+
+			Log.Initialize(isTest: true);
+			Log.Info("Core", $"Neutronium.Core Version {version}");
+			
+			ApiRoot.Initialize();
 		}
 	}
 }

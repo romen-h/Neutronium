@@ -5,20 +5,20 @@ using Neutronium.Api.Meta;
 
 namespace Neutronium.Api.Registry
 {
-	[StableApi(ApiVersions.Alpha_Milestone1)]
+	[StableApi(ApiVersions.NextReleaseVersion)]
 	[WrapInterface]
 	public interface IRegistry
 	{
-		[StableApi(ApiVersions.Alpha_Milestone1)]
-		bool KeyExists(string key);
+		[StableApi(ApiVersions.NextReleaseVersion)]
+		bool ContainsKey(string key);
 		
-		[StableApi(ApiVersions.Alpha_Milestone1)]
+		[StableApi(ApiVersions.NextReleaseVersion)]
 		object GetValue(string key);
 
-		[StableApi(ApiVersions.Alpha_Milestone1)]
-		bool TryGetValue(string key, out object value);
+		//[StableApi(ApiVersions.NextReleaseVersion)]
+		//bool TryGetValue(string key, out object value);
 
-		[StableApi(ApiVersions.Alpha_Milestone1)]
+		[StableApi(ApiVersions.NextReleaseVersion)]
 		void SetValue(string key, object value);
 	}
 }

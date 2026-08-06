@@ -9,13 +9,13 @@ namespace Neutronium.Api.Plugins
 	/// <summary>
 	/// A Neutronium plugin DLL must implement a single class that has this interface on it.
 	/// </summary>
-	[StableApi(ApiVersions.Alpha_Milestone1)]
+	[StableApi(ApiVersions.NextReleaseVersion)]
 	public interface IPlugin
 	{
 		/// <summary>
 		/// Provides a string to uniquely identify this plugin.
 		/// </summary>
-		[StableApi(ApiVersions.Alpha_Milestone1)]
+		[StableApi(ApiVersions.NextReleaseVersion)]
 		string UniqueID
 		{ get; }
 
@@ -23,7 +23,7 @@ namespace Neutronium.Api.Plugins
 		/// Declares the minimum game version required to load this plugin.
 		/// If null is provided then this condition will not be checked.
 		/// </summary>
-		[StableApi(ApiVersions.Alpha_Milestone1)]
+		[StableApi(ApiVersions.NextReleaseVersion)]
 		uint? MinGameVersion
 		{ get; }
 
@@ -31,7 +31,7 @@ namespace Neutronium.Api.Plugins
 		/// Declares the maximum game version required to load this plugin.
 		/// If null is provided then this condition will not be checked.
 		/// </summary>
-		[StableApi(ApiVersions.Alpha_Milestone1)]
+		[StableApi(ApiVersions.NextReleaseVersion)]
 		uint? MaxGameVersion
 		{ get; }
 
@@ -42,14 +42,14 @@ namespace Neutronium.Api.Plugins
 		/// <remarks>
 		///	Do not apply patches or do any significant processing work from this method.
 		/// </remarks>
-		[StableApi(ApiVersions.Alpha_Milestone1)]
+		[StableApi(ApiVersions.NextReleaseVersion)]
 		void OnUnityInitialized();
 		
 		/// <summary>
 		/// Called by Neutronium to give an ILogger instance to a plugin.
 		/// Logging through this object will push messages to the dedicated Neutronium log file.
 		/// </summary>
-		[StableApi(ApiVersions.Alpha_Milestone1)]
+		[StableApi(ApiVersions.NextReleaseVersion)]
 		void ProvideLoggerFactory(ILoggerFactory logger);
 	}
 }

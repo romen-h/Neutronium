@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Neutronium.Api.Logging
 {
-	[StableApi(ApiVersions.Alpha_Milestone1)]
+	[StableApi(ApiVersions.NextReleaseVersion)]
 	[WrapInterface]
 	public interface ILoggerFactory
 	{
-		[StableApi(ApiVersions.Alpha_Milestone1)]
+		[StableApi(ApiVersions.NextReleaseVersion)]
 		ILogger GetLogger(string modStaticId, string category = null);
 	}
 }
