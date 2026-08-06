@@ -80,6 +80,15 @@ namespace Neutronium.MergeLib.Internal
 			return Expression.Lambda<RemoteMethodDelegate>(body, instanceParameter, argsParameter).Compile();
 		}
 
+		internal static TDelegate? BuildGenericRemoteMethodDelegate<TDelegate>(Type remoteType, string methodName, int argCount, object remoteInstance)
+			where TDelegate : Delegate
+		{
+			var methodInfo = FindMethod(remoteType, methodName, argCount);
+			if (methodInfo == null) return null;
+			
+			return (TDelegate)methodInfo.CreateDelegate(typeof(TDelegate), remoteInstance);
+		}
+
 		internal static MethodInfo? FindPropertyGetter(Type type, string propertyName)
 		{
 			PropertyInfo? propertyInfo = null;

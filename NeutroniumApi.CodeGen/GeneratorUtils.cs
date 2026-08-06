@@ -67,6 +67,11 @@ namespace NeutroniumApi.CodeGen
 				betterName = name;
 				return true;
 			}
+			if (name.StartsWith("UnityEngine."))
+			{
+				betterName = name;
+				return true;
+			}
 			return false;
 		}
 
@@ -77,6 +82,52 @@ namespace NeutroniumApi.CodeGen
 				if (attr.AttributeType.Name == nameof(GetOnceAttribute)) return true;
 			}
 			return false;
+		}
+		
+		internal static bool IsMethodFullyCommonTypes(MethodInfo methodInfo)
+		{
+			Type returnType = methodInfo.ReturnType;
+			if (!IsCommonRuntimeType(returnType.FullName, out _)) return false;
+			
+			foreach (var parameter in methodInfo.GetParameters())
+			{
+				if (!IsCommonRuntimeType(parameter.ParameterType.FullName, out _)) return false;
+			}
+			
+			return true;
+		}
+		
+		internal static string GetGenericDelegateTypeName(MethodInfo methodInfo)
+		{
+			StringBuilder delegateName = new StringBuilder();
+			
+			Type returnType = methodInfo.ReturnType;
+			bool isFunc = returnType.FullName != "System.Void";
+			delegateName.Append(isFunc ? "System.Func" : "System.Action");
+			
+			var parameters = methodInfo.GetParameters();
+			if (parameters.Length > 0 || isFunc)
+			{
+				delegateName.Append("<");
+			}
+			bool firstParam = true;
+			foreach (var parameter in parameters)
+			{
+				if (!firstParam) delegateName.Append(", ");
+				delegateName.Append(parameter.ParameterType.FullName);
+				firstParam = false;
+			}
+			if (parameters.Length > 0 || isFunc)
+			{
+				if (isFunc)
+				{
+					if (!firstParam) delegateName.Append(", ");
+					delegateName.Append(returnType.FullName);
+				}
+				delegateName.Append(">");
+			}
+			
+			return delegateName.ToString();
 		}
 		
 		internal static string GetLocalInterfaceName(Type remoteInterface)
@@ -183,11 +234,12 @@ namespace NeutroniumApi.CodeGen
 				.WithAccessorList(SyntaxFactory.AccessorList(accessors));
 		}
 		
-		internal static MethodDeclarationSyntax GenerateMethodSyntax(MethodInfo methodInfo)
+		internal static MethodDeclarationSyntax GenerateInterfaceMethodSyntax(MethodInfo methodInfo)
 		{
 			string localReturnTypeName = GetLocalTypeName(methodInfo.ReturnType);
 
-			var methodDecl = SyntaxFactory.MethodDeclaration(SyntaxFactory.ParseTypeName(localReturnTypeName), methodInfo.Name);
+			var methodDecl = SyntaxFactory.MethodDeclaration(SyntaxFactory.ParseTypeName(localReturnTypeName), methodInfo.Name)
+				.WithSemicolonToken(SyntaxFactory.Token(SyntaxKind.SemicolonToken));
 
 			var parameters = SyntaxFactory.List<ParameterSyntax>();
 			foreach (ParameterInfo param in methodInfo.GetParameters())
@@ -219,8 +271,11 @@ namespace NeutroniumApi.CodeGen
 			return methodDecl;
 		}
 
-		internal static MethodDeclarationSyntax GenerateMethodSyntax(MethodInfo methodInfo, string impl)
+		internal static MethodDeclarationSyntax GenerateClassMethodSyntax(MethodInfo methodInfo, string body)
 		{
+			if (!body.StartsWith("{")) body = "{\n" + body;
+			if (!body.EndsWith("}")) body = body + "\n}";
+			
 			string localReturnTypeName = GetLocalTypeName(methodInfo.ReturnType);
 
 			var methodDecl = SyntaxFactory.MethodDeclaration(SyntaxFactory.ParseTypeName(localReturnTypeName), methodInfo.Name);
@@ -252,9 +307,9 @@ namespace NeutroniumApi.CodeGen
 				methodDecl = methodDecl.WithParameterList(SyntaxFactory.ParameterList(SyntaxFactory.SeparatedList(parameters)));
 			}
 			
-			BlockSyntax body = (BlockSyntax)SyntaxFactory.ParseStatement(impl);
+			BlockSyntax bodySyntax = (BlockSyntax)SyntaxFactory.ParseStatement(body);
 			
-			methodDecl = methodDecl.WithBody(body);
+			methodDecl = methodDecl.WithBody(bodySyntax);
 
 			return methodDecl;
 		}
@@ -278,7 +333,7 @@ namespace NeutroniumApi.CodeGen
 			{
 				if (methodInfo.IsSpecialName) continue; // Skip props/events backing methods
 				
-				var methodDecl = GenerateMethodSyntax(methodInfo).WithSemicolonToken(SyntaxFactory.Token(SyntaxKind.SemicolonToken));
+				var methodDecl = GenerateInterfaceMethodSyntax(methodInfo);
 				members = members.Add(methodDecl);
 			}
 			
@@ -326,11 +381,11 @@ namespace NeutroniumApi.CodeGen
 					constructorBodyLines.AppendLine($"var get_{propertyInfo.Name} = RemoteTypes.FindPropertyGetter(s_remoteType, \"{propertyInfo.Name}\");");
 					if (RemoteToLocalInterfaceNames.ContainsKey(propertyInfo.PropertyType.FullName ?? ""))
 					{
-						constructorBodyLines.AppendLine($"{propertyInfo.Name} = {propertyInfo.PropertyType.Name}_Wrapper.Wrap(get_{propertyInfo.Name}.Invoke(WrappedInstance, []));");
+						constructorBodyLines.AppendLine($"{propertyInfo.Name} = {propertyInfo.PropertyType.Name}_Wrapper.Wrap(get_{propertyInfo.Name}?.Invoke(WrappedInstance, []));");
 					}
 					else
 					{
-						constructorBodyLines.AppendLine($"{propertyInfo.Name} = ({localPropertyType})get_{propertyInfo.Name}.Invoke(WrappedInstance, []);");
+						constructorBodyLines.AppendLine($"{propertyInfo.Name} = ({localPropertyType})get_{propertyInfo.Name}?.Invoke(WrappedInstance, []);");
 					}
 				}
 				else
@@ -351,7 +406,7 @@ namespace NeutroniumApi.CodeGen
 						members = members.Add(getterDelegateField);
 						constructorBodyLines.AppendLine($"_get_{propertyInfo.Name} = RemoteTypes.Build{getterDelegateType}(s_remoteType, \"{propertyInfo.Name}\");");
 
-						getterExpression = $"_get_{propertyInfo.Name}(WrappedInstance)";
+						getterExpression = $"_get_{propertyInfo.Name}?.Invoke(WrappedInstance)";
 
 						if (RemoteToLocalInterfaceNames.ContainsKey(propertyInfo.PropertyType.FullName ?? ""))
 						{
@@ -376,7 +431,7 @@ namespace NeutroniumApi.CodeGen
 							valueExpression = "Unwrap(value)";
 						}
 						
-						setterExpression = $"_set_{propertyInfo.Name}(WrappedInstance, {valueExpression})";
+						setterExpression = $"_set_{propertyInfo.Name}?.Invoke(WrappedInstance, {valueExpression})";
 					}
 					
 					if (getterExpression != null)
@@ -402,13 +457,35 @@ namespace NeutroniumApi.CodeGen
 				string? localReturnType = GeneratorUtils.GetLocalTypeName(methodInfo.ReturnType);
 				string overloadName = GetMethodOverloadName(methodInfo);
 
-				constructorBodyLines.AppendLine($"_call_{overloadName} = RemoteTypes.BuildRemoteMethodDelegate(s_remoteType, \"{methodInfo.Name}\", {arguments.Length});");
+				bool isFullyCommonTypes = IsMethodFullyCommonTypes(methodInfo);
+				if (isFullyCommonTypes)
+				{
+					string delegateTypeName = GetGenericDelegateTypeName(methodInfo);
+					
+					var methodDelegateField = SyntaxFactory.ParseMemberDeclaration($"private readonly {delegateTypeName}? _call_{overloadName};");
+					members = members.Add(methodDelegateField);
 
-				var methodDelegateField = SyntaxFactory.ParseMemberDeclaration($"private readonly RemoteMethodDelegate? _call_{overloadName};");
-				members = members.Add(methodDelegateField);
-
+					constructorBodyLines.AppendLine($"_call_{overloadName} = RemoteTypes.BuildGenericRemoteMethodDelegate<{delegateTypeName}>(s_remoteType, \"{methodInfo.Name}\", {arguments.Length}, WrappedInstance);");
+				}
+				else
+				{
+					var methodDelegateField = SyntaxFactory.ParseMemberDeclaration($"private readonly RemoteMethodDelegate? _call_{overloadName};");
+					members = members.Add(methodDelegateField);
+				
+					constructorBodyLines.AppendLine($"_call_{overloadName} = RemoteTypes.BuildRemoteMethodDelegate(s_remoteType, \"{methodInfo.Name}\", {arguments.Length});");
+				}
+				
 				var argsList = string.Join(", ", arguments.Select(p => GeneratorUtils.RemoteToLocalInterfaceNames.ContainsKey(p.ParameterType.FullName ?? "") ? $"Unwrap({p.Name})" : p.Name));
-				string methodCall = $"_call_{overloadName}(WrappedInstance, new object[] {{ {argsList} }})";
+				string methodCall;
+				if (isFullyCommonTypes)
+				{
+					methodCall = $"_call_{overloadName}?.Invoke({argsList})";
+				}
+				else
+				{
+					methodCall = $"_call_{overloadName}?.Invoke(WrappedInstance, new object[] {{ {argsList} }})";
+				}
+					
 				
 				string methodBody;
 				if (methodInfo.ReturnType.FullName == "System.Void")
@@ -428,7 +505,7 @@ namespace NeutroniumApi.CodeGen
 					methodBody = $"{{ return ({localReturnType}){methodCall}; }}";
 				}
 
-				var methodDecl = GenerateMethodSyntax(methodInfo, methodBody).AddModifiers(SyntaxFactory.Token(SyntaxKind.PublicKeyword));
+				var methodDecl = GenerateClassMethodSyntax(methodInfo, methodBody).AddModifiers(SyntaxFactory.Token(SyntaxKind.PublicKeyword));
 				members = members.Add(methodDecl);
 			}
 			

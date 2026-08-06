@@ -21,6 +21,9 @@ namespace Neutronium.Api
 	[WrapInterface]
 	public interface IApiRoot
 	{
+		/// <summary>
+		/// The version of Neutronium that is currently loaded.
+		/// </summary>
 		[StableApi(ApiVersions.NextReleaseVersion)]
 		[GetOnce]
 		Version NeutroniumVersion
