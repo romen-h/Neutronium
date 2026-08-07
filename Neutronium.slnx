@@ -1,4 +1,9 @@
 <Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="GithubRelease" />
+    <BuildType Name="Release" />
+  </Configurations>
   <Folder Name="/Solution Items/">
     <File Path="Directory.Build.props" />
     <File Path="GameLibs.props" />
@@ -6,17 +11,30 @@
   </Folder>
   <Project Path="NeutroniumApi.CodeGen/NeutroniumApi.CodeGen.csproj" Id="33a3e97b-b85b-4603-b510-c94b6cb3eefb">
     <BuildDependency Project="NeutroniumApi.Interfaces/NeutroniumApi.Interfaces.csproj" />
+    <BuildType Solution="GithubRelease|*" Project="Release" />
+    <Build Solution="GithubRelease|*" Project="false" />
   </Project>
-  <Project Path="NeutroniumApi.Interfaces/NeutroniumApi.Interfaces.csproj" Id="f201e218-bad8-46d7-87de-3fd3497f910b" />
+  <Project Path="NeutroniumApi.Interfaces/NeutroniumApi.Interfaces.csproj" Id="f201e218-bad8-46d7-87de-3fd3497f910b">
+    <BuildType Solution="GithubRelease|*" Project="Release" />
+  </Project>
   <Project Path="NeutroniumApi.MergeLib.Tests/NeutroniumApi.MergeLib.Tests.csproj" Id="ffc37a28-c684-433a-9de4-b98233465508">
     <BuildDependency Project="NeutroniumApi.CodeGen/NeutroniumApi.CodeGen.csproj" />
     <BuildDependency Project="NeutroniumApi.Interfaces/NeutroniumApi.Interfaces.csproj" />
+    <BuildType Solution="GithubRelease|*" Project="Release" />
+    <Build Solution="GithubRelease|*" Project="false" />
   </Project>
   <Project Path="NeutroniumApi.MergeLib/NeutroniumApi.MergeLib.csproj" Id="7b0819cb-62ec-44dd-b0be-88d903f013b2">
     <BuildDependency Project="NeutroniumApi.Interfaces/NeutroniumApi.Interfaces.csproj" />
+    <BuildType Solution="GithubRelease|*" Project="Release" />
+    <Build Solution="GithubRelease|*" Project="false" />
   </Project>
-  <Project Path="NeutroniumCore/NeutroniumCore.csproj" />
+  <Project Path="NeutroniumCore/NeutroniumCore.csproj">
+    <BuildType Solution="GithubRelease|*" Project="Release" />
+    <Build Solution="GithubRelease|*" Project="false" />
+  </Project>
   <Project Path="NeutroniumLoader/NeutroniumLoader.csproj">
     <BuildDependency Project="NeutroniumCore/NeutroniumCore.csproj" />
+    <BuildType Solution="GithubRelease|*" Project="Release" />
+    <Build Solution="GithubRelease|*" Project="false" />
   </Project>
 </Solution>
