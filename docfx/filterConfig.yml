@@ -1,0 +1,5 @@
+### YamlMime:ManagedReference
+attributeRules:
+  - exclude:
+      uidRegex: ^Neutronium.Api.Meta\.GetOnceAttribute$
+      type: Type

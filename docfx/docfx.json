@@ -1,0 +1,46 @@
+{
+  "$schema": "https://raw.githubusercontent.com/dotnet/docfx/main/schemas/docfx.schema.json",
+  "metadata": [
+    {
+      "src": [
+        {
+          "src": "../",
+          "files": [
+            "NeutroniumApi.Interfaces/bin/Debug/netstandard2.1/NeutroniumApi.Interfaces.dll"
+          ]
+        }
+      ],
+      "dest": "api",
+      "filter": "filterConfig.yml"
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [
+          "**/*.{md,yml}"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "images/**"
+        ]
+      }
+    ],
+    "output": "../site",
+    "template": [
+      "default",
+      "modern",
+      "templates"
+    ],
+    "globalMetadata": {
+      "_appName": "Neutronium API Docs",
+      "_appTitle": "Neutronium API Docs",
+      "_enableSearch": true,
+      "_appLogoPath": "images/neutronium-ui.png",
+      "pdf": false
+    }
+  }
+}
