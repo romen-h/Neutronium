@@ -11,6 +11,523 @@
       }
     },
     {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Elements.ElementState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Elements.ElementState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Elements.ElementState",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Elements.IElement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Elements.IElement.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Elements.IElement",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Elements.IElementHighTransitionBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Elements.IElementHighTransitionBuilder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Elements.IElementHighTransitionBuilder",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Elements.IElementLightPropertiesBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Elements.IElementLightPropertiesBuilder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Elements.IElementLightPropertiesBuilder",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Elements.IElementLowTransitionBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Elements.IElementLowTransitionBuilder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Elements.IElementLowTransitionBuilder",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Elements.IElementMassPropertiesBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Elements.IElementMassPropertiesBuilder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Elements.IElementMassPropertiesBuilder",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Elements.IElementOptionalPropertiesBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Elements.IElementOptionalPropertiesBuilder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Elements.IElementOptionalPropertiesBuilder",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Elements.IElementRadiationPropertiesBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Elements.IElementRadiationPropertiesBuilder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Elements.IElementRadiationPropertiesBuilder",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Elements.IElementSublimationPropertiesBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Elements.IElementSublimationPropertiesBuilder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Elements.IElementSublimationPropertiesBuilder",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Elements.IElementSubstanceBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Elements.IElementSubstanceBuilder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Elements.IElementSubstanceBuilder",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Elements.IElementTagsBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Elements.IElementTagsBuilder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Elements.IElementTagsBuilder",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Elements.IElementThermalPropertiesBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Elements.IElementThermalPropertiesBuilder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Elements.IElementThermalPropertiesBuilder",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Elements.IElementWorldgenPropertiesBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Elements.IElementWorldgenPropertiesBuilder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Elements.IElementWorldgenPropertiesBuilder",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Elements.IElementsApi.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Elements.IElementsApi.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Elements.IElementsApi",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Elements.IGasElementBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Elements.IGasElementBuilder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Elements.IGasElementBuilder",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Elements.IGasElementMaterialBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Elements.IGasElementMaterialBuilder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Elements.IGasElementMaterialBuilder",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Elements.ILiquidElementBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Elements.ILiquidElementBuilder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Elements.ILiquidElementBuilder",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Elements.ILiquidElementMaterialBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Elements.ILiquidElementMaterialBuilder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Elements.ILiquidElementMaterialBuilder",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Elements.ISolidElementBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Elements.ISolidElementBuilder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Elements.ISolidElementBuilder",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Elements.ISolidElementMaterialBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Elements.ISolidElementMaterialBuilder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Elements.ISolidElementMaterialBuilder",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Elements.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Elements.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Elements",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.IApiRoot.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.IApiRoot.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.IApiRoot",
+      "Summary": "<p sourcefile=\"api/Neutronium.Api.IApiRoot.yml\" sourcestartlinenumber=\"1\">The root Neutronium API object to access all features of Neutronium.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Logging.ILogger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Logging.ILogger.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Logging.ILogger",
+      "Summary": "<p sourcefile=\"api/Neutronium.Api.Logging.ILogger.yml\" sourcestartlinenumber=\"1\">An interface for writing messages to the Neutronium log.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Logging.ILoggingApi.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Logging.ILoggingApi.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Logging.ILoggingApi",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Logging.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Logging.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Logging",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Meta.ApiVersions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Meta.ApiVersions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Meta.ApiVersions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Meta.BuilderMethodAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Meta.BuilderMethodAttribute.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Meta.BuilderMethodAttribute",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Meta.ChangeNoteAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Meta.ChangeNoteAttribute.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Meta.ChangeNoteAttribute",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Meta.GetOnceAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Meta.GetOnceAttribute.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Meta.GetOnceAttribute",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Meta.PreviewApiAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Meta.PreviewApiAttribute.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Meta.PreviewApiAttribute",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Meta.StableApiAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Meta.StableApiAttribute.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Meta.StableApiAttribute",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Meta.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Meta.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Meta",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Registry.IRegistry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Registry.IRegistry.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Registry.IRegistry",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Registry.IRegistryApi.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Registry.IRegistryApi.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Registry.IRegistryApi",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Registry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Registry.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Registry",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "Resource",
       "source_relative_path": "images/neutronium-ui.png",
       "output": {
