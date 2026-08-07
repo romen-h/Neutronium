@@ -37,9 +37,9 @@ jobs:
         run: dotnet build -c GithubRelease
 
       - name: Build DocFX Site
-        # Replace 'docfx.json' with the relative path to your file if it's in a subdirectory (e.g., 'docs/docfx.json')
-        run: docfx docfx.json
         working-directory: ./docfx
+        run: docfx
+        
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
