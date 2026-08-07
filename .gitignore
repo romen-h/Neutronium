@@ -13,3 +13,5 @@
 /NeutroniumApi.Interfaces/bin
 /NeutroniumApi.MergeLib.Tests/bin
 /NeutroniumApi.MergeLib.Tests/obj
+/docfx/api
+/site
