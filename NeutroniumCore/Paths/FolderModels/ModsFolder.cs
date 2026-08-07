@@ -4,7 +4,7 @@ using System.IO;
 using System.Text;
 using Neutronium.Core.Meta;
 
-namespace Neutronium.Core.Paths.Api.FolderModels
+namespace Neutronium.Core.Paths.FolderModels
 {
     public class ModsFolder : Folder
     {

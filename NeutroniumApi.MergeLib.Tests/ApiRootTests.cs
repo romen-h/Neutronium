@@ -10,13 +10,12 @@ public class ApiRootTests
 	[ClassInitialize]
 	public static void Init(TestContext ctx)
 	{
-		api = NeutroniumCoreSetup.Mod.GetApi();
+		api = NeutroniumCoreSetup.Api;
 	}
 	
 	[TestMethod]
 	public void ApiExists()
 	{
-		Assert.IsTrue(NeutroniumCoreSetup.Mod.IsNeutroniumInitialized);
 		Assert.IsNotNull(api);
 	}
 }

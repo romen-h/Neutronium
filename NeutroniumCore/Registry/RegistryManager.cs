@@ -2,14 +2,23 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Text;
+using Neutronium.Api.Logging;
+using Neutronium.Core.Logging;
 
 namespace Neutronium.Core.Registry
 {
 	internal static class RegistryManager
 	{
+		private static readonly ILogger s_log = LoggerFactory.GetInternalLogger("Core.RegistryManager");
+		
 		private static readonly ConcurrentDictionary<string, Registry> s_modRegistries = new ConcurrentDictionary<string, Registry>();
 		
 		internal static readonly Registry GlobalRegistry = new Registry();
+		
+		internal static void Initialize()
+		{
+			s_log.Info("Initializing...");
+		}
 		
 		internal static Registry GetModRegistry(string modStaticId)
 		{

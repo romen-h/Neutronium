@@ -1,7 +1,6 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Neutronium.Api.Meta;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,13 +21,15 @@ namespace NeutroniumApi.CodeGen
 			{ "System.Int64", "long" },
 			{ "System.Single", "float" },
 			{ "System.Double", "double" },
-			{ "System.String", "string" },
-			{ "System.Object", "object" },
+			{ "System.String", "string?" }, // Just assume these could be null all the time
+			{ "System.Object", "object?" }, // "
+			{ "System.Nullable<float>", "float?" }
 		};
 		
 		internal static string? WrappedAssemblyName
 		{ get; private set; }
 		
+		internal static readonly Dictionary<string,string> RemoteToLocalEnumNames = new Dictionary<string, string>();
 		internal static readonly Dictionary<string,string> RemoteToLocalInterfaceNames = new Dictionary<string, string>();
 		internal static readonly Dictionary<string, string> LocalToRemoteInterfaceNames = new Dictionary<string, string>();
 		
@@ -36,42 +37,67 @@ namespace NeutroniumApi.CodeGen
 		{
 			WrappedAssemblyName = assembly.GetName().Name;
 			
-			var wrappableTypes = assembly.GetTypes().Where(IsWrappableType).ToArray();
+			var allTypes = assembly.GetTypes();
+			
+			var wrappableTypes = allTypes.Where(IsWrappableType).ToArray();
 			foreach (var type in wrappableTypes)
 			{
 				string remoteName = type.FullName;
 				string localName = remoteName.Replace("Neutronium.Api.", "Neutronium.MergeLib.Api.");
-				RemoteToLocalInterfaceNames[remoteName] = localName;
-				LocalToRemoteInterfaceNames[localName] = remoteName;
+				
+				if (type.IsEnum)
+				{
+					RemoteToLocalEnumNames[remoteName] = localName;
+				}
+				else if (type.IsInterface)
+				{
+					RemoteToLocalInterfaceNames[remoteName] = localName;
+					LocalToRemoteInterfaceNames[localName] = remoteName;
+				}
 			}
 		}
 
 		internal static bool IsWrappableType(Type apiType)
 		{
 			bool isStableApi = false;
-			bool isWrappable = false;
+			bool isPreviewApi = false;
 			foreach (var attr in apiType.CustomAttributes)
 			{
-				isStableApi |= attr.AttributeType.Name == nameof(StableApiAttribute);
-				isWrappable |= attr.AttributeType.Name == nameof(WrapInterfaceAttribute);
+				isStableApi |= attr.AttributeType.Name == "StableApiAttribute";
+				isPreviewApi |= attr.AttributeType.Name == "PreviewApiAttribute";
 			}
-			return isStableApi && isWrappable;
+			return isStableApi || isPreviewApi;
 		}
 
-		internal static bool IsCommonRuntimeType(string name, out string? betterName)
+		internal static bool IsCommonRuntimeType(Type? type, out string? name)
 		{
-			betterName = null;
-			if (GeneratorUtils.CSharpTypeKeywords.TryGetValue(name, out betterName)) return true;
-			if (name.StartsWith("System."))
+			name = null;
+			if (type == null || type.FullName == null) return false;
+			
+			if (GeneratorUtils.CSharpTypeKeywords.TryGetValue(type.FullName, out name)) return true;
+			
+			if (type.IsGenericType)
 			{
-				betterName = name;
+				foreach (var genericParam in type.GetGenericArguments())
+				{
+					if (!IsCommonRuntimeType(genericParam, out _)) return false;
+				}
+				
+				name = GetCSharpTypeName(type);
 				return true;
 			}
-			if (name.StartsWith("UnityEngine."))
+
+			if (type.FullName.StartsWith("System."))
 			{
-				betterName = name;
+				name = GetCSharpTypeName(type);
 				return true;
 			}
+			if (type.FullName.StartsWith("UnityEngine."))
+			{
+				name = type.FullName;
+				return true;
+			}
+
 			return false;
 		}
 
@@ -79,19 +105,16 @@ namespace NeutroniumApi.CodeGen
 		{
 			foreach (var attr in property.CustomAttributes)
 			{
-				if (attr.AttributeType.Name == nameof(GetOnceAttribute)) return true;
+				if (attr.AttributeType.Name == "GetOnceAttribute") return true;
 			}
 			return false;
 		}
 		
-		internal static bool IsMethodFullyCommonTypes(MethodInfo methodInfo)
+		internal static bool AreMethodArgsFullyCommonTypes(MethodInfo methodInfo)
 		{
-			Type returnType = methodInfo.ReturnType;
-			if (!IsCommonRuntimeType(returnType.FullName, out _)) return false;
-			
 			foreach (var parameter in methodInfo.GetParameters())
 			{
-				if (!IsCommonRuntimeType(parameter.ParameterType.FullName, out _)) return false;
+				if (!IsCommonRuntimeType(parameter.ParameterType, out _)) return false;
 			}
 			
 			return true;
@@ -114,7 +137,8 @@ namespace NeutroniumApi.CodeGen
 			foreach (var parameter in parameters)
 			{
 				if (!firstParam) delegateName.Append(", ");
-				delegateName.Append(parameter.ParameterType.FullName);
+				string properName = GetCSharpTypeName(parameter.ParameterType);
+				delegateName.Append(properName);
 				firstParam = false;
 			}
 			if (parameters.Length > 0 || isFunc)
@@ -122,12 +146,28 @@ namespace NeutroniumApi.CodeGen
 				if (isFunc)
 				{
 					if (!firstParam) delegateName.Append(", ");
-					delegateName.Append(returnType.FullName);
+					
+					string properName;
+					if (IsCommonRuntimeType(returnType, out _))
+					{
+						properName = GetCSharpTypeName(returnType);
+					}
+					else
+					{
+						properName = "object";
+					}
+
+					delegateName.Append(properName);
 				}
 				delegateName.Append(">");
 			}
 			
 			return delegateName.ToString();
+		}
+		
+		internal static string GetLocalEnumName(Type remoteEnum)
+		{
+			return remoteEnum.Name;
 		}
 		
 		internal static string GetLocalInterfaceName(Type remoteInterface)
@@ -139,8 +179,14 @@ namespace NeutroniumApi.CodeGen
 		{
 			return $"{remoteInterface.Name}_Wrapper";
 		}
+		
+		internal static string GetLocalNamespace(Type remoteApiType)
+		{
+			string originalNestedNamespace = remoteApiType.Namespace?.Replace("Neutronium.Api", "") ?? "";
+			return $"Neutronium.MergeLib.Api{originalNestedNamespace}".TrimEnd('.');
+		}
 
-		internal static string GetLocalTypeName(Type? remoteType)
+		internal static string GetLocalTypeName(Type? remoteType, bool upgradeToNullable = false)
 		{
 			if (remoteType == null) throw new ArgumentNullException(nameof(remoteType));
 
@@ -154,9 +200,17 @@ namespace NeutroniumApi.CodeGen
 				return GetLocalTypeName(remoteType.GetElementType()) + "[]";
 			}
 			
-			if (RemoteToLocalInterfaceNames.TryGetValue(remoteType.FullName, out string localName)) return localName;
+			if (RemoteToLocalInterfaceNames.TryGetValue(remoteType.FullName, out string localName))
+			{
+				if (upgradeToNullable) localName += "?";
+				return localName;
+			}
 
-			if (remoteType.Assembly.GetName().Name == WrappedAssemblyName) return "object";           // non-remoteApiTypes dep remoteType
+			if (remoteType.Assembly.GetName().Name == WrappedAssemblyName)
+			{
+				if (upgradeToNullable) return "object?";
+				return "object"; // non-remoteApiTypes dep remoteType
+			}
 			
 			return GetCSharpTypeName(remoteType);
 		}
@@ -164,6 +218,8 @@ namespace NeutroniumApi.CodeGen
 		internal static string GetCSharpTypeName(Type? remoteType)
 		{
 			if (remoteType == null) throw new ArgumentNullException(nameof(remoteType));
+
+			var typeName = remoteType.FullName;
 
 			if (remoteType.IsArray)
 			{
@@ -175,11 +231,14 @@ namespace NeutroniumApi.CodeGen
 				var def = remoteType.GetGenericTypeDefinition();
 				var name = ((def.Namespace is { } ns ? ns + "." : "") + def.Name);
 				var tick = name.IndexOf('`'); if (tick >= 0) name = name.Substring(0, tick);
-				var args = remoteType.GetGenericArguments().Select(GetLocalTypeName);
-				return name.Replace("+", ".") + "<" + string.Join(",", args) + ">";
+				var args = remoteType.GetGenericArguments().Select(t => GetLocalTypeName(t));
+				string fullname = name.Replace("+", ".") + "<" + string.Join(",", args) + ">";
+
+				if (CSharpTypeKeywords.TryGetValue(fullname, out string shortName)) return shortName;
+				return fullname;
 			}
 
-			var typeName = remoteType.FullName;
+			
 			if (typeName != null && CSharpTypeKeywords.TryGetValue(typeName, out var primitiveName)) return primitiveName;
 			return (typeName ?? remoteType.Name).Replace("+", ".");
 		}
@@ -313,14 +372,51 @@ namespace NeutroniumApi.CodeGen
 
 			return methodDecl;
 		}
+		
+		internal static string? GenerateEnumSource(Type enumType)
+		{
+			if (!enumType.IsEnum) return null;
+			
+			string enumName = GetLocalEnumName(enumType);
+			string enumNamespace = GetLocalNamespace(enumType);
+			
+			var members = new List<EnumMemberDeclarationSyntax>();
+			foreach (var field in enumType.GetFields(BindingFlags.Public | BindingFlags.Static))
+			{
+				string name = field.Name;
+				int value = (int)field.GetRawConstantValue();
+				
+				members.Add(SyntaxFactory.EnumMemberDeclaration(SyntaxFactory.Identifier(name))
+					.WithEqualsValue(
+						SyntaxFactory.EqualsValueClause(
+							SyntaxFactory.LiteralExpression(
+								SyntaxKind.NumericLiteralExpression,
+								SyntaxFactory.Literal(value)))));
+			}
+			
+			var enumDecl = SyntaxFactory.EnumDeclaration(enumName)
+				.AddModifiers(SyntaxFactory.Token(SyntaxKind.PublicKeyword))
+				.AddMembers(members.ToArray());
+
+			var nullableDirective = SyntaxFactory.ParseLeadingTrivia("#nullable enable\n");
+
+			var namespaceDecl = SyntaxFactory.NamespaceDeclaration(SyntaxFactory.ParseName(enumNamespace))
+				.WithLeadingTrivia(nullableDirective)
+				.AddMembers(enumDecl);
+			
+			var compilationUnit = SyntaxFactory.CompilationUnit()
+				.AddMembers(namespaceDecl)
+				.NormalizeWhitespace();
+
+			return compilationUnit.ToFullString();
+		}
 
 		internal static string? GenerateInterfaceSource(Type interfaceType)
 		{
 			if (!interfaceType.IsInterface) return null;
 
 			string interfaceName = GetLocalInterfaceName(interfaceType);
-			string originalNestedNamespace = interfaceType.Namespace?.Replace("Neutronium.Api", "") ?? "";
-			string interfaceNamespace = $"Neutronium.MergeLib.Api{originalNestedNamespace}".TrimEnd('.');
+			string interfaceNamespace = GetLocalNamespace(interfaceType);
 			
 			var members = SyntaxFactory.List<MemberDeclarationSyntax>();
 			foreach (var propertyInfo in interfaceType.GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly))
@@ -341,7 +437,10 @@ namespace NeutroniumApi.CodeGen
 				.AddModifiers(SyntaxFactory.Token(SyntaxKind.PublicKeyword), SyntaxFactory.Token(SyntaxKind.PartialKeyword))
 				.WithMembers(members);
 
+			var nullableDirective = SyntaxFactory.ParseLeadingTrivia("#nullable enable\n");
+
 			var namespaceDecl = SyntaxFactory.NamespaceDeclaration(SyntaxFactory.ParseName(interfaceNamespace))
+				.WithLeadingTrivia(nullableDirective)
 				.AddMembers(interfaceDecl);
 
 			var compilationUnit = SyntaxFactory.CompilationUnit()
@@ -390,7 +489,7 @@ namespace NeutroniumApi.CodeGen
 				}
 				else
 				{
-					bool isSharedType = GeneratorUtils.IsCommonRuntimeType(propertyInfo.PropertyType.FullName, out string sharedTypeName);
+					bool isSharedType = GeneratorUtils.IsCommonRuntimeType(propertyInfo.PropertyType, out string sharedTypeName);
 					string getterDelegateType = "RemoteGetterDelegate";
 					string setterDelegateType = "RemoteSetterDelegate";
 					if (isSharedType)
@@ -421,7 +520,7 @@ namespace NeutroniumApi.CodeGen
 					string? setterExpression = null;
 					if (propertyInfo.CanWrite)
 					{
-						var setterDelegateField = SyntaxFactory.ParseMemberDeclaration($"private readonly {setterDelegateType} _set_{propertyInfo.Name};");
+						var setterDelegateField = SyntaxFactory.ParseMemberDeclaration($"private readonly {setterDelegateType}? _set_{propertyInfo.Name};");
 						members = members.Add(setterDelegateField);
 						constructorBodyLines.AppendLine($"_set_{propertyInfo.Name} = RemoteTypes.Build{setterDelegateType}(s_remoteType, \"{propertyInfo.Name}\");");
 						
@@ -457,8 +556,8 @@ namespace NeutroniumApi.CodeGen
 				string? localReturnType = GeneratorUtils.GetLocalTypeName(methodInfo.ReturnType);
 				string overloadName = GetMethodOverloadName(methodInfo);
 
-				bool isFullyCommonTypes = IsMethodFullyCommonTypes(methodInfo);
-				if (isFullyCommonTypes)
+				bool isFullyCommonArgTypes = AreMethodArgsFullyCommonTypes(methodInfo);
+				if (isFullyCommonArgTypes)
 				{
 					string delegateTypeName = GetGenericDelegateTypeName(methodInfo);
 					
@@ -477,7 +576,7 @@ namespace NeutroniumApi.CodeGen
 				
 				var argsList = string.Join(", ", arguments.Select(p => GeneratorUtils.RemoteToLocalInterfaceNames.ContainsKey(p.ParameterType.FullName ?? "") ? $"Unwrap({p.Name})" : p.Name));
 				string methodCall;
-				if (isFullyCommonTypes)
+				if (isFullyCommonArgTypes)
 				{
 					methodCall = $"_call_{overloadName}?.Invoke({argsList})";
 				}
@@ -543,7 +642,10 @@ namespace NeutroniumApi.CodeGen
 					])))
 				.WithMembers(members);
 
+			var nullableDirective = SyntaxFactory.ParseLeadingTrivia("#nullable enable\n");
+
 			var namespaceDecl = SyntaxFactory.NamespaceDeclaration(SyntaxFactory.ParseName(classNamespace))
+				.WithLeadingTrivia(nullableDirective)
 				.AddMembers(classDecl);
 
 			var compilationUnit = SyntaxFactory.CompilationUnit()
@@ -562,6 +664,8 @@ namespace NeutroniumApi.CodeGen
 				remoteMethodName.Append("_");
 				remoteMethodName.Append(arg.ParameterType.Name);
 			}
+			remoteMethodName.Replace(" ", "");
+			remoteMethodName.Replace("`", "");
 			remoteMethodName.Replace("&", "");
 			remoteMethodName.Replace("+", "");
 			return remoteMethodName.ToString();

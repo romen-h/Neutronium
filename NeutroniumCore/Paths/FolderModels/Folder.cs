@@ -5,7 +5,7 @@ using System.Text;
 using Neutronium.Core.Logging;
 using Neutronium.Core.Meta;
 
-namespace Neutronium.Core.Paths.Api.FolderModels
+namespace Neutronium.Core.Paths.FolderModels
 {
     public class Folder
     {

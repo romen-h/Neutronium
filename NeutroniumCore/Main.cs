@@ -2,12 +2,12 @@ using HarmonyLib;
 using System;
 using System.Reflection;
 using Klei;
-using Neutronium.Core.Api;
-using Neutronium.Core.Paths.Api;
 using Neutronium.Core.Meta;
 using Neutronium.Core.Logging;
 using Neutronium.Core.Patches;
 using Neutronium.Core.Plugins;
+using Neutronium.Core.Paths;
+using Neutronium.Core.Registry;
 
 namespace Neutronium.Core
 {
@@ -60,8 +60,11 @@ namespace Neutronium.Core
 			GameVersion.Initialize();
 			FilePaths.Initialize();
 			CorePatches.ApplyPatches();
-			ApiRoot.Initialize();
+
+			// Initialize API back-end before plugins
+			RegistryManager.Initialize();
 			
+			// Finally load the early plugins
 			PluginManager.Initialize();
 			
 			Log.Info("Core", "Neutronium.Core Loaded.");
@@ -77,8 +80,6 @@ namespace Neutronium.Core
 
 			Log.Initialize(isTest: true);
 			Log.Info("Core", $"Neutronium.Core Version {version}");
-			
-			ApiRoot.Initialize();
 		}
 	}
 }

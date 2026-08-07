@@ -19,10 +19,6 @@
 		<None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <ProjectReference Include="..\NeutroniumApi.Interfaces\NeutroniumApi.Interfaces.csproj" />
-	</ItemGroup>
-
 	<Target Name="GetDependencyTargetPaths">
 		<ItemGroup>
 			<!-- Map the external dependency DLL so the compiler can resolve it at build time -->

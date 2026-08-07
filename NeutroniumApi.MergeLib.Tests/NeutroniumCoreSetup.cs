@@ -1,11 +1,12 @@
-﻿using Neutronium.MergeLib.Api;
+﻿using Neutronium.MergeLib;
+using Neutronium.MergeLib.Api;
 
 namespace NeutroniumApi.MergeLib.Tests
 {
 	[TestClass]
 	public sealed class NeutroniumCoreSetup
 	{
-		public static NeutroniumMod Mod
+		public static IApiRoot? Api
 		{ get; private set; }
 
 		[AssemblyInitialize]
@@ -13,8 +14,8 @@ namespace NeutroniumApi.MergeLib.Tests
 		{
 			// This method is called once for the test assembly, before any tests are run.
 			Doorstop.Entrypoint.Test();
-			
-			Mod = new NeutroniumMod("NeutroniumApi.MergeLib.Tests");
+
+			Api = NeutroniumApiClient.GetApi("NeutroniumApi.MergeLib.Tests");
 		}
 	}
 }

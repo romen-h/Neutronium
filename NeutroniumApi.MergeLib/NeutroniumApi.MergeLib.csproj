@@ -1,20 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>netstandard2.0</TargetFramework>
+		<TargetFramework>netstandard2.1</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<RootNamespace>Neutronium.MergeLib.Api</RootNamespace>
-		<CoreApiLibrary>$(SolutionDir)/NeutroniumApi.Interfaces/bin/$(Configuration)/netstandard2.0/NeutroniumApi.Interfaces.dll</CoreApiLibrary>
 		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<CompilerVisibleProperty Include="CoreApiLibrary" />
+		<CompilerVisibleProperty Include="SolutionDir" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\NeutroniumApi.CodeGen\NeutroniumApi.CodeGen.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="False" />
+		<ProjectReference Include="$(SolutionDir)\NeutroniumApi.CodeGen\NeutroniumApi.CodeGen.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="False" />
+		<Reference Include="UnityEngine">
+			<HintPath>$(UnityLibsFolder)/UnityEngine.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UnityEngine.CoreModule">
+			<HintPath>$(UnityLibsFolder)/UnityEngine.CoreModule.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
 	</ItemGroup>
 
 </Project>

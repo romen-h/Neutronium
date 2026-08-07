@@ -5,13 +5,13 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using Neutronium.Api.Meta;
-using Neutronium.Core.Logging.Api;
+using Neutronium.Core.Logging;
 using Neutronium.Core.Meta;
-using Neutronium.Core.Paths.Api.FolderModels;
+using Neutronium.Core.Paths.FolderModels;
 using UnityEngine;
 using ILogger = Neutronium.Api.Logging.ILogger;
 
-namespace Neutronium.Core.Paths.Api
+namespace Neutronium.Core.Paths
 {
 	internal static class FilePaths
 	{

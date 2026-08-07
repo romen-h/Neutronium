@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 using Neutronium.Api.Logging;
-using Neutronium.Core.Logging.Api;
+using Neutronium.Core.Logging;
 
 namespace Neutronium.Core.Meta
 {

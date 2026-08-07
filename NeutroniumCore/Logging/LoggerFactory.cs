@@ -2,27 +2,13 @@ using System.Collections.Concurrent;
 using Neutronium.Api.Logging;
 using Neutronium.Core.Meta;
 
-namespace Neutronium.Core.Logging.Api
+namespace Neutronium.Core.Logging
 {
-	internal class LoggerFactory : ILoggerFactory
+	internal class LoggerFactory
 	{
 		private static readonly ConcurrentDictionary<string, Logger> s_loggers = new ConcurrentDictionary<string, Logger>();
 
-		private static LoggerFactory s_instance;
-		
-		internal static LoggerFactory Instance
-		{
-			get
-			{
-				if (s_instance == null)
-				{
-					s_instance = new LoggerFactory();
-				}
-				return s_instance;
-			}
-		}
-		
-        public ILogger GetLogger(string modStaticId, string category = null)
+        internal static ILogger GetModLogger(string modStaticId, string? category = null)
         {
             string loggerId;
 			if (category != null)

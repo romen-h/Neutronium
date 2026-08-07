@@ -7,9 +7,9 @@ using System.Reflection.Emit;
 using FuzzySharp.Edits;
 using HarmonyLib;
 using Neutronium.Api.Logging;
-using Neutronium.Core.Logging.Api;
+using Neutronium.Core.Logging;
 using Neutronium.Core.Meta;
-using Neutronium.Core.Paths.Api;
+using Neutronium.Core.Paths;
 using Neutronium.Core.Plugins;
 
 namespace Neutronium.Core.Patches

@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Text;
 using Neutronium.Api.Logging;
 
-namespace Neutronium.Core.Logging.Api
+namespace Neutronium.Core.Logging
 {
 	internal class Logger : ILogger
 	{

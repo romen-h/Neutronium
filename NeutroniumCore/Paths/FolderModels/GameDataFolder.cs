@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace Neutronium.Core.Paths.Api.FolderModels
+namespace Neutronium.Core.Paths.FolderModels
 {
 	public class GameDataFolder : Folder
 	{

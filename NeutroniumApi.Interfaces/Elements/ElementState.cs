@@ -6,9 +6,11 @@ using Neutronium.Api.Meta;
 namespace Neutronium.Api.Elements
 {
 	[PreviewApi]
-	public interface IElementFactory
+	public enum ElementState : int
 	{
-		[PreviewApi]
-		IElementBuilder CreateElement(string id);
+		Vacuum = 0,
+		Gas = 1,
+		Liquid = 2,
+		Solid = 3
 	}
 }

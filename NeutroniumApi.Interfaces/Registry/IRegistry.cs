@@ -6,7 +6,6 @@ using Neutronium.Api.Meta;
 namespace Neutronium.Api.Registry
 {
 	[StableApi(ApiVersions.NextReleaseVersion)]
-	[WrapInterface]
 	public interface IRegistry
 	{
 		[StableApi(ApiVersions.NextReleaseVersion)]

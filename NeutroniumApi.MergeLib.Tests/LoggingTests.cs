@@ -10,32 +10,13 @@ public class LoggingTests
 	[ClassInitialize]
 	public static void Init(TestContext ctx)
 	{
-		api = NeutroniumCoreSetup.Mod.GetApi();
-	}
-
-	[TestMethod]
-	public void GetLoggerFactoryTwice()
-	{
-		var loggerFactory1 = api.LoggerFactory;
-		var loggerFactory2 = api.LoggerFactory;
-		Assert.IsTrue(Object.ReferenceEquals(loggerFactory1, loggerFactory2));
-	}
-	
-	[TestMethod]
-	public void GetCustomLogger()
-	{
-		var loggerFactory = api.LoggerFactory;
-		Assert.IsNotNull(loggerFactory);
-		
-		var customLogger = loggerFactory.GetLogger("test", null);
-		Assert.IsNotNull(customLogger);
-		Assert.IsTrue(customLogger.Enabled);
+		api = NeutroniumCoreSetup.Api;
 	}
 
 	[TestMethod]
 	public void GetModLogger()
 	{
-		var logger = api.GetModLogger("test");
+		var logger = api.Logging.GetModLogger();
 		Assert.IsNotNull(logger);
 		Assert.IsTrue(logger.Enabled);
 	}
@@ -43,7 +24,7 @@ public class LoggingTests
 	[TestMethod]
 	public void DebugLog()
 	{
-		var logger = api.GetModLogger("NeutroniumApi.MergeLib.Tests");
+		var logger = api.Logging.GetModLogger("DebugLogTest");
 		
 		logger.Debug("Debug message.");
 	}
@@ -51,7 +32,7 @@ public class LoggingTests
 	[TestMethod]
 	public void InfoLog()
 	{
-		var logger = api.GetModLogger("NeutroniumApi.MergeLib.Tests");
+		var logger = api.Logging.GetModLogger("InfoLogTest");
 
 		logger.Info("Info message.");
 	}
@@ -59,7 +40,7 @@ public class LoggingTests
 	[TestMethod]
 	public void WarnLog()
 	{
-		var logger = api.GetModLogger("NeutroniumApi.MergeLib.Tests");
+		var logger = api.Logging.GetModLogger("WarnLogTest");
 
 		logger.Warn("Warning message.");
 	}
@@ -67,7 +48,7 @@ public class LoggingTests
 	[TestMethod]
 	public void ErrorLog()
 	{
-		var logger = api.GetModLogger("NeutroniumApi.MergeLib.Tests");
+		var logger = api.Logging.GetModLogger("ErrorLogTest");
 
 		logger.Error("Error message.");
 	}
@@ -75,7 +56,7 @@ public class LoggingTests
 	[TestMethod]
 	public void ErrorLogWithException()
 	{
-		var logger = api.GetModLogger("NeutroniumApi.MergeLib.Tests");
+		var logger = api.Logging.GetModLogger("ExceptionLogTest");
 
 		logger.Error("Exception message.", new Exception("Example Exception"));
 	}

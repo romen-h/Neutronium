@@ -26,6 +26,7 @@ namespace Neutronium.MergeLib.Internal
 	internal abstract class InterfaceWrapper<TDerived> : InterfaceWrapper
 		where TDerived : InterfaceWrapper<TDerived>
 	{
+		private static readonly object s_wrapperCacheLock = new object();
 		protected static readonly Dictionary<object, TDerived> s_wrapperCache = new Dictionary<object, TDerived>();
 
 		internal static TDerived? Wrap(object? instance)
@@ -33,11 +34,14 @@ namespace Neutronium.MergeLib.Internal
 			if (instance == null) return null;
 			
 			TDerived wrapper = null;
-			if (!s_wrapperCache.TryGetValue(instance, out wrapper))
+			lock (s_wrapperCacheLock)
 			{
-				var ctorInfo = typeof(TDerived).GetConstructor(BindingFlags.DeclaredOnly | BindingFlags.NonPublic | BindingFlags.Instance, null, [ typeof(object) ], null);
-				wrapper = (TDerived)ctorInfo.Invoke([instance]);
-				s_wrapperCache[instance] = wrapper;
+				if (!s_wrapperCache.TryGetValue(instance, out wrapper))
+				{
+					var ctorInfo = typeof(TDerived).GetConstructor(BindingFlags.DeclaredOnly | BindingFlags.NonPublic | BindingFlags.Instance, null, [ typeof(object) ], null);
+					wrapper = (TDerived)ctorInfo.Invoke([instance]);
+					s_wrapperCache[instance] = wrapper;
+				}
 			}
 			return wrapper;
 		}

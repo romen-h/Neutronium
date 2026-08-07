@@ -7,7 +7,6 @@ namespace Neutronium.Api.Logging
 	/// An interface for writing messages to the Neutronium log.
 	/// </summary>
 	[StableApi(ApiVersions.NextReleaseVersion)]
-	[WrapInterface]
 	public interface ILogger
 	{
 		/// <summary>

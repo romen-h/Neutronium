@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Neutronium.Api.Elements;
 using Neutronium.Api.Logging;
 using Neutronium.Api.Meta;
 using Neutronium.Api.Registry;
@@ -18,7 +19,6 @@ namespace Neutronium.Api
 	/// - Deprecated signatures will be annotated with [Obsolete] and behave safely with legacy behaviour as much as possible.
 	/// </remarks>
 	[StableApi(ApiVersions.NextReleaseVersion)]
-	[WrapInterface]
 	public interface IApiRoot
 	{
 		/// <summary>
@@ -30,31 +30,27 @@ namespace Neutronium.Api
 		{ get; }
 
 		/// <summary>
-		/// A Neutronium logger factory interface for creating namespaced loggers.
+		/// API for interacting with the Neutronium log.
 		/// </summary>
 		[StableApi(ApiVersions.NextReleaseVersion)]
 		[GetOnce]
-		ILoggerFactory LoggerFactory
+		ILoggingApi Logging
 		{ get; }
 
 		/// <summary>
-		/// Returns a Neutronium logger for the given mod static id.
-		/// </summary>
-		[StableApi(ApiVersions.NextReleaseVersion)]
-		ILogger GetModLogger(string modStaticId);
-
-		/// <summary>
-		/// A global singleton registry for mods to interop and share data through.
+		/// API for interacting with the Neutronium registry.
 		/// </summary>
 		[StableApi(ApiVersions.NextReleaseVersion)]
 		[GetOnce]
-		IRegistry GlobalRegistry
+		IRegistryApi Registry
 		{ get; }
-
+		
 		/// <summary>
-		/// Returns the singleton registry created for the mod with a specific modStaticId.
+		/// API for creating and getting modded elements.
 		/// </summary>
-		[StableApi(ApiVersions.NextReleaseVersion)]
-		IRegistry GetModRegistry(string modStaticId);
+		[PreviewApi]
+		[GetOnce]
+		IElementsApi Elements
+		{ get; }
 	}
 }

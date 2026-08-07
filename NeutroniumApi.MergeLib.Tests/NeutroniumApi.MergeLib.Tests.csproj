@@ -11,6 +11,12 @@
   <ItemGroup>
     <ProjectReference Include="..\NeutroniumApi.MergeLib\NeutroniumApi.MergeLib.csproj" />
     <ProjectReference Include="..\NeutroniumCore\NeutroniumCore.csproj" />
+    <Reference Include="UnityEngine">
+	    <HintPath>$(UnityLibsFolder)/UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+	    <HintPath>$(UnityLibsFolder)/UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

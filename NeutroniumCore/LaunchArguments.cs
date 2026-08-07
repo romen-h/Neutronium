@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using HarmonyLib;
 using Neutronium.Api.Logging;
-using Neutronium.Core.Logging.Api;
+using Neutronium.Core.Logging;
 
 namespace Neutronium.Core
 {

@@ -6,10 +6,10 @@ using System.Runtime.InteropServices;
 using System.Text;
 using HarmonyLib;
 using Neutronium.Api.Logging;
-using Neutronium.Core.Logging.Api;
 using Neutronium.Core.Meta;
-using Neutronium.Core.Paths.Api;
 using Neutronium.Api.Plugins;
+using Neutronium.Core.Logging;
+using Neutronium.Core.Paths;
 
 namespace Neutronium.Core.Plugins
 {
@@ -85,17 +85,6 @@ namespace Neutronium.Core.Plugins
 				catch (Exception ex)
 				{
 					s_log.Error($"Error while checking plugin requirements: {pluginFile.FilePath}", ex);
-					badPlugins.Add(pluginFile);
-					continue;
-				}
-				
-				try
-				{
-					plugin.ProvideLoggerFactory(LoggerFactory.Instance);
-				}
-				catch (Exception ex)
-				{
-					s_log.Error($"Error while providing logger to plugin: {pluginId}", ex);
 					badPlugins.Add(pluginFile);
 					continue;
 				}

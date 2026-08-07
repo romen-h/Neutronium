@@ -44,12 +44,5 @@ namespace Neutronium.Api.Plugins
 		/// </remarks>
 		[StableApi(ApiVersions.NextReleaseVersion)]
 		void OnUnityInitialized();
-		
-		/// <summary>
-		/// Called by Neutronium to give an ILogger instance to a plugin.
-		/// Logging through this object will push messages to the dedicated Neutronium log file.
-		/// </summary>
-		[StableApi(ApiVersions.NextReleaseVersion)]
-		void ProvideLoggerFactory(ILoggerFactory logger);
 	}
 }
