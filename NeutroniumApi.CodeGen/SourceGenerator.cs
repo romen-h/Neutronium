@@ -16,28 +16,40 @@ namespace NeutroniumApi.CodeGen
 	[Generator]
 	public class SourceGenerator : IIncrementalGenerator
 	{
+		private class BuildProperties
+		{
+			public string? SolutionDir
+			{ get; set; }
+			
+			public string? UnityLibsDir
+			{ get; set; }
+		}
+		
 		public void Initialize(IncrementalGeneratorInitializationContext context)
 		{
-			IncrementalValueProvider<string?> solutionDirProvider =
+			IncrementalValueProvider<BuildProperties> solutionDirProvider =
 				context.AnalyzerConfigOptionsProvider
 				.Select(static (options, _) =>
 				{
-					if (options.GlobalOptions.TryGetValue("build_property.SolutionDir", out var solutionDir))
+					options.GlobalOptions.TryGetValue("build_property.SolutionDir", out var solutionDir);
+					options.GlobalOptions.TryGetValue("build_property.UnityLibsFolder", out var unityLibsDir);
+					
+					return new BuildProperties()
 					{
-						return solutionDir;
-					}
-					return null;
+						SolutionDir = solutionDir,
+						UnityLibsDir = unityLibsDir
+					};
 				});
 			
-			context.RegisterSourceOutput(solutionDirProvider, static (spc, solutionDir) =>
+			context.RegisterSourceOutput(solutionDirProvider, static (spc, properties) =>
 			{
 #if DEBUG
-				string coreApiDllFile = Path.Combine(solutionDir, "NeutroniumApi.Interfaces/bin/Debug/netstandard2.1/NeutroniumApi.Interfaces.dll");
+				string coreApiDllFile = Path.Combine(properties.SolutionDir, "NeutroniumApi.Interfaces/bin/Debug/netstandard2.1/NeutroniumApi.Interfaces.dll");
 #else
-				string coreApiDllFile = Path.Combine(solutionDir, "NeutroniumApi.Interfaces/bin/Release/netstandard2.1/NeutroniumApi.Interfaces.dll");
+				string coreApiDllFile = Path.Combine(properties.SolutionDir, "NeutroniumApi.Interfaces/bin/Release/netstandard2.1/NeutroniumApi.Interfaces.dll");
 #endif
 
-				string unityLibsFolder = Path.Combine(solutionDir, "gamelibs/libs/Unity-6000.3.5f2");
+				string unityLibsFolder = properties.UnityLibsDir;
 				
 				try
 				{

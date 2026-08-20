@@ -10,6 +10,7 @@
 
 	<ItemGroup>
 		<CompilerVisibleProperty Include="SolutionDir" />
+		<CompilerVisibleProperty Include="UnityLibsFolder" />
 	</ItemGroup>
 
 	<ItemGroup>
