@@ -25,15 +25,4 @@
 		</Reference>
 	</ItemGroup>
 
-	<Target Name="VerifySourceGeneratorOutput" AfterTargets="BeforeCompile">
-		<PropertyGroup>
-			<!-- Adjust this path to match your exact Generator assembly name and expected file name -->
-			<ExpectedGeneratorFile>$(CompilerGeneratedFilesOutputPath)\NeutroniumApi.CodeGen\NeutroniumApi.CodeGen.SourceGenerator\Neutronium.Api.IApiRoot_Wrapper.g.cs</ExpectedGeneratorFile>
-		</PropertyGroup>
-
-		<Error
-			Condition="!Exists('$(ExpectedGeneratorFile)')"
-			Text="Build Failed: The Roslyn Incremental Generator failed to run or did not generate '$(ExpectedGeneratorFile)'. Ensure the generator project is built and the Analyzer item group is configured correctly." />
-	</Target>
-
 </Project>

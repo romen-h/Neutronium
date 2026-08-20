@@ -12,30 +12,12 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0" PrivateAssets="all" />
 		<PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0" PrivateAssets="all" />
-		<PackageReference Include="System.Reflection.MetadataLoadContext" Version="10.0.10" PrivateAssets="all" />
-		<PackageReference Include="System.Runtime.Loader" Version="4.3.0" PrivateAssets="all" />
+		<PackageReference Include="System.Reflection.MetadataLoadContext" Version="10.0.10" PrivateAssets="all" GeneratePathProperty="true"/>
+		<PackageReference Include="System.Runtime.Loader" Version="4.3.0" PrivateAssets="all" GeneratePathProperty="true"/>
 	</ItemGroup>
-
-	<ItemGroup>
-		<None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
-		<None Include="$(PkgSystem_Reflection_MetadataLoadContext)\lib\netstandard2.0\*.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
-		<None Include="$(PkgSystem_Runtime_Loader)\lib\netstandard2.0\*.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
-	</ItemGroup>
-
-	<Target Name="AddGenerationTimeDependencies"
-	        BeforeTargets="GetAnalyzerFiles"
-	        DependsOnTargets="ResolveReferences">
-		<ItemGroup>
-			<None Include="@(ResolvedCompileFileDefinitions)"
-			      Pack="true"
-			      PackagePath="analyzers/dotnet/cs"
-			      Visible="false" />
-		</ItemGroup>
-	</Target>
 
 	<Target Name="GetDependencyTargetPaths">
 		<ItemGroup>
-			<!-- Map the external dependency DLL so the compiler can resolve it at build time -->
 			<TargetPathWithTargetPlatformMoniker Include="$(TargetDir)\*.dll" IncludeRuntimeDependency="false" />
 		</ItemGroup>
 	</Target>
