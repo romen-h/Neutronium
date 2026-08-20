@@ -27,7 +27,7 @@ namespace Neutronium.Loader
 		public bool RestartRequired
 		{ get; private set; } = false;
 		
-		internal void EnsureDoorstopInstalled()
+		internal void Run()
 		{
 			DoorstopVersion = GetDoorstopVersion();
 			if (DoorstopVersion == null)
@@ -71,19 +71,13 @@ namespace Neutronium.Loader
 				}
 				else if (CoreVersion < ExpectedCoreVersion)
 				{
-					Debug.Log($"NeutroniumLoader: Neutronium Core version {CoreVersion} is outdated. NeutroniumLoader will upgrade to {ExpectedCoreVersion}.");
-					InstallNeutroniumCore();
+					Debug.Log($"NeutroniumLoader: Neutronium Core version {CoreVersion} is outdated. NeutroniumLoader can be upgrade to {ExpectedCoreVersion}.");
+					//InstallNeutroniumCore();
 					RestartRequired = true;
 					return;
 				}
 				else
 				{
-					#if DEV
-					InstallNeutroniumCore();
-					Debug.Log($"NeutroniumLoader: Installing new Neutronium Core build...");
-					RestartRequired = true;
-					#endif
-					
 					Debug.Log($"NeutroniumLoader: Neutronium Core version {CoreVersion} detected.");
 					return;
 				}

@@ -26,7 +26,7 @@ namespace Neutronium.Loader
 					throw new Exception($"Platform {Application.platform} is not supported by Neutronium.");
 				}
 				
-				bs.EnsureDoorstopInstalled();
+				bs.Run();
 			}
 			catch (Exception ex)
 			{
