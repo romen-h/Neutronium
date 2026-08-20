@@ -4,20 +4,13 @@
     <BuildType Name="GithubRelease" />
     <BuildType Name="Release" />
   </Configurations>
-  <Folder Name="/ProjectTemplates/">
-    <Project Path="ProjectTemplates/PluginTemplate/PluginTemplate.csproj" Id="6a2c1cf3-ad1c-49aa-a34a-21403d696e18">
-      <BuildType Solution="GithubRelease|*" Project="Release" />
-    </Project>
-  </Folder>
+  <Folder Name="/ProjectTemplates/" />
   <Folder Name="/Solution Items/">
     <File Path="Directory.Build.props" />
     <File Path="GameLibs.props" />
     <File Path="NeutroniumVersion.props" />
     <File Path="nuget.config" />
   </Folder>
-  <Project Path="Neutronium.SDK/Neutronium.SDK.csproj" Id="060826af-2ef0-4332-b2c0-398d8161fbad">
-    <BuildType Solution="GithubRelease|*" Project="Release" />
-  </Project>
   <Project Path="NeutroniumApi.CodeGen/NeutroniumApi.CodeGen.csproj" Id="33a3e97b-b85b-4603-b510-c94b6cb3eefb">
     <BuildDependency Project="NeutroniumApi.Interfaces/NeutroniumApi.Interfaces.csproj" />
     <BuildType Solution="GithubRelease|*" Project="Release" />
