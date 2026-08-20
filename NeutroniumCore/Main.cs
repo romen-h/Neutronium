@@ -59,7 +59,7 @@ namespace Neutronium.Core
 
 			GameVersion.Initialize();
 			FilePaths.Initialize();
-			CorePatches.ApplyPatches();
+			PatchManager.ApplyPatches();
 
 			// Initialize API back-end before plugins
 			RegistryManager.Initialize();

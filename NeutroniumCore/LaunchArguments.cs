@@ -10,8 +10,11 @@ namespace Neutronium.Core
 	{
 		private static readonly ILogger s_log = LoggerFactory.GetInternalLogger("Core.LaunchArguments");
 
+		internal static bool MoveGameFolder
+		{ get; private set; } = false;
+		
 		internal static bool DisableWorkshop
-		{ get; private set; } = true;
+		{ get; private set; } = false;
 		
 		internal static void Initialize()
 		{
