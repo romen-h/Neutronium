@@ -6,6 +6,7 @@
 		<EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
 		<IncludeBuildOutput>false</IncludeBuildOutput>
 		<GetTargetPathDependsOn>$(GetTargetPathDependsOn);GetDependencyTargetPaths</GetTargetPathDependsOn>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -20,6 +21,17 @@
 		<None Include="$(PkgSystem_Reflection_MetadataLoadContext)\lib\netstandard2.0\*.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
 		<None Include="$(PkgSystem_Runtime_Loader)\lib\netstandard2.0\*.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
 	</ItemGroup>
+
+	<Target Name="AddGenerationTimeDependencies"
+	        BeforeTargets="GetAnalyzerFiles"
+	        DependsOnTargets="ResolveReferences">
+		<ItemGroup>
+			<None Include="@(ResolvedCompileFileDefinitions)"
+			      Pack="true"
+			      PackagePath="analyzers/dotnet/cs"
+			      Visible="false" />
+		</ItemGroup>
+	</Target>
 
 	<Target Name="GetDependencyTargetPaths">
 		<ItemGroup>
