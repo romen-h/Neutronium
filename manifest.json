@@ -292,6 +292,76 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Elements.KleiElements.Gases.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Elements.KleiElements.Gases.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Elements.KleiElements.Gases",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Elements.KleiElements.Liquids.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Elements.KleiElements.Liquids.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Elements.KleiElements.Liquids",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Elements.KleiElements.Solids.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Elements.KleiElements.Solids.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Elements.KleiElements.Solids",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Elements.KleiElements.Special.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Elements.KleiElements.Special.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Elements.KleiElements.Special",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Elements.KleiElements.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Elements.KleiElements.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Elements.KleiElements",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Neutronium.Api.Elements.yml",
       "output": {
         ".html": {
