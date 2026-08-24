@@ -13,6 +13,70 @@ references:
   commentId: N:Neutronium.Api.Elements
   fullName: Neutronium.Api.Elements
   nameWithType: Neutronium.Api.Elements
+- uid: Neutronium.Api.Elements.ElementHandle
+  name: ElementHandle
+  href: api/Neutronium.Api.Elements.ElementHandle.html
+  commentId: T:Neutronium.Api.Elements.ElementHandle
+  fullName: Neutronium.Api.Elements.ElementHandle
+  nameWithType: ElementHandle
+- uid: Neutronium.Api.Elements.ElementHandle.#ctor(System.String,Neutronium.Api.Elements.ElementState)
+  name: ElementHandle(string, ElementState)
+  href: api/Neutronium.Api.Elements.ElementHandle.html#Neutronium_Api_Elements_ElementHandle__ctor_System_String_Neutronium_Api_Elements_ElementState_
+  commentId: M:Neutronium.Api.Elements.ElementHandle.#ctor(System.String,Neutronium.Api.Elements.ElementState)
+  name.vb: New(String, ElementState)
+  fullName: Neutronium.Api.Elements.ElementHandle.ElementHandle(string, Neutronium.Api.Elements.ElementState)
+  fullName.vb: Neutronium.Api.Elements.ElementHandle.New(String, Neutronium.Api.Elements.ElementState)
+  nameWithType: ElementHandle.ElementHandle(string, ElementState)
+  nameWithType.vb: ElementHandle.New(String, ElementState)
+- uid: Neutronium.Api.Elements.ElementHandle.#ctor*
+  name: ElementHandle
+  href: api/Neutronium.Api.Elements.ElementHandle.html#Neutronium_Api_Elements_ElementHandle__ctor_
+  commentId: Overload:Neutronium.Api.Elements.ElementHandle.#ctor
+  name.vb: New
+  fullName: Neutronium.Api.Elements.ElementHandle.ElementHandle
+  fullName.vb: Neutronium.Api.Elements.ElementHandle.New
+  nameWithType: ElementHandle.ElementHandle
+  nameWithType.vb: ElementHandle.New
+- uid: Neutronium.Api.Elements.ElementHandle.GroupName
+  name: GroupName
+  href: api/Neutronium.Api.Elements.ElementHandle.html#Neutronium_Api_Elements_ElementHandle_GroupName
+  commentId: F:Neutronium.Api.Elements.ElementHandle.GroupName
+  fullName: Neutronium.Api.Elements.ElementHandle.GroupName
+  nameWithType: ElementHandle.GroupName
+- uid: Neutronium.Api.Elements.ElementHandle.State
+  name: State
+  href: api/Neutronium.Api.Elements.ElementHandle.html#Neutronium_Api_Elements_ElementHandle_State
+  commentId: F:Neutronium.Api.Elements.ElementHandle.State
+  fullName: Neutronium.Api.Elements.ElementHandle.State
+  nameWithType: ElementHandle.State
+- uid: Neutronium.Api.Elements.ElementHandle.op_Implicit(Neutronium.Api.Elements.ElementHandle)~System.String
+  name: implicit operator string(ElementHandle)
+  href: api/Neutronium.Api.Elements.ElementHandle.html#Neutronium_Api_Elements_ElementHandle_op_Implicit_Neutronium_Api_Elements_ElementHandle__System_String
+  commentId: M:Neutronium.Api.Elements.ElementHandle.op_Implicit(Neutronium.Api.Elements.ElementHandle)~System.String
+  name.vb: CType(ElementHandle)
+  fullName: Neutronium.Api.Elements.ElementHandle.implicit operator string(Neutronium.Api.Elements.ElementHandle)
+  fullName.vb: Neutronium.Api.Elements.ElementHandle.CType(Neutronium.Api.Elements.ElementHandle)
+  nameWithType: ElementHandle.implicit operator string(ElementHandle)
+  nameWithType.vb: ElementHandle.CType(ElementHandle)
+- uid: Neutronium.Api.Elements.ElementHandle.op_Implicit(Neutronium.Api.Elements.ElementHandle)~System.ValueTuple{System.String,System.Int32}
+  name: implicit operator (string, int)(ElementHandle)
+  href: api/Neutronium.Api.Elements.ElementHandle.html#Neutronium_Api_Elements_ElementHandle_op_Implicit_Neutronium_Api_Elements_ElementHandle__System_ValueTuple_System_String_System_Int32_
+  commentId: M:Neutronium.Api.Elements.ElementHandle.op_Implicit(Neutronium.Api.Elements.ElementHandle)~System.ValueTuple{System.String,System.Int32}
+  name.vb: CType(ElementHandle)
+  fullName: Neutronium.Api.Elements.ElementHandle.implicit operator (string, int)(Neutronium.Api.Elements.ElementHandle)
+  fullName.vb: Neutronium.Api.Elements.ElementHandle.CType(Neutronium.Api.Elements.ElementHandle)
+  nameWithType: ElementHandle.implicit operator (string, int)(ElementHandle)
+  nameWithType.vb: ElementHandle.CType(ElementHandle)
+- uid: Neutronium.Api.Elements.ElementHandle.op_Implicit*
+  name: implicit operator
+  href: api/Neutronium.Api.Elements.ElementHandle.html#Neutronium_Api_Elements_ElementHandle_op_Implicit_
+  commentId: Overload:Neutronium.Api.Elements.ElementHandle.op_Implicit
+  isSpec: "True"
+  name.vb: CType
+  fullName: Neutronium.Api.Elements.ElementHandle.implicit operator
+  fullName.vb: Neutronium.Api.Elements.ElementHandle.CType
+  nameWithType: ElementHandle.implicit operator
+  nameWithType.vb: ElementHandle.CType
 - uid: Neutronium.Api.Elements.ElementState
   name: ElementState
   href: api/Neutronium.Api.Elements.ElementState.html

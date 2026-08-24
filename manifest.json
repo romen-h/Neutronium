@@ -12,6 +12,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Elements.ElementHandle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Elements.ElementHandle.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Elements.ElementHandle",
+      "Summary": "<p sourcefile=\"api/Neutronium.Api.Elements.ElementHandle.yml\" sourcestartlinenumber=\"1\">Represents an element registered with Neutronium that has a group name and state.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Neutronium.Api.Elements.ElementState.yml",
       "output": {
         ".html": {

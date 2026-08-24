@@ -1,4 +1,9 @@
 {
+  "api/Neutronium.Api.Elements.ElementHandle.html": {
+    "href": "api/Neutronium.Api.Elements.ElementHandle.html",
+    "title": "Struct ElementHandle | Neutronium API Docs",
+    "summary": "Struct ElementHandle Namespace Neutronium.Api.Elements Assembly NeutroniumApi.Interfaces.dll Represents an element registered with Neutronium that has a group name and state. [PreviewApi] public struct ElementHandle Inherited Members ValueType.Equals(object) ValueType.GetHashCode() ValueType.ToString() object.GetType() object.Equals(object, object) object.ReferenceEquals(object, object) Constructors ElementHandle(string, ElementState) Creates an ElementHandle. [PreviewApi] public ElementHandle(string groupName, ElementState state) Parameters groupName string The group name of the element. state ElementState The state of matter for the element. Fields GroupName The group name of the element. public readonly string GroupName Field Value string State The state of the element. public readonly ElementState State Field Value ElementState Operators implicit operator string(ElementHandle) Converts this ElementHandle into an element ID string. public static implicit operator string(ElementHandle handle) Parameters handle ElementHandle Returns string implicit operator (string, int)(ElementHandle) Converts this ElementHandle into a System.Tuple. public static implicit operator (string, int)(ElementHandle handle) Parameters handle ElementHandle Returns (string, int)"
+  },
   "api/Neutronium.Api.Elements.ElementState.html": {
     "href": "api/Neutronium.Api.Elements.ElementState.html",
     "title": "Enum ElementState | Neutronium API Docs",
@@ -127,7 +132,7 @@
   "api/Neutronium.Api.Elements.html": {
     "href": "api/Neutronium.Api.Elements.html",
     "title": "Namespace Neutronium.Api.Elements | Neutronium API Docs",
-    "summary": "Namespace Neutronium.Api.Elements Interfaces IElement IElementHighTransitionBuilder IElementLightPropertiesBuilder IElementLowTransitionBuilder IElementMassPropertiesBuilder IElementOptionalPropertiesBuilder IElementRadiationPropertiesBuilder IElementSublimationPropertiesBuilder IElementSubstanceBuilder IElementTagsBuilder IElementThermalPropertiesBuilder IElementWorldgenPropertiesBuilder IElementsApi IGasElementBuilder IGasElementMaterialBuilder ILiquidElementBuilder ILiquidElementMaterialBuilder ISolidElementBuilder ISolidElementMaterialBuilder Enums ElementState"
+    "summary": "Namespace Neutronium.Api.Elements Structs ElementHandle Represents an element registered with Neutronium that has a group name and state. Interfaces IElement IElementHighTransitionBuilder IElementLightPropertiesBuilder IElementLowTransitionBuilder IElementMassPropertiesBuilder IElementOptionalPropertiesBuilder IElementRadiationPropertiesBuilder IElementSublimationPropertiesBuilder IElementSubstanceBuilder IElementTagsBuilder IElementThermalPropertiesBuilder IElementWorldgenPropertiesBuilder IElementsApi IGasElementBuilder IGasElementMaterialBuilder ILiquidElementBuilder ILiquidElementMaterialBuilder ISolidElementBuilder ISolidElementMaterialBuilder Enums ElementState"
   },
   "api/Neutronium.Api.IApiRoot.html": {
     "href": "api/Neutronium.Api.IApiRoot.html",
