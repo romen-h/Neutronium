@@ -8,6 +8,8 @@
     <File Path="Examples/Directory.Build.props" />
     <File Path="Examples/Directory.Build.targets" />
     <Project Path="Examples/ElementsExampleMod/ElementsExampleMod.csproj">
+      <BuildDependency Project="NeutroniumApi.CodeGen/NeutroniumApi.CodeGen.csproj" />
+      <BuildDependency Project="NeutroniumApi.Interfaces/NeutroniumApi.Interfaces.csproj" />
       <BuildType Solution="GithubRelease|*" Project="Release" />
     </Project>
   </Folder>
