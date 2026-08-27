@@ -121,10 +121,10 @@ public interface IGasElementBuilder</code></pre>
 </h2>
 
 
-  <a id="Neutronium_Api_Elements_IGasElementBuilder_GasProperties_" data-uid="Neutronium.Api.Elements.IGasElementBuilder.GasProperties*"></a>
+  <a id="Neutronium_Api_Elements_IGasElementBuilder_InheritGasProperties_" data-uid="Neutronium.Api.Elements.IGasElementBuilder.InheritGasProperties*"></a>
 
-  <h3 id="Neutronium_Api_Elements_IGasElementBuilder_GasProperties_System_Nullable_System_Single__System_Nullable_System_Single__" data-uid="Neutronium.Api.Elements.IGasElementBuilder.GasProperties(System.Nullable{System.Single},System.Nullable{System.Single})">
-  GasProperties(float?, float?)
+  <h3 id="Neutronium_Api_Elements_IGasElementBuilder_InheritGasProperties" data-uid="Neutronium.Api.Elements.IGasElementBuilder.InheritGasProperties">
+  InheritGasProperties()
   <a class="header-action link-secondary" title="View source" href="https://github.com/romen-h/Neutronium/blob/main/NeutroniumApi.Interfaces/Elements/IElementBuilder.cs"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -133,16 +133,9 @@ public interface IGasElementBuilder</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PreviewApi]
-IGasElementMaterialBuilder GasProperties(float? defaultPressure, float? flowRate)</code></pre>
+IGasElementMaterialBuilder InheritGasProperties()</code></pre>
   </div>
 
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>defaultPressure</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>?</dt>
-    <dd></dd>
-    <dt><code>flowRate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>?</dt>
-    <dd></dd>
-  </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
@@ -160,10 +153,10 @@ IGasElementMaterialBuilder GasProperties(float? defaultPressure, float? flowRate
 
 
 
-  <a id="Neutronium_Api_Elements_IGasElementBuilder_InheritGasProperties_" data-uid="Neutronium.Api.Elements.IGasElementBuilder.InheritGasProperties*"></a>
+  <a id="Neutronium_Api_Elements_IGasElementBuilder_SetGasProperties_" data-uid="Neutronium.Api.Elements.IGasElementBuilder.SetGasProperties*"></a>
 
-  <h3 id="Neutronium_Api_Elements_IGasElementBuilder_InheritGasProperties" data-uid="Neutronium.Api.Elements.IGasElementBuilder.InheritGasProperties">
-  InheritGasProperties()
+  <h3 id="Neutronium_Api_Elements_IGasElementBuilder_SetGasProperties_System_Nullable_System_Single__System_Nullable_System_Single__" data-uid="Neutronium.Api.Elements.IGasElementBuilder.SetGasProperties(System.Nullable{System.Single},System.Nullable{System.Single})">
+  SetGasProperties(float?, float?)
   <a class="header-action link-secondary" title="View source" href="https://github.com/romen-h/Neutronium/blob/main/NeutroniumApi.Interfaces/Elements/IElementBuilder.cs"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -172,9 +165,16 @@ IGasElementMaterialBuilder GasProperties(float? defaultPressure, float? flowRate
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PreviewApi]
-IGasElementMaterialBuilder InheritGasProperties()</code></pre>
+IGasElementMaterialBuilder SetGasProperties(float? defaultPressure, float? flowRate)</code></pre>
   </div>
 
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>defaultPressure</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>?</dt>
+    <dd></dd>
+    <dt><code>flowRate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>?</dt>
+    <dd></dd>
+  </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">

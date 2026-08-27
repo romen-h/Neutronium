@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Interface IElementOptionalPropertiesBuilder | Neutronium API Docs </title>
+      <title>Interface IElementHandle | Neutronium API Docs </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Interface IElementOptionalPropertiesBuilder | Neutronium API Docs ">
+      <meta name="title" content="Interface IElementHandle | Neutronium API Docs ">
       
-      
+      <meta name="description" content="A handle that refers to an element in the Neutronium API.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -84,12 +84,12 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Neutronium.Api.Elements.IElementOptionalPropertiesBuilder">
+        <article data-uid="Neutronium.Api.Elements.IElementHandle">
 
 
 
-  <h1 id="Neutronium_Api_Elements_IElementOptionalPropertiesBuilder" data-uid="Neutronium.Api.Elements.IElementOptionalPropertiesBuilder" class="text-break">
-Interface IElementOptionalPropertiesBuilder  <a class="header-action link-secondary" title="View source" href="https://github.com/romen-h/Neutronium/blob/main/NeutroniumApi.Interfaces/Elements/IElementBuilder.cs"><i class="bi bi-code-slash"></i></a>
+  <h1 id="Neutronium_Api_Elements_IElementHandle" data-uid="Neutronium.Api.Elements.IElementHandle" class="text-break">
+Interface IElementHandle  <a class="header-action link-secondary" title="View source" href="https://github.com/romen-h/Neutronium/blob/main/NeutroniumApi.Interfaces/Elements/IElementHandle.cs"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,12 +97,13 @@ Interface IElementOptionalPropertiesBuilder  <a class="header-action link-second
   <dl><dt>Assembly</dt><dd>NeutroniumApi.Interfaces.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>A handle that refers to an element in the Neutronium API.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PreviewApi]
-public interface IElementOptionalPropertiesBuilder</code></pre>
+public interface IElementHandle</code></pre>
   </div>
 
 
@@ -117,36 +118,36 @@ public interface IElementOptionalPropertiesBuilder</code></pre>
 
 
 
-  <h2 class="section" id="methods">Methods
+  <h2 class="section" id="properties">Properties
 </h2>
 
 
-  <a id="Neutronium_Api_Elements_IElementOptionalPropertiesBuilder_RequireDlc_" data-uid="Neutronium.Api.Elements.IElementOptionalPropertiesBuilder.RequireDlc*"></a>
+  <a id="Neutronium_Api_Elements_IElementHandle_GroupName_" data-uid="Neutronium.Api.Elements.IElementHandle.GroupName*"></a>
 
-  <h3 id="Neutronium_Api_Elements_IElementOptionalPropertiesBuilder_RequireDlc_System_Collections_Generic_IEnumerable_System_String__" data-uid="Neutronium.Api.Elements.IElementOptionalPropertiesBuilder.RequireDlc(System.Collections.Generic.IEnumerable{System.String})">
-  RequireDlc(IEnumerable&lt;string&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/romen-h/Neutronium/blob/main/NeutroniumApi.Interfaces/Elements/IElementBuilder.cs"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Neutronium_Api_Elements_IElementHandle_GroupName" data-uid="Neutronium.Api.Elements.IElementHandle.GroupName">
+  GroupName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romen-h/Neutronium/blob/main/NeutroniumApi.Interfaces/Elements/IElementHandle.cs"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The Neutronium element group name.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PreviewApi]
-IElementOptionalPropertiesBuilder RequireDlc(IEnumerable&lt;string&gt; dlcId)</code></pre>
+string GroupName { get; }</code></pre>
   </div>
 
-  <h4 class="section">Parameters</h4>
+
+
+
+
+  <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><code>dlcId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
   </dl>
 
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Neutronium.Api.Elements.IElementOptionalPropertiesBuilder.html">IElementOptionalPropertiesBuilder</a></dt>
-    <dd></dd>
-  </dl>
 
 
 
@@ -154,71 +155,100 @@ IElementOptionalPropertiesBuilder RequireDlc(IEnumerable&lt;string&gt; dlcId)</c
 
 
 
+  <a id="Neutronium_Api_Elements_IElementHandle_Hash_" data-uid="Neutronium.Api.Elements.IElementHandle.Hash*"></a>
 
-
-
-
-  <a id="Neutronium_Api_Elements_IElementOptionalPropertiesBuilder_RequireDlc_" data-uid="Neutronium.Api.Elements.IElementOptionalPropertiesBuilder.RequireDlc*"></a>
-
-  <h3 id="Neutronium_Api_Elements_IElementOptionalPropertiesBuilder_RequireDlc_System_String_" data-uid="Neutronium.Api.Elements.IElementOptionalPropertiesBuilder.RequireDlc(System.String)">
-  RequireDlc(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/romen-h/Neutronium/blob/main/NeutroniumApi.Interfaces/Elements/IElementBuilder.cs"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Neutronium_Api_Elements_IElementHandle_Hash" data-uid="Neutronium.Api.Elements.IElementHandle.Hash">
+  Hash
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romen-h/Neutronium/blob/main/NeutroniumApi.Interfaces/Elements/IElementHandle.cs"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The hash of the element id.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PreviewApi]
-IElementOptionalPropertiesBuilder RequireDlc(string dlcId)</code></pre>
+int Hash { get; }</code></pre>
   </div>
 
-  <h4 class="section">Parameters</h4>
+
+
+
+
+  <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><code>dlcId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
   </dl>
 
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Neutronium.Api.Elements.IElementOptionalPropertiesBuilder.html">IElementOptionalPropertiesBuilder</a></dt>
-    <dd></dd>
-  </dl>
+
+
+
+  <h4 class="section" id="Neutronium_Api_Elements_IElementHandle_Hash_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Can be cast to a SimHashes value.</p>
+</div>
 
 
 
 
+  <a id="Neutronium_Api_Elements_IElementHandle_Id_" data-uid="Neutronium.Api.Elements.IElementHandle.Id*"></a>
 
-
-
-
-
-
-
-  <a id="Neutronium_Api_Elements_IElementOptionalPropertiesBuilder_Submit_" data-uid="Neutronium.Api.Elements.IElementOptionalPropertiesBuilder.Submit*"></a>
-
-  <h3 id="Neutronium_Api_Elements_IElementOptionalPropertiesBuilder_Submit" data-uid="Neutronium.Api.Elements.IElementOptionalPropertiesBuilder.Submit">
-  Submit()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/romen-h/Neutronium/blob/main/NeutroniumApi.Interfaces/Elements/IElementBuilder.cs"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Neutronium_Api_Elements_IElementHandle_Id" data-uid="Neutronium.Api.Elements.IElementHandle.Id">
+  Id
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romen-h/Neutronium/blob/main/NeutroniumApi.Interfaces/Elements/IElementHandle.cs"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The element id.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PreviewApi]
-(string, int)? Submit()</code></pre>
+string Id { get; }</code></pre>
   </div>
 
 
-  <h4 class="section">Returns</h4>
+
+
+
+  <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>)?</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
   </dl>
 
 
 
+
+
+
+
+
+  <a id="Neutronium_Api_Elements_IElementHandle_State_" data-uid="Neutronium.Api.Elements.IElementHandle.State*"></a>
+
+  <h3 id="Neutronium_Api_Elements_IElementHandle_State" data-uid="Neutronium.Api.Elements.IElementHandle.State">
+  State
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romen-h/Neutronium/blob/main/NeutroniumApi.Interfaces/Elements/IElementHandle.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The state of the element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[PreviewApi]
+int State { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
 
 
 
@@ -231,7 +261,7 @@ IElementOptionalPropertiesBuilder RequireDlc(string dlcId)</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/romen-h/Neutronium/blob/main/NeutroniumApi.Interfaces/Elements/IElementBuilder.cs" class="edit-link">Edit this page</a>
+          <a href="https://github.com/romen-h/Neutronium/blob/main/NeutroniumApi.Interfaces/Elements/IElementHandle.cs" class="edit-link">Edit this page</a>
         </div>
 
 

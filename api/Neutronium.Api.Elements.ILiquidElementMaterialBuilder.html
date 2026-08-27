@@ -121,10 +121,10 @@ public interface ILiquidElementMaterialBuilder</code></pre>
 </h2>
 
 
-  <a id="Neutronium_Api_Elements_ILiquidElementMaterialBuilder_CustomMaterial_" data-uid="Neutronium.Api.Elements.ILiquidElementMaterialBuilder.CustomMaterial*"></a>
+  <a id="Neutronium_Api_Elements_ILiquidElementMaterialBuilder_InheritMaterial_" data-uid="Neutronium.Api.Elements.ILiquidElementMaterialBuilder.InheritMaterial*"></a>
 
-  <h3 id="Neutronium_Api_Elements_ILiquidElementMaterialBuilder_CustomMaterial_System_Nullable_UnityEngine_Color32__UnityEngine_Texture_" data-uid="Neutronium.Api.Elements.ILiquidElementMaterialBuilder.CustomMaterial(System.Nullable{UnityEngine.Color32},UnityEngine.Texture)">
-  CustomMaterial(Color32?, Texture?)
+  <h3 id="Neutronium_Api_Elements_ILiquidElementMaterialBuilder_InheritMaterial" data-uid="Neutronium.Api.Elements.ILiquidElementMaterialBuilder.InheritMaterial">
+  InheritMaterial()
   <a class="header-action link-secondary" title="View source" href="https://github.com/romen-h/Neutronium/blob/main/NeutroniumApi.Interfaces/Elements/IElementBuilder.cs"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -133,16 +133,9 @@ public interface ILiquidElementMaterialBuilder</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PreviewApi]
-IElementSubstanceBuilder CustomMaterial(Color32? color, Texture? texture)</code></pre>
+IElementSubstanceBuilder InheritMaterial()</code></pre>
   </div>
 
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>color</code> <span class="xref">Color32</span>?</dt>
-    <dd></dd>
-    <dt><code>texture</code> <span class="xref">Texture</span></dt>
-    <dd></dd>
-  </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
@@ -160,10 +153,10 @@ IElementSubstanceBuilder CustomMaterial(Color32? color, Texture? texture)</code>
 
 
 
-  <a id="Neutronium_Api_Elements_ILiquidElementMaterialBuilder_InheritMaterial_" data-uid="Neutronium.Api.Elements.ILiquidElementMaterialBuilder.InheritMaterial*"></a>
+  <a id="Neutronium_Api_Elements_ILiquidElementMaterialBuilder_SetCustomMaterial_" data-uid="Neutronium.Api.Elements.ILiquidElementMaterialBuilder.SetCustomMaterial*"></a>
 
-  <h3 id="Neutronium_Api_Elements_ILiquidElementMaterialBuilder_InheritMaterial" data-uid="Neutronium.Api.Elements.ILiquidElementMaterialBuilder.InheritMaterial">
-  InheritMaterial()
+  <h3 id="Neutronium_Api_Elements_ILiquidElementMaterialBuilder_SetCustomMaterial_System_Nullable_UnityEngine_Color32__UnityEngine_Texture_" data-uid="Neutronium.Api.Elements.ILiquidElementMaterialBuilder.SetCustomMaterial(System.Nullable{UnityEngine.Color32},UnityEngine.Texture)">
+  SetCustomMaterial(Color32?, Texture?)
   <a class="header-action link-secondary" title="View source" href="https://github.com/romen-h/Neutronium/blob/main/NeutroniumApi.Interfaces/Elements/IElementBuilder.cs"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -172,9 +165,16 @@ IElementSubstanceBuilder CustomMaterial(Color32? color, Texture? texture)</code>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PreviewApi]
-IElementSubstanceBuilder InheritMaterial()</code></pre>
+IElementSubstanceBuilder SetCustomMaterial(Color32? color, Texture? texture)</code></pre>
   </div>
 
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>color</code> <span class="xref">Color32</span>?</dt>
+    <dd></dd>
+    <dt><code>texture</code> <span class="xref">Texture</span></dt>
+    <dd></dd>
+  </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">

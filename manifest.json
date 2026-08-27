@@ -12,30 +12,114 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Neutronium.Api.Elements.ElementHandle.yml",
+      "source_relative_path": "api/Neutronium.Api.Constants.ElementStates.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Neutronium.Api.Elements.ElementHandle.html"
+          "relative_path": "api/Neutronium.Api.Constants.ElementStates.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Neutronium.Api.Elements.ElementHandle",
-      "Summary": "<p sourcefile=\"api/Neutronium.Api.Elements.ElementHandle.yml\" sourcestartlinenumber=\"1\">Represents an element registered with Neutronium that has a group name and state.</p>\n"
+      "Title": "Neutronium.Api.Constants.ElementStates",
+      "Summary": "<p sourcefile=\"api/Neutronium.Api.Constants.ElementStates.yml\" sourcestartlinenumber=\"1\">Provides int constants for the element states in Oxygen Not Included.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Neutronium.Api.Elements.ElementState.yml",
+      "source_relative_path": "api/Neutronium.Api.Constants.KleiElements.KleiGases.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Neutronium.Api.Elements.ElementState.html"
+          "relative_path": "api/Neutronium.Api.Constants.KleiElements.KleiGases.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Neutronium.Api.Elements.ElementState",
+      "Title": "Neutronium.Api.Constants.KleiElements.KleiGases",
+      "Summary": "<p sourcefile=\"api/Neutronium.Api.Constants.KleiElements.KleiGases.yml\" sourcestartlinenumber=\"1\">Provides string constants for all the gas element ids in Oxygen Not Included.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Constants.KleiElements.KleiLiquids.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Constants.KleiElements.KleiLiquids.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Constants.KleiElements.KleiLiquids",
+      "Summary": "<p sourcefile=\"api/Neutronium.Api.Constants.KleiElements.KleiLiquids.yml\" sourcestartlinenumber=\"1\">Provides string constants for all the liquid element ids in Oxygen Not Included.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Constants.KleiElements.KleiSolids.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Constants.KleiElements.KleiSolids.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Constants.KleiElements.KleiSolids",
+      "Summary": "<p sourcefile=\"api/Neutronium.Api.Constants.KleiElements.KleiSolids.yml\" sourcestartlinenumber=\"1\">Provides string constants for all the solid element ids in Oxygen Not Included.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Constants.KleiElements.KleiSpecial.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Constants.KleiElements.KleiSpecial.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Constants.KleiElements.KleiSpecial",
+      "Summary": "<p sourcefile=\"api/Neutronium.Api.Constants.KleiElements.KleiSpecial.yml\" sourcestartlinenumber=\"1\">Provides string constants for all the special element ids in Oxygen Not Included.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Constants.KleiElements.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Constants.KleiElements.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Constants.KleiElements",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Constants.MaterialCategories.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Constants.MaterialCategories.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Constants.MaterialCategories",
+      "Summary": "<p sourcefile=\"api/Neutronium.Api.Constants.MaterialCategories.yml\" sourcestartlinenumber=\"1\">Provides string constants for all the material category tags in Oxygen Not Included.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Constants.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Constants.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Constants",
       "Summary": null
     },
     {
@@ -51,6 +135,20 @@
       "IsMRef": true,
       "Title": "Neutronium.Api.Elements.IElement",
       "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neutronium.Api.Elements.IElementHandle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neutronium.Api.Elements.IElementHandle.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Neutronium.Api.Elements.IElementHandle",
+      "Summary": "<p sourcefile=\"api/Neutronium.Api.Elements.IElementHandle.yml\" sourcestartlinenumber=\"1\">A handle that refers to an element in the Neutronium API.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -302,76 +400,6 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Neutronium.Api.Elements.ISolidElementMaterialBuilder",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Neutronium.Api.Elements.KleiElements.Gases.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Neutronium.Api.Elements.KleiElements.Gases.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Neutronium.Api.Elements.KleiElements.Gases",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Neutronium.Api.Elements.KleiElements.Liquids.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Neutronium.Api.Elements.KleiElements.Liquids.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Neutronium.Api.Elements.KleiElements.Liquids",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Neutronium.Api.Elements.KleiElements.Solids.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Neutronium.Api.Elements.KleiElements.Solids.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Neutronium.Api.Elements.KleiElements.Solids",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Neutronium.Api.Elements.KleiElements.Special.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Neutronium.Api.Elements.KleiElements.Special.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Neutronium.Api.Elements.KleiElements.Special",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Neutronium.Api.Elements.KleiElements.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Neutronium.Api.Elements.KleiElements.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Neutronium.Api.Elements.KleiElements",
       "Summary": null
     },
     {

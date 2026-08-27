@@ -153,10 +153,10 @@ IElementMassPropertiesBuilder InheritSubstance()</code></pre>
 
 
 
-  <a id="Neutronium_Api_Elements_IElementSubstanceBuilder_SubstanceProperties_" data-uid="Neutronium.Api.Elements.IElementSubstanceBuilder.SubstanceProperties*"></a>
+  <a id="Neutronium_Api_Elements_IElementSubstanceBuilder_SetSubstanceProperties_" data-uid="Neutronium.Api.Elements.IElementSubstanceBuilder.SetSubstanceProperties*"></a>
 
-  <h3 id="Neutronium_Api_Elements_IElementSubstanceBuilder_SubstanceProperties_System_Nullable_UnityEngine_Color32__System_Nullable_UnityEngine_Color32__System_String_System_String_System_String_" data-uid="Neutronium.Api.Elements.IElementSubstanceBuilder.SubstanceProperties(System.Nullable{UnityEngine.Color32},System.Nullable{UnityEngine.Color32},System.String,System.String,System.String)">
-  SubstanceProperties(Color32??, Color32??, string?, string?, string?)
+  <h3 id="Neutronium_Api_Elements_IElementSubstanceBuilder_SetSubstanceProperties_System_Nullable_UnityEngine_Color32__System_Nullable_UnityEngine_Color32__System_Nullable_UnityEngine_Color32__System_String_System_String_System_String_" data-uid="Neutronium.Api.Elements.IElementSubstanceBuilder.SetSubstanceProperties(System.Nullable{UnityEngine.Color32},System.Nullable{UnityEngine.Color32},System.Nullable{UnityEngine.Color32},System.String,System.String,System.String)">
+  SetSubstanceProperties(Color32??, Color32??, Color32??, string?, string?, string?)
   <a class="header-action link-secondary" title="View source" href="https://github.com/romen-h/Neutronium/blob/main/NeutroniumApi.Interfaces/Elements/IElementBuilder.cs"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -165,11 +165,13 @@ IElementMassPropertiesBuilder InheritSubstance()</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PreviewApi]
-IElementMassPropertiesBuilder SubstanceProperties(Color32?? uiColor, Color32?? conduitColor, string? oreKanimName, string? fallingStartSound, string? fallingStopSound)</code></pre>
+IElementMassPropertiesBuilder SetSubstanceProperties(Color32?? worldColor, Color32?? uiColor, Color32?? conduitColor, string? oreKanimName, string? fallingStartSound, string? fallingStopSound)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
+    <dt><code>worldColor</code> <span class="xref">Color32</span>?</dt>
+    <dd></dd>
     <dt><code>uiColor</code> <span class="xref">Color32</span>?</dt>
     <dd></dd>
     <dt><code>conduitColor</code> <span class="xref">Color32</span>?</dt>
