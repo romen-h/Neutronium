@@ -11,6 +11,7 @@
       <BuildDependency Project="NeutroniumApi.CodeGen/NeutroniumApi.CodeGen.csproj" />
       <BuildDependency Project="NeutroniumApi.Interfaces/NeutroniumApi.Interfaces.csproj" />
       <BuildType Solution="GithubRelease|*" Project="Release" />
+      <Build Solution="GithubRelease|*" Project="false" />
     </Project>
   </Folder>
   <Folder Name="/ProjectTemplates/" />
