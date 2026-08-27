@@ -27,231 +27,361 @@ namespace Neutronium.Core.Elements
 	{
 		private readonly ElementBuilderData _data;
 		
-		internal ElementBuilder(ElementState state, string groupName, string baseElementId, string modStaticId)
+		internal ElementBuilder(string groupName, int state, string baseElementId, string modStaticId)
 		{
-			_data = new ElementBuilderData(state, groupName, baseElementId, modStaticId);
+			_data = new ElementBuilderData(groupName, state, baseElementId, modStaticId);
 		}
 		
 		ISolidElementMaterialBuilder ISolidElementBuilder.InheritSolidProperties()
 		{
-			throw new NotImplementedException();
+			_data.materialCategory = null;
+			_data.strength = null;
+			_data.hardness = null;
+			return this;
 		}
 
 		ISolidElementMaterialBuilder ISolidElementBuilder.SetSolidProperties(string? materialCategory, float? strength, byte? hardness)
 		{
-			throw new NotImplementedException();
+			_data.materialCategory = materialCategory;
+			_data.strength = strength;
+			_data.hardness = hardness;
+			return this;
 		}
 
 		IElementSubstanceBuilder ISolidElementMaterialBuilder.InheritMaterial()
 		{
-			throw new NotImplementedException();
+			_data.worldColor = null;
+			return this;
 		}
 
-		IElementSubstanceBuilder IGasElementMaterialBuilder.CustomMaterial(Color32? color)
-		{
-			throw new NotImplementedException();
-		}
-
-		IElementSubstanceBuilder ILiquidElementMaterialBuilder.CustomMaterial(Color32? color, Texture? texture)
-		{
-			throw new NotImplementedException();
-		}
-
-		IElementSubstanceBuilder ISolidElementMaterialBuilder.CustomMaterial(Texture? groundTexture, Texture? shineMaskTexture, Texture? shineNormalTexture,
+		IElementSubstanceBuilder ISolidElementMaterialBuilder.CustomMaterial(
+			Texture? groundTexture, Texture? shineMaskTexture, Texture? shineNormalTexture,
 			float? worldUVScale, float? frequency, Color32? shineColor, Color32? tintColor)
 		{
-			throw new NotImplementedException();
+			return this;
 		}
 
 		ILiquidElementMaterialBuilder ILiquidElementBuilder.InheritLiquidProperties()
 		{
-			throw new NotImplementedException();
+			_data.minHorizontalLiquidFlow = null;
+			_data.minVerticalLiquidFlow = null;
+			_data.maxLiquidFlow = null;
+			_data.liquidCompressionFactor = null;
+			return this;
 		}
 
-		IElementSubstanceBuilder ILiquidElementBuilder.LiquidProperties(float? minHorizontalFlow, float? minVerticalFlow, float? maxFlow,
-			float? liquidCompression)
+		ILiquidElementMaterialBuilder ILiquidElementBuilder.SetLiquidProperties(
+			float? minHorizontalFlow, float? minVerticalFlow, float? maxFlow, float? liquidCompression)
 		{
-			throw new NotImplementedException();
+			_data.minHorizontalLiquidFlow = minHorizontalFlow;
+			_data.minVerticalLiquidFlow = minVerticalFlow;
+			_data.maxLiquidFlow = maxFlow;
+			_data.liquidCompressionFactor = liquidCompression;
+			return this;
 		}
 
 		IElementSubstanceBuilder ILiquidElementMaterialBuilder.InheritMaterial()
 		{
-			throw new NotImplementedException();
+			_data.worldColor = null;
+			return this;
+		}
+
+		IElementSubstanceBuilder ILiquidElementMaterialBuilder.SetCustomMaterial(Color32? color, Texture? texture)
+		{
+			_data.worldColor = color;
+			return this;
 		}
 
 		IGasElementMaterialBuilder IGasElementBuilder.InheritGasProperties()
 		{
-			throw new NotImplementedException();
+			_data.defaultPressure = null;
+			_data.maxGasFlow = null;
+			return this;
 		}
 
-		IGasElementMaterialBuilder IGasElementBuilder.GasProperties(float? defaultPressure, float? flowRate)
+		IGasElementMaterialBuilder IGasElementBuilder.SetGasProperties(float? defaultPressure, float? flowRate)
 		{
-			throw new NotImplementedException();
+			_data.defaultPressure = defaultPressure;
+			_data.maxGasFlow = flowRate;
+			return this;
 		}
 
 		IElementSubstanceBuilder IGasElementMaterialBuilder.InheritMaterial()
 		{
-			throw new NotImplementedException();
+			_data.worldColor = null;
+			return this;
+		}
+
+		IElementSubstanceBuilder IGasElementMaterialBuilder.SetCustomMaterial(Color32? color)
+		{
+			_data.worldColor = color;
+			return this;
 		}
 
 		IElementMassPropertiesBuilder IElementSubstanceBuilder.InheritSubstance()
 		{
-			throw new NotImplementedException();
+			_data.worldColor = null;
+			_data.uiColor = null;
+			_data.conduitColor = null;
+			_data.oreKanimName = null;
+			return this;
 		}
 
-		IElementMassPropertiesBuilder IElementSubstanceBuilder.SubstanceProperties(Color32? uiColor, Color32? conduitColor, string? oreKanimName,
-			string? fallingStartSound, string? fallingStopSound)
+		IElementMassPropertiesBuilder IElementSubstanceBuilder.SetSubstanceProperties(
+			Color32? worldColor, Color32? uiColor, Color32? conduitColor, string? oreKanimName, string? fallingStartSound, string? fallingStopSound)
 		{
-			throw new NotImplementedException();
+			_data.worldColor = worldColor;
+			_data.uiColor = uiColor;
+			_data.conduitColor = conduitColor;
+			_data.oreKanimName = oreKanimName;
+			return this;
 		}
 
 		IElementThermalPropertiesBuilder IElementMassPropertiesBuilder.InheritMassProperties()
 		{
-			throw new NotImplementedException();
+			_data.maxMass = null;
+			_data.molarMass = null;
+			return this;
 		}
 
-		IElementThermalPropertiesBuilder IElementMassPropertiesBuilder.MassProperties(float? maxMass, float? molarMass)
+		IElementThermalPropertiesBuilder IElementMassPropertiesBuilder.SetMassProperties(float? maxMass, float? molarMass)
 		{
-			throw new NotImplementedException();
+			_data.maxMass = maxMass;
+			_data.molarMass = molarMass;
+			return this;
 		}
 
 		IElementLowTransitionBuilder IElementThermalPropertiesBuilder.InheritThermalProperties()
 		{
-			throw new NotImplementedException();
+			_data.thermalConductivity = null;
+			_data.specificHeatCapacity = null;
+			_data.solidSurfaceAreaMultiplier = null;
+			_data.liquidSurfaceAreaMultiplier = null;
+			_data.gasSurfaceAreaMultiplier = null;
+			return this;
 		}
 
-		IElementLowTransitionBuilder IElementThermalPropertiesBuilder.ThermalProperties(float? thermalConductivity, float? specificHeatCapacity)
+		IElementLowTransitionBuilder IElementThermalPropertiesBuilder.SetThermalProperties(float? thermalConductivity, float? specificHeatCapacity)
 		{
-			throw new NotImplementedException();
+			_data.thermalConductivity = thermalConductivity;
+			_data.specificHeatCapacity = specificHeatCapacity;
+			_data.solidSurfaceAreaMultiplier = null;
+			_data.liquidSurfaceAreaMultiplier = null;
+			_data.gasSurfaceAreaMultiplier = null;
+			return this;
 		}
 
-		IElementLowTransitionBuilder IElementThermalPropertiesBuilder.ThermalProperties(float? thermalConductivity, float? specificHeadCapacity,
-			float? solidTransferMultiplier, float? liquidTransferMultiplier, float? gasTransferMultiplier)
+		IElementLowTransitionBuilder IElementThermalPropertiesBuilder.SetThermalProperties(
+			float? thermalConductivity, float? specificHeatCapacity, float? solidTransferMultiplier,
+			float? liquidTransferMultiplier, float? gasTransferMultiplier)
 		{
-			throw new NotImplementedException();
+			_data.thermalConductivity = thermalConductivity;
+			_data.specificHeatCapacity = specificHeatCapacity;
+			_data.solidSurfaceAreaMultiplier = solidTransferMultiplier;
+			_data.liquidSurfaceAreaMultiplier = liquidTransferMultiplier;
+			_data.gasSurfaceAreaMultiplier = gasTransferMultiplier;
+			return this;
 		}
 
 		IElementHighTransitionBuilder IElementLowTransitionBuilder.InheritLowTransition()
 		{
-			throw new NotImplementedException();
+			_data.lowTransitionTempKelvin = null;
+			_data.lowTransitionElementId = null;
+			_data.lowTransitionOreId = null;
+			_data.lowTransitionOreMassConversion = null;
+			return this;
 		}
 
 		IElementHighTransitionBuilder IElementLowTransitionBuilder.NoLowTransition()
 		{
-			throw new NotImplementedException();
+			_data.lowTransitionTempKelvin = 0;
+			_data.lowTransitionElementId = "";
+			_data.lowTransitionOreId = "";
+			_data.lowTransitionOreMassConversion = 0;
+			return this;
 		}
 
-		IElementHighTransitionBuilder IElementLowTransitionBuilder.LowTransition(float? temperatureKelvin, string? targetElementId)
+		IElementHighTransitionBuilder IElementLowTransitionBuilder.SetLowTransition(float? temperatureKelvin, string? targetElementId)
 		{
-			throw new NotImplementedException();
+			_data.lowTransitionTempKelvin = temperatureKelvin;
+			_data.lowTransitionElementId = targetElementId;
+			_data.lowTransitionOreId = "";
+			_data.lowTransitionOreMassConversion = 0;
+			return this;
 		}
 
-		IElementHighTransitionBuilder IElementLowTransitionBuilder.LowTransitionWithOre(float? temperatureKelvin, string? targetElementId,
-			string? oreElementId, float? oreConversionFactor)
+		IElementHighTransitionBuilder IElementLowTransitionBuilder.SetLowTransitionWithOre(
+			float? temperatureKelvin, string? targetElementId, string? oreElementId, float? oreConversionFactor)
 		{
-			throw new NotImplementedException();
+			_data.lowTransitionTempKelvin = temperatureKelvin;
+			_data.lowTransitionElementId = targetElementId;
+			_data.lowTransitionOreId = oreElementId;
+			_data.lowTransitionOreMassConversion = oreConversionFactor;
+			return this;
 		}
 
 		IElementSublimationPropertiesBuilder IElementHighTransitionBuilder.InheritHighTransition()
 		{
-			throw new NotImplementedException();
+			_data.highTransitionTempKelvin = null;
+			_data.highTransitionElementId = null;
+			_data.highTransitionOreId = null;
+			_data.highTransitionOreMassConversion = null;
+			return this;
 		}
 
 		IElementSublimationPropertiesBuilder IElementHighTransitionBuilder.NoHighTransition()
 		{
-			throw new NotImplementedException();
+			_data.highTransitionTempKelvin = 9999f;
+			_data.highTransitionElementId = "";
+			_data.highTransitionOreId = "";
+			_data.highTransitionOreMassConversion = 0;
+			return this;
 		}
 
-		IElementSublimationPropertiesBuilder IElementHighTransitionBuilder.HighTransition(float? temperatureKelvin, string? targetElementId)
+		IElementSublimationPropertiesBuilder IElementHighTransitionBuilder.SetHighTransition(float? temperatureKelvin, string? targetElementId)
 		{
-			throw new NotImplementedException();
+			_data.highTransitionTempKelvin = temperatureKelvin;
+			_data.highTransitionElementId = targetElementId;
+			_data.highTransitionOreId = "";
+			_data.highTransitionOreMassConversion = 0;
+			return this;
 		}
 
-		IElementSublimationPropertiesBuilder IElementHighTransitionBuilder.HighTransitionWithOre(float? temperatureKelvin, string? targetElementId,
-			string? oreElementId, float? oreConversionFactor)
+		IElementSublimationPropertiesBuilder IElementHighTransitionBuilder.SetHighTransitionWithOre(
+			float? temperatureKelvin, string? targetElementId, string? oreElementId, float? oreConversionFactor)
 		{
-			throw new NotImplementedException();
+			_data.highTransitionTempKelvin = temperatureKelvin;
+			_data.highTransitionElementId = targetElementId;
+			_data.highTransitionOreId = oreElementId;
+			_data.highTransitionOreMassConversion = oreConversionFactor;
+			return this;
 		}
 
 		IElementLightPropertiesBuilder IElementSublimationPropertiesBuilder.InheritSublimation()
 		{
-			throw new NotImplementedException();
+			_data.sublimateTargetId = null;
+			_data.sublimateEfficiency = null;
+			_data.sublimateRate = null;
+			_data.sublimateProbability = null;
+			_data.sublimateFx = null;
+			return this;
 		}
 
 		IElementLightPropertiesBuilder IElementSublimationPropertiesBuilder.NoSublimation()
 		{
-			throw new NotImplementedException();
+			_data.sublimateTargetId = "";
+			_data.sublimateEfficiency = 0;
+			_data.sublimateRate = 0;
+			_data.sublimateProbability = 0;
+			_data.sublimateFx = "";
+			return this;
 		}
 
-		IElementLightPropertiesBuilder IElementSublimationPropertiesBuilder.SublimatesTo(string? targetElementId, float? inputPercentage, float? conversionRate,
-			float? probability, string? sublimateFx)
+		IElementLightPropertiesBuilder IElementSublimationPropertiesBuilder.SublimatesTo(
+			string? targetElementId, float? conversionRate, float? efficiency, float? probability, string? sublimateFx)
 		{
-			throw new NotImplementedException();
+			_data.sublimateTargetId = targetElementId;
+			_data.sublimateRate = conversionRate;
+			_data.sublimateEfficiency = efficiency;
+			_data.sublimateProbability = probability;
+			_data.sublimateFx = sublimateFx;
+			return this;
 		}
 
 		IElementRadiationPropertiesBuilder IElementLightPropertiesBuilder.InheritLightProperties()
 		{
-			throw new NotImplementedException();
+			_data.lightAbsorptionFactor = null;
+			return this;
 		}
 
 		IElementRadiationPropertiesBuilder IElementLightPropertiesBuilder.LightProperties(float? absorptionFactor)
 		{
-			throw new NotImplementedException();
+			_data.lightAbsorptionFactor = absorptionFactor;
+			return this;
 		}
 
 		IElementWorldgenPropertiesBuilder IElementRadiationPropertiesBuilder.InheritRadiationProperties()
 		{
-			throw new NotImplementedException();
+			_data.radiationAbsorptionFactor = null;
+			_data.radiationPerKg = null;
+			return this;
 		}
 
 		IElementWorldgenPropertiesBuilder IElementRadiationPropertiesBuilder.NotRadioactive(float? absorptionFactor)
 		{
-			throw new NotImplementedException();
+			_data.radiationAbsorptionFactor = absorptionFactor;
+			_data.radiationPerKg = 0;
+			return this;
 		}
 
 		IElementWorldgenPropertiesBuilder IElementRadiationPropertiesBuilder.Radioactive(float? absorptionFactor, float? radsPerKg)
 		{
-			throw new NotImplementedException();
+			_data.radiationAbsorptionFactor = absorptionFactor;
+			_data.radiationPerKg = radsPerKg;
+			return this;
 		}
 
 		IElementTagsBuilder IElementWorldgenPropertiesBuilder.InheritWorldgenProperties()
 		{
-			throw new NotImplementedException();
+			_data.defaultMass = null;
+			_data.defaultTemperatureKelvin = null;
+			return this;
 		}
 
-		IElementTagsBuilder IElementWorldgenPropertiesBuilder.WorldgenProperties(float? defaultMass, float? defaultTemperature)
+		IElementTagsBuilder IElementWorldgenPropertiesBuilder.SetWorldgenProperties(float? defaultMass, float? defaultTemperature)
 		{
-			throw new NotImplementedException();
+			_data.defaultMass = defaultMass;
+			_data.defaultTemperatureKelvin = defaultTemperature;
+			return this;
 		}
 
 		IElementOptionalPropertiesBuilder IElementTagsBuilder.InheritTags()
 		{
-			throw new NotImplementedException();
+			_data.inheritTags = true;
+			return this;
+		}
+		
+		IElementOptionalPropertiesBuilder IElementTagsBuilder.InheritAndAddTags(IEnumerable<string> tags)
+		{
+			_data.inheritTags = true;
+			foreach (var tag in tags)
+			{
+				_data.tags.Add(tag);
+			}
+			return this;
 		}
 
 		IElementOptionalPropertiesBuilder IElementTagsBuilder.NoTags()
 		{
-			throw new NotImplementedException();
+			_data.inheritTags = false;
+			_data.tags.Clear();
+			return this;
 		}
 
-		IElementOptionalPropertiesBuilder IElementTagsBuilder.WithTags(IEnumerable<string> tags)
+		IElementOptionalPropertiesBuilder IElementTagsBuilder.SetTags(IEnumerable<string> tags)
 		{
-			throw new NotImplementedException();
+			_data.inheritTags = false;
+			foreach (var tag in tags)
+			{
+				_data.tags.Add(tag);
+			}
+			return this;
 		}
 
 		IElementOptionalPropertiesBuilder IElementOptionalPropertiesBuilder.RequireDlc(string dlcId)
 		{
-			throw new NotImplementedException();
+			_data.requiredDlc = dlcId;
+			return this;
 		}
 
 		IElementOptionalPropertiesBuilder IElementOptionalPropertiesBuilder.RequireDlc(IEnumerable<string> dlcId)
 		{
-			throw new NotImplementedException();
+			return this;
 		}
 
-		string IElementOptionalPropertiesBuilder.Submit()
+		(string,int)? IElementOptionalPropertiesBuilder.Submit()
 		{
-			throw new NotImplementedException();
+			return ElementsManager.SubmitElement(_data);
 		}
 	}
 }

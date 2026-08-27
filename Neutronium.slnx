@@ -4,6 +4,13 @@
     <BuildType Name="GithubRelease" />
     <BuildType Name="Release" />
   </Configurations>
+  <Folder Name="/Examples/">
+    <File Path="Examples/Directory.Build.props" />
+    <File Path="Examples/Directory.Build.targets" />
+    <Project Path="Examples/ElementsExampleMod/ElementsExampleMod.csproj">
+      <BuildType Solution="GithubRelease|*" Project="Release" />
+    </Project>
+  </Folder>
   <Folder Name="/ProjectTemplates/" />
   <Folder Name="/Solution Items/">
     <File Path="Directory.Build.props" />

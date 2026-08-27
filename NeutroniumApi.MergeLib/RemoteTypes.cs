@@ -22,15 +22,8 @@ namespace Neutronium.MergeLib.Internal
 		{
 			if (s_cache.TryGetValue(typeName, out Type? type)) return type;
 			
-			type = Type.GetType(typeName, false);
-			if (type == null)
-			{
-				foreach (var a in AppDomain.CurrentDomain.GetAssemblies())
-				{
-					type = a.GetType(typeName, false);
-					if (type != null) break;
-				}
-			}
+			type = Type.GetType($"{typeName}, NeutroniumApi.Interfaces", false);
+			if (type == null) throw new Exception($"Could not find remote Type named {typeName} in NeutroniumApi.Interfaces. This MergeLib may be newer than the current NeutroniumCore version.");
 
 			s_cache[typeName] = type;
 			return type;

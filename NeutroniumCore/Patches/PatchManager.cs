@@ -25,7 +25,7 @@ namespace Neutronium.Core.Patches
 
 			s_log.Info("Applying patches...");
 			ApplyPatchesFrom(typeof(CorePatches));
-			//ApplyPatchesFrom(typeof(ElementPatches));
+			ApplyPatchesFrom(typeof(ElementPatches));
 		}
 		
 		private static void ApplyPatchesFrom(Type patchParentClass)
@@ -63,7 +63,8 @@ namespace Neutronium.Core.Patches
 		{
 			try
 			{
-				s_harmony.CreateClassProcessor(patchType).Patch();
+				var proc = s_harmony.CreateClassProcessor(patchType);
+				proc.Patch();
 				s_log.Debug($"Applied patch: {patchType.Name}");
 			}
 			catch (Exception ex)

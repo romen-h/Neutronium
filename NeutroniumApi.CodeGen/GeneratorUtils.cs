@@ -31,7 +31,6 @@ namespace NeutroniumApi.CodeGen
 		
 		internal static readonly Dictionary<string,string> RemoteToLocalEnumNames = new Dictionary<string, string>();
 		internal static readonly Dictionary<string,string> RemoteToLocalInterfaceNames = new Dictionary<string, string>();
-		internal static readonly Dictionary<string, string> LocalToRemoteInterfaceNames = new Dictionary<string, string>();
 		
 		internal static void ProcessApiTypes(Assembly assembly)
 		{
@@ -43,16 +42,15 @@ namespace NeutroniumApi.CodeGen
 			foreach (var type in wrappableTypes)
 			{
 				string remoteName = type.FullName;
-				string localName = remoteName.Replace("Neutronium.Api.", "Neutronium.MergeLib.Api.");
+				//string localName = remoteName.Replace("Neutronium.Api.", "Neutronium.MergeLib.Api.");
 				
 				if (type.IsEnum)
 				{
-					RemoteToLocalEnumNames[remoteName] = localName;
+					RemoteToLocalEnumNames[remoteName] = remoteName;
 				}
 				else if (type.IsInterface)
 				{
-					RemoteToLocalInterfaceNames[remoteName] = localName;
-					LocalToRemoteInterfaceNames[localName] = remoteName;
+					RemoteToLocalInterfaceNames[remoteName] = remoteName;
 				}
 			}
 		}
@@ -200,10 +198,16 @@ namespace NeutroniumApi.CodeGen
 				return GetLocalTypeName(remoteType.GetElementType()) + "[]";
 			}
 			
-			if (RemoteToLocalInterfaceNames.TryGetValue(remoteType.FullName, out string localName))
+			if (RemoteToLocalInterfaceNames.TryGetValue(remoteType.FullName, out string localInterfaceName))
 			{
-				if (upgradeToNullable) localName += "?";
-				return localName;
+				if (upgradeToNullable) localInterfaceName += "?";
+				return localInterfaceName;
+			}
+			
+			if (RemoteToLocalEnumNames.TryGetValue(remoteType.FullName, out string localEnumName))
+			{
+				if (upgradeToNullable) localEnumName += "?";
+				return localEnumName;
 			}
 
 			if (remoteType.Assembly.GetName().Name == WrappedAssemblyName)
@@ -373,6 +377,7 @@ namespace NeutroniumApi.CodeGen
 			return methodDecl;
 		}
 		
+#if false
 		internal static string? GenerateEnumSource(Type enumType)
 		{
 			if (!enumType.IsEnum) return null;
@@ -449,6 +454,7 @@ namespace NeutroniumApi.CodeGen
 				
 			return compilationUnit.ToFullString();
 		}
+#endif
 		
 		internal static string? GenerateInterfaceWrapperSource(Type interfaceType)
 		{
@@ -458,7 +464,7 @@ namespace NeutroniumApi.CodeGen
 			string className = GetWrapperClassName(interfaceType);
 			string originalNestedNamespace = interfaceType.Namespace?.Replace("Neutronium.Api", "") ?? "";
 			string classNamespace = "Neutronium.MergeLib.Internal";
-			string fullInterfaceName = $"Neutronium.MergeLib.Api{originalNestedNamespace}.{interfaceName}";
+			string fullInterfaceName = interfaceType.FullName;// $"Neutronium.MergeLib.Api{originalNestedNamespace}.{interfaceName}";
 
 			var members = SyntaxFactory.List<MemberDeclarationSyntax>();
 			

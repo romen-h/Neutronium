@@ -1,5 +1,6 @@
-﻿using Neutronium.MergeLib;
-using Neutronium.MergeLib.Api;
+﻿extern alias MergeLib;
+using MergeLib::Neutronium.Api;
+using MergeLib::Neutronium.MergeLib;
 
 namespace NeutroniumApi.MergeLib.Tests
 {

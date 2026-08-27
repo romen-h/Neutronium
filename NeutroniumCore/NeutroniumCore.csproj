@@ -25,6 +25,10 @@
 			<HintPath>$(UnityLibsFolder)/UnityEngine.CoreModule.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
+		<Reference Include="UnityEngine.ImageConversionModule">
+			<HintPath>$(UnityLibsFolder)/UnityEngine.ImageConversionModule.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
 		<Reference Include="Assembly-CSharp">
 			<HintPath>$(GameLibsFolder)/Assembly-CSharp.dll</HintPath>
 			<Private>false</Private>
@@ -33,12 +37,17 @@
 			<HintPath>$(GameLibsFolder)/Assembly-CSharp-firstpass.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
+		<Reference Include="VYaml">
+			<HintPath>$(GameLibsFolder)/VYaml.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
 	</ItemGroup>
 
 	<Target Name="InstallToGame" AfterTargets="AfterBuild">
 		<ItemGroup>
 			<FilesToCopy Include="$(TargetDir)/NeutroniumCore.dll" />
 			<FilesToCopy Include="$(TargetDir)/NeutroniumCore.pdb" />
+			<FilesToCopy Include="$(TargetDir)/NeutroniumApi.Interfaces.dll" />
 			<FilesToCopy Include="$(TargetDir)/System.Collections.Immutable.dll" />
 			<FilesToCopy Include="$(TargetDir)/System.Reflection.Metadata.dll" />
 			<FilesToCopy Include="$(TargetDir)/System.Reflection.MetadataLoadContext.dll" />
@@ -50,6 +59,7 @@
 		<ItemGroup>
 			<FilesToRemove Include="$(GameFolder)/NeutroniumCore.dll" />
 			<FilesToRemove Include="$(GameFolder)/NeutroniumCore.pdb" />
+			<FilesToRemove Include="$(GameFolder)/NeutroniumApi.Interfaces.dll" />
 			<FilesToRemove Include="$(GameFolder)/System.Collections.Immutable.dll" />
 			<FilesToRemove Include="$(GameFolder)/System.Reflection.Metadata.dll" />
 			<FilesToRemove Include="$(GameFolder)/System.Reflection.MetadataLoadContext.dll" />

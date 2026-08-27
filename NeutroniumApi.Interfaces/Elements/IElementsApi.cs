@@ -24,12 +24,12 @@ namespace Neutronium.Api.Elements
 		IEnumerable<IElement> GetAllModElements(string modStaticId);
 		
 		[PreviewApi]
-		ISolidElementBuilder CreateSolid(string id, string basedOnId);
+		ISolidElementBuilder CreateSolid(string groupName, string basedOnElement);
 		
 		[PreviewApi]
-		ILiquidElementBuilder CreateLiquid(string id, string basedOnId);
+		ILiquidElementBuilder CreateLiquid(string groupName, string basedOnElement);
 		
 		[PreviewApi]
-		IGasElementBuilder CreateGas(string id, string basedOnId);
+		IGasElementBuilder CreateGas(string groupName, string basedOnElement);
 	}
 }

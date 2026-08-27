@@ -14,8 +14,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="$(SolutionDir)\NeutroniumApi.CodeGen\NeutroniumApi.CodeGen.csproj"
-		                  OutputItemType="Analyzer" ReferenceOutputAssembly="False" />
+		<ProjectReference Include="$(SolutionDir)\NeutroniumApi.CodeGen\NeutroniumApi.CodeGen.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="False" />
 		<Reference Include="UnityEngine">
 			<HintPath>$(UnityLibsFolder)/UnityEngine.dll</HintPath>
 			<Private>false</Private>
@@ -24,6 +23,10 @@
 			<HintPath>$(UnityLibsFolder)/UnityEngine.CoreModule.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Include="$(SolutionDir)/NeutroniumApi.Interfaces/**/*.cs" Exclude="$(SolutionDir)/NeutroniumApi.Interfaces/obj/**;$(SolutionDir)/NeutroniumApi.Interfaces/NoMerge/**" />
 	</ItemGroup>
 
 </Project>

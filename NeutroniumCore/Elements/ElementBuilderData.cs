@@ -3,18 +3,34 @@ using Neutronium.Core.Utils;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 
 namespace Neutronium.Core.Elements
 {
 	internal class ElementBuilderData
 	{
-		internal readonly string id;
-		internal readonly int hash;
-		internal readonly ElementState state;
+		// Identity
+		internal readonly ElementHandle handle;
+		internal string id => handle.Id;
+		internal int hash => handle.Hash;
+		internal string groupName => handle.GroupName;
+		internal int state => handle.State;
 		internal readonly string baseElementId;
 		internal readonly string modId;
+		
+		// Material
+		internal Color32? worldColor;
+		
+		// Substance
+		internal Color32? uiColor;
+		internal Color32? conduitColor;
+		internal string? oreKanimName;
+		
+		// Tags
 		internal readonly List<string> tags = new();
-
+		internal bool inheritTags = false;
+		
+		// The Rest...
 		internal string? requiredDlc;
 		internal string? materialCategory;
 		internal float? maxMass;
@@ -33,9 +49,8 @@ namespace Neutronium.Core.Elements
 		internal string? highTransitionOreId;
 		internal float? highTransitionOreMassConversion;
 		internal string? sublimateTargetId;
-		internal float? sublimateCellInputMassPercent;
-		internal float? sublimateOutputMassMultiplier;
 		internal float? sublimateRate;
+		internal float? sublimateEfficiency;
 		internal float? sublimateProbability;
 		internal string? sublimateFx;
 		internal float? defaultMass;
@@ -52,11 +67,9 @@ namespace Neutronium.Core.Elements
 		internal float? defaultPressure;
 		internal float? maxGasFlow;
 
-		internal ElementBuilderData(ElementState state, string groupName, string baseElementId, string modStaticId)
+		internal ElementBuilderData(string groupName, int state, string baseElementId, string modStaticId)
 		{
-			this.state = state;
-			this.id = $"{state}_{groupName}";
-			this.hash = id.ToKHash();
+			this.handle = new ElementHandle(groupName, state);
 			this.baseElementId = baseElementId;
 			this.modId = modStaticId;
 		}

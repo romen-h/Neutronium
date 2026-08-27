@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Neutronium.Api.Meta;
+using UnityEngine;
 
 namespace Neutronium.Api.Elements
 {
@@ -20,163 +21,211 @@ namespace Neutronium.Api.Elements
 		
 		[PreviewApi]
 		[GetOnce]
-		ElementState State
+		int State
 		{ get; }
 		
 		[PreviewApi]
+		[GetOnce]
 		string ModId
 		{ get; }
 		
 		[PreviewApi]
-		IEnumerable<string> RequiredDlc
+		[GetOnce]
+		string RequiredDlc
 		{ get; }
 
 		[PreviewApi]
+		[GetOnce]
 		string BaseElementId
-		{ get; }
-
-		[PreviewApi]
-		string MaterialCategory
 		{ get; }
 		
 		[PreviewApi]
-		IEnumerable<string> Tags
+		[GetOnce]
+		Color32 WorldColor
+		{ get; }
+		
+		[PreviewApi]
+		[GetOnce]
+		Color32 UIColor
+		{ get; }
+		
+		[PreviewApi]
+		[GetOnce]
+		Color32 ConduitColor
 		{ get; }
 
 		[PreviewApi]
+		[GetOnce]
+		string? MaterialCategory
+		{ get; }
+		
+		[PreviewApi]
+		IReadOnlyList<string> Tags
+		{ get; }
+
+		[PreviewApi]
+		[GetOnce]
 		float MaxMass
 		{ get; }
 
 		[PreviewApi]
+		[GetOnce]
 		float MolarMass
 		{ get; }
 
 		[PreviewApi]
+		[GetOnce]
 		float SpecificHeatCapacity
 		{ get; }
 
 		[PreviewApi]
+		[GetOnce]
 		float ThermalConductivity
 		{ get; }
 		
 		[PreviewApi]
+		[GetOnce]
 		float SolidSurfaceAreaMultiplier
 		{ get; }
 		
 		[PreviewApi]
+		[GetOnce]
 		float LiquidSurfaceAreaMultiplier
 		{ get; }
 		
 		[PreviewApi]
+		[GetOnce]
 		float GasSurfaceAreaMultiplier
 		{ get; }
 		
 		[PreviewApi]
-		float LowTransitionTempKelvin
+		[GetOnce]
+		float? LowTransitionTempKelvin
 		{ get; }
 		
 		[PreviewApi]
+		[GetOnce]
 		string? LowTransitionElementId
 		{ get; }
 
 		[PreviewApi]
+		[GetOnce]
 		string? LowTransitionOreId
 		{ get; }
 
 		[PreviewApi]
-		float? LowTransitionOreMassConversion
+		[GetOnce]
+		float LowTransitionOreMassConversion
 		{ get; }
 		
 		[PreviewApi]
-		float HighTransitionTempKelvin
+		[GetOnce]
+		float? HighTransitionTempKelvin
 		{ get; }
 		
 		[PreviewApi]
+		[GetOnce]
 		string? HighTransitionElementId
 		{ get; }
 
 		[PreviewApi]
+		[GetOnce]
 		string? HighTransitionOreId
 		{ get; }
 
 		[PreviewApi]
-		float? HighTransitionOreMassConversion
+		[GetOnce]
+		float HighTransitionOreMassConversion
 		{ get; }
 
 		[PreviewApi]
+		[GetOnce]
 		string? SublimateTargetId
 		{ get; }
-		
+
 		[PreviewApi]
-		float? SublimateCellInputMassPercent
+		[GetOnce]
+		float SublimateRate
 		{ get; }
 
 		[PreviewApi]
-		float? SublimateOutputMassMultiplier
+		[GetOnce]
+		float SublimateEfficiency
 		{ get; }
 
 		[PreviewApi]
-		float? SublimateRate
+		[GetOnce]
+		float SublimateProbability
 		{ get; }
 
 		[PreviewApi]
-		float? SublimateProbability
-		{ get; }
-
-		[PreviewApi]
+		[GetOnce]
 		string? SublimateFx
 		{ get; }
 
 		[PreviewApi]
-		float? DefaultMass
+		[GetOnce]
+		float DefaultMass
 		{ get; }
 
 		[PreviewApi]
-		float? DefaultTemperatureKelvin
+		[GetOnce]
+		float DefaultTemperatureKelvin
 		{ get; }
 
 		[PreviewApi]
+		[GetOnce]
 		float LightAbsorptionFactor
 		{ get; }
 
 		[PreviewApi]
+		[GetOnce]
 		float RadiationAbsorptionFactor
 		{ get; }
 
 		[PreviewApi]
+		[GetOnce]
 		float RadiationPerKg
 		{ get; }
 
 		[PreviewApi]
-		float? Strength
+		[GetOnce]
+		float Strength
 		{ get; }
 
 		[PreviewApi]
-		byte? Hardness
+		[GetOnce]
+		byte Hardness
 		{ get; }
 
 		[PreviewApi]
-		float? MinHorizontalLiquidFlow
+		[GetOnce]
+		float MinHorizontalLiquidFlow
 		{ get; }
 
 		[PreviewApi]
-		float? MinVerticalLiquidFlow
+		[GetOnce]
+		float MinVerticalLiquidFlow
 		{ get; }
 
 		[PreviewApi]
-		float? MaxLiquidFlow
+		[GetOnce]
+		float MaxLiquidFlow
 		{ get; }
 
 		[PreviewApi]
-		float? LiquidCompressionFactor
+		[GetOnce]
+		float LiquidCompressionFactor
 		{ get; }
 
 		[PreviewApi]
-		float? DefaultPressure
+		[GetOnce]
+		float DefaultPressure
 		{ get; }
 		
 		[PreviewApi]
-		float? MaxGasFlow
+		[GetOnce]
+		float MaxGasFlow
 		{ get; }
 	}
 }

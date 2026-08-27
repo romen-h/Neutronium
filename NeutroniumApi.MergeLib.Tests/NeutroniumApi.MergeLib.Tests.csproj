@@ -9,7 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NeutroniumApi.MergeLib\NeutroniumApi.MergeLib.csproj" />
+    <ProjectReference Include="..\NeutroniumApi.MergeLib\NeutroniumApi.MergeLib.csproj">
+		<Aliases>MergeLib</Aliases>
+    </ProjectReference>
     <ProjectReference Include="..\NeutroniumCore\NeutroniumCore.csproj" />
     <Reference Include="UnityEngine">
 	    <HintPath>$(UnityLibsFolder)/UnityEngine.dll</HintPath>

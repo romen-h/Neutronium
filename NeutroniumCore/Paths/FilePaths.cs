@@ -49,34 +49,42 @@ namespace Neutronium.Core.Paths
 			}
 			s_log.Info($"Original Data Folder: {DefaultDataFolder}");
 			
-			ActiveDataFolder = new RootFolder(Application.persistentDataPath);
-			s_log.Info($"Active Data Folder: {ActiveDataFolder}");
-			
-			if (!File.Exists(DefaultDataFolder.MovedFlag))
+			if (LaunchArguments.MoveGameFolder)
 			{
-				s_log.Info("Original data folder needs to be migrated to AppData...");
-				bool moved = false;
-				try
-				{
-					if (Directory.Exists(ActiveDataFolder))
-					{
-						s_log.Warn("New data folder already exists.");
-					}
-					DefaultDataFolder.CopyTo(ActiveDataFolder);
-					s_log.Info("Copied game data to new folder.");
-					moved = true;
-				}
-				catch (Exception ex)
-				{
-					s_log.Error("Failed to move game data.", ex);
-				}
+				ActiveDataFolder = new RootFolder(Application.persistentDataPath);
+				s_log.Info($"Active Data Folder: {ActiveDataFolder}");
 				
-				if (moved)
+				if (!File.Exists(DefaultDataFolder.MovedFlag))
 				{
-					Directory.CreateDirectory(DefaultDataFolder);
-					File.WriteAllText(DefaultDataFolder.MovedFlag, $"Game data has been moved to: {ActiveDataFolder}");
-					s_log.Info("Created \"OneDrive Fix.txt\" in original data folder.");
+					s_log.Info("Original data folder needs to be migrated to AppData...");
+					bool moved = false;
+					try
+					{
+						if (Directory.Exists(ActiveDataFolder))
+						{
+							s_log.Warn("New data folder already exists.");
+						}
+						DefaultDataFolder.CopyTo(ActiveDataFolder);
+						s_log.Info("Copied game data to new folder.");
+						moved = true;
+					}
+					catch (Exception ex)
+					{
+						s_log.Error("Failed to move game data.", ex);
+					}
+					
+					if (moved)
+					{
+						Directory.CreateDirectory(DefaultDataFolder);
+						File.WriteAllText(DefaultDataFolder.MovedFlag, $"Game data has been moved to: {ActiveDataFolder}");
+						s_log.Info("Created \"OneDrive Fix.txt\" in original data folder.");
+					}
 				}
+			}
+			else
+			{
+				ActiveDataFolder = new RootFolder(DefaultDataFolder);
+				s_log.Info($"Active Data Folder: {ActiveDataFolder}");
 			}
 		}
 	}

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "OkCr4FeFVas=",
+  "success": true,
+  "projectFilePath": "C:\\Code\\GitHub\\Neutronium\\Examples\\ElementsExampleMod\\ElementsExampleMod.csproj",
+  "expectedPackageFiles": [
+    "C:\\Code\\GitHub\\Neutronium\\packages\\ilrepack.lib.msbuild.task\\2.0.37\\ilrepack.lib.msbuild.task.2.0.37.nupkg.sha512"
+  ],
+  "logs": []
+}

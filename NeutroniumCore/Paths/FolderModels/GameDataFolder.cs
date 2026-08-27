@@ -11,14 +11,14 @@ namespace Neutronium.Core.Paths.FolderModels
 		public readonly Folder Managed;
 		public readonly Folder Plugins;
 		public readonly Folder Resources;
-		public readonly Folder StreamingAssets;
+		public readonly StreamingAssetsFolder StreamingAssets;
 		
 		internal GameDataFolder(string path) : base(path)
 		{
 			Managed = new Folder(Path.Combine(path, "Managed"));
 			Plugins = new Folder(Path.Combine(path, "Plugins"));
 			Resources = new Folder(Path.Combine(path, "Resources"));
-			StreamingAssets = new Folder(Path.Combine(path, "StreamingAssets"));
+			StreamingAssets = new StreamingAssetsFolder(Path.Combine(path, "StreamingAssets"));
 		}
 	}
 }

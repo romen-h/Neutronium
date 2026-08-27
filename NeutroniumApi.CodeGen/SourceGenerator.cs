@@ -90,6 +90,7 @@ namespace NeutroniumApi.CodeGen
 
 			foreach (var type in apiTypes)
 			{
+#if false
 				if (type.IsEnum)
 				{
 					string enumSourceFile = $"{type.FullName}.g.cs";
@@ -99,14 +100,17 @@ namespace NeutroniumApi.CodeGen
 						spc.AddSource(enumSourceFile, enumSourceCode);
 					}
 				}
-				else if (type.IsInterface)
+#endif
+				if (type.IsInterface)
 				{
+#if false
 					string interfaceSourceFile = $"{type.FullName}.g.cs";
 					string? interfaceSourceCode = GeneratorUtils.GenerateInterfaceSource(type);
 					if (interfaceSourceCode != null)
 					{
 						spc.AddSource(interfaceSourceFile, interfaceSourceCode);
 					}
+#endif
 					
 					string wrapperSourceFile = $"{type.FullName}_Wrapper.g.cs";
 					string? wrapperSourceCode = GeneratorUtils.GenerateInterfaceWrapperSource(type);

@@ -10,7 +10,7 @@ namespace Neutronium.Core.Paths.FolderModels
     public class Folder
     {
         protected readonly string _path;
-
+        
 		public override string ToString() => _path;
 
 		public static implicit operator string(Folder folder) => folder._path;

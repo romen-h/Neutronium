@@ -44,7 +44,7 @@ namespace Neutronium.Api.Elements
 		ILiquidElementMaterialBuilder InheritLiquidProperties();
 
 		[PreviewApi]
-		IElementSubstanceBuilder LiquidProperties(
+		ILiquidElementMaterialBuilder SetLiquidProperties(
 			float? minHorizontalFlow,
 			float? minVerticalFlow,
 			float? maxFlow,
@@ -58,7 +58,7 @@ namespace Neutronium.Api.Elements
 		IElementSubstanceBuilder InheritMaterial();
 
 		[PreviewApi]
-		IElementSubstanceBuilder CustomMaterial(
+		IElementSubstanceBuilder SetCustomMaterial(
 			Color32? color,
 			Texture? texture);
 	}
@@ -70,7 +70,7 @@ namespace Neutronium.Api.Elements
 		IGasElementMaterialBuilder InheritGasProperties();
 		
 		[PreviewApi]
-		IGasElementMaterialBuilder GasProperties(
+		IGasElementMaterialBuilder SetGasProperties(
 			float? defaultPressure,
 			float? flowRate);
 	}
@@ -82,7 +82,7 @@ namespace Neutronium.Api.Elements
 		IElementSubstanceBuilder InheritMaterial();
 		
 		[PreviewApi]
-		IElementSubstanceBuilder CustomMaterial(
+		IElementSubstanceBuilder SetCustomMaterial(
 			Color32? color);
 	}
 	
@@ -93,7 +93,8 @@ namespace Neutronium.Api.Elements
 		IElementMassPropertiesBuilder InheritSubstance();
 
 		[PreviewApi]
-		IElementMassPropertiesBuilder SubstanceProperties(
+		IElementMassPropertiesBuilder SetSubstanceProperties(
+			Color32? worldColor,
 			Color32? uiColor,
 			Color32? conduitColor,
 			string? oreKanimName,
@@ -108,7 +109,7 @@ namespace Neutronium.Api.Elements
 		IElementThermalPropertiesBuilder InheritMassProperties();
 
 		[PreviewApi]
-		IElementThermalPropertiesBuilder MassProperties(
+		IElementThermalPropertiesBuilder SetMassProperties(
 			float? maxMass,
 			float? molarMass);
 	}
@@ -120,14 +121,14 @@ namespace Neutronium.Api.Elements
 		IElementLowTransitionBuilder InheritThermalProperties();
 
 		[PreviewApi]
-		IElementLowTransitionBuilder ThermalProperties(
+		IElementLowTransitionBuilder SetThermalProperties(
 			float? thermalConductivity,
 			float? specificHeatCapacity);
 
 		[PreviewApi]
-		IElementLowTransitionBuilder ThermalProperties(
+		IElementLowTransitionBuilder SetThermalProperties(
 			float? thermalConductivity,
-			float? specificHeadCapacity,
+			float? specificHeatCapacity,
 			float? solidTransferMultiplier,
 			float? liquidTransferMultiplier,
 			float? gasTransferMultiplier);
@@ -143,12 +144,12 @@ namespace Neutronium.Api.Elements
 		IElementHighTransitionBuilder NoLowTransition();
 
 		[PreviewApi]
-		IElementHighTransitionBuilder LowTransition(
+		IElementHighTransitionBuilder SetLowTransition(
 			float? temperatureKelvin,
 			string? targetElementId);
 
 		[PreviewApi]
-		IElementHighTransitionBuilder LowTransitionWithOre(
+		IElementHighTransitionBuilder SetLowTransitionWithOre(
 			float? temperatureKelvin,
 			string? targetElementId,
 			string? oreElementId,
@@ -165,12 +166,12 @@ namespace Neutronium.Api.Elements
 		IElementSublimationPropertiesBuilder NoHighTransition();
 
 		[PreviewApi]
-		IElementSublimationPropertiesBuilder HighTransition(
+		IElementSublimationPropertiesBuilder SetHighTransition(
 			float? temperatureKelvin,
 			string? targetElementId);
 
 		[PreviewApi]
-		IElementSublimationPropertiesBuilder HighTransitionWithOre(
+		IElementSublimationPropertiesBuilder SetHighTransitionWithOre(
 			float? temperatureKelvin,
 			string? targetElementId,
 			string? oreElementId,
@@ -189,12 +190,13 @@ namespace Neutronium.Api.Elements
 		[PreviewApi]
 		IElementLightPropertiesBuilder SublimatesTo(
 			string? targetElementId,
-			float? inputPercentage,
 			float? conversionRate,
+			float? efficiency,
 			float? probability,
 			string? sublimateFx);
 	}
-	
+
+	[PreviewApi]
 	public interface IElementLightPropertiesBuilder
 	{
 		[PreviewApi]
@@ -226,7 +228,7 @@ namespace Neutronium.Api.Elements
 		IElementTagsBuilder InheritWorldgenProperties();
 
 		[PreviewApi]
-		IElementTagsBuilder WorldgenProperties(
+		IElementTagsBuilder SetWorldgenProperties(
 			float? defaultMass,
 			float? defaultTemperature);
 	}
@@ -236,12 +238,15 @@ namespace Neutronium.Api.Elements
 	{
 		[PreviewApi]
 		IElementOptionalPropertiesBuilder InheritTags();
+		
+		[PreviewApi]
+		IElementOptionalPropertiesBuilder InheritAndAddTags(IEnumerable<string> tags);
 
 		[PreviewApi]
 		IElementOptionalPropertiesBuilder NoTags();
 		
 		[PreviewApi]
-		IElementOptionalPropertiesBuilder WithTags(IEnumerable<string> tags);
+		IElementOptionalPropertiesBuilder SetTags(IEnumerable<string> tags);
 	}
 
 	[PreviewApi]
@@ -254,6 +259,6 @@ namespace Neutronium.Api.Elements
 		IElementOptionalPropertiesBuilder RequireDlc(IEnumerable<string> dlcId);
 
 		[PreviewApi]
-		string Submit();
+		(string,int)? Submit();
 	}
 }

@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Neutronium.Api.Constants;
+using Neutronium.Api.Elements;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using Neutronium.Api.Elements;
 
 namespace Neutronium.Core.Elements
 {
@@ -39,19 +40,19 @@ namespace Neutronium.Core.Elements
 			throw new NotImplementedException();
 		}
 
-		public ISolidElementBuilder CreateSolid(string id, string basedOnId)
+		public ISolidElementBuilder CreateSolid(string groupName, string basedOnId)
 		{
-			return new ElementBuilder(ElementState.Solid, id, basedOnId, _modId);
+			return new ElementBuilder(groupName, ElementStates.Solid, basedOnId, _modId);
 		}
 
-		public ILiquidElementBuilder CreateLiquid(string id, string basedOnId)
+		public ILiquidElementBuilder CreateLiquid(string groupName, string basedOnId)
 		{
-			return new ElementBuilder(ElementState.Liquid, id, basedOnId, _modId);
+			return new ElementBuilder(groupName, ElementStates.Liquid, basedOnId, _modId);
 		}
 
-		public IGasElementBuilder CreateGas(string id, string basedOnId)
+		public IGasElementBuilder CreateGas(string groupName, string basedOnId)
 		{
-			return new ElementBuilder(ElementState.Gas, id, basedOnId, _modId);
+			return new ElementBuilder(groupName, ElementStates.Gas, basedOnId, _modId);
 		}
 	}
 }

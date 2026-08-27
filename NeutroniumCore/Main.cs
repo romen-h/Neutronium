@@ -2,6 +2,7 @@ using HarmonyLib;
 using System;
 using System.Reflection;
 using Klei;
+using Neutronium.Core.Elements;
 using Neutronium.Core.Meta;
 using Neutronium.Core.Logging;
 using Neutronium.Core.Patches;
@@ -13,6 +14,9 @@ namespace Neutronium.Core
 {
 	internal static class Main
 	{
+		internal static bool IsTesting
+		{ get; private set; }
+		
 		internal static Version NeutroniumVersion
 		{ get; private set; }
 		
@@ -63,6 +67,7 @@ namespace Neutronium.Core
 
 			// Initialize API back-end before plugins
 			RegistryManager.Initialize();
+			ElementsManager.Initialize();
 			
 			// Finally load the early plugins
 			PluginManager.Initialize();
@@ -72,6 +77,8 @@ namespace Neutronium.Core
 		
 		internal static void OnTest()
 		{
+			IsTesting = true;
+			
 			// Set the version env var so that NeutroniumLoader can verify that the correct core assembly was loaded.
 			Assembly thisAssembly = Assembly.GetExecutingAssembly();
 			NeutroniumVersion = thisAssembly.GetName().Version;
@@ -80,6 +87,8 @@ namespace Neutronium.Core
 
 			Log.Initialize(isTest: true);
 			Log.Info("Core", $"Neutronium.Core Version {version}");
+			
+			ElementsManager.Initialize();
 		}
 	}
 }

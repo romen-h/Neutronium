@@ -1,0 +1,48 @@
+<Project>
+
+	<Target Name="GenerateModYaml" AfterTargets="Build">
+		<WriteLinesToFile File="$(TargetDir)/mod.yaml"
+						  Overwrite="true"
+						  WriteOnlyWhenDifferent="true"
+						  Lines="
+title: $(ModName)
+description: $(ModDescription)
+staticID: $(ModID)"/>
+	</Target>
+
+	<Target Name="GenerateModInfoYaml" AfterTargets="Build">
+		<ItemGroup>
+			<ModInfoLines Include="minimumSupportedBuild: $(GameVersion)"/>
+			<ModInfoLines Include="version: $(Version)"/>
+			<ModInfoLines Include="APIVersion: 2"/>
+			<ModInfoLines Include="supportedContent: ALL"/>
+			<ModInfoLines Include="requiredDlcIds:" Condition="'$(RequiredDlcIds)' != ''"/>
+			<ModInfoLines Include="$(RequiredDlcIds)" Condition="'$(RequiredDlcIds)' != ''"/>
+			<ModInfoLines Include="forbiddenDlcIds:" Condition="'$(ForbiddenDlcIds)' != ''"/>
+			<ModInfoLines Include="$(ForbiddenDlcIds)" Condition="'$(ForbiddenDlcIds)' != ''"/>
+		</ItemGroup>
+		<WriteLinesToFile File="$(TargetDir)/mod_info.yaml"
+		                  Overwrite="true"
+		                  WriteOnlyWhenDifferent="true"
+		                  Lines="@(ModInfoLines)"/>
+	</Target>
+
+	<Target Name="ILRepack" AfterTargets="Build">
+		<ItemGroup>
+			<InputAssemblies Include="$(TargetPath)"/>
+			<InputAssemblies Include="$(TargetDir)/NeutroniumApi.MergeLib.dll"/>
+		</ItemGroup>
+
+		<ILRepack
+			TargetKind="SameAsPrimaryAssembly"
+			OutputFile="$(TargetPath)"
+			InputAssemblies="@(InputAssemblies)"
+			XmlDocumentation="true"
+			Internalize="true"
+			Wildcards="true"
+			LibraryPath="$(GameLibsFolder);$(UnityLibsFolder)" />
+
+		<Delete Files="$(TargetDir)/NeutroniumApi.MergeLib.dll;$(TargetDir)/NeutroniumApi.MergeLib.pdb"/>
+	</Target>
+
+</Project>

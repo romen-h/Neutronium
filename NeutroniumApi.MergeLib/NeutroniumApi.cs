@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
-using Neutronium.MergeLib.Api;
+using Neutronium.Api;
 using Neutronium.MergeLib.Internal;
 using UnityEngine;
 
@@ -20,7 +20,7 @@ namespace Neutronium.MergeLib
 			catch
 			{ }
 
-			Type? remoteApiRoot = RemoteTypes.FindType("Neutronium.Core.ApiRoot");
+			Type? remoteApiRoot = Type.GetType("Neutronium.Core.ApiRoot, NeutroniumCore");
 			if (remoteApiRoot == null)
 			{
 				unityLogger?.LogError($"NeutroniumApi.MergeLib:{modStaticId}", "Could not find ApiRoot class in NeutroniumCore.");
