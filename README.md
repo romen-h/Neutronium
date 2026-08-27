@@ -2,6 +2,9 @@
 
 Neutronium will be a modding API for Oxygen Not Included.
 
+It is not ready to be used for mods. Do not release anything on the Steam Workshop that depends on Neutronium.  
+The API is not stable promised *yet*.
+
 ## Components
 
 ### Neutronium Loader
